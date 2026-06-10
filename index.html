@@ -208,6 +208,33 @@ table.lb { width: 100%; border-collapse: collapse; }
 .grp-table td:first-child { text-align: left; }
 .grp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
 
+/* ── BRACKET ── */
+.bracket { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; }
+.b-col { display: flex; flex-direction: column; justify-content: space-around; min-width: 168px; flex-shrink: 0; }
+.b-col-h {
+  text-align: center;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.b-match {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 8px;
+  margin: 4px 0;
+  font-size: 0.76rem;
+}
+.b-side { display: flex; align-items: center; gap: 5px; padding: 2px 0; color: var(--muted); }
+.b-side.winner { color: var(--text); font-weight: 700; }
+.b-side .b-score { margin-left: auto; font-weight: 700; }
+.b-side.winner .b-score { color: var(--green); }
+.b-meta { font-size: 0.6rem; color: var(--muted); text-align: center; margin-top: 2px; }
+.b-final .b-match { border-color: rgba(255,215,0,0.4); }
+
 /* ── AWARDS ── */
 .award-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
 .award-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
@@ -248,6 +275,8 @@ table.lb { width: 100%; border-collapse: collapse; }
   <button class="tab-btn active" data-tab="leaderboard">🏆 Leaderboard</button>
   <button class="tab-btn" data-tab="draw">👥 The Draw</button>
   <button class="tab-btn" data-tab="matches">⚽ Matches</button>
+  <button class="tab-btn" data-tab="groups">🌍 Groups</button>
+  <button class="tab-btn" data-tab="bracket">🪜 Bracket</button>
   <button class="tab-btn" data-tab="awards">🎖️ Awards</button>
   <button class="tab-btn" data-tab="rules">📜 Rules</button>
 </div>
@@ -255,6 +284,8 @@ table.lb { width: 100%; border-collapse: collapse; }
 <div class="tab-pane active" id="pane-leaderboard"><div class="loading">Loading…</div></div>
 <div class="tab-pane" id="pane-draw"></div>
 <div class="tab-pane" id="pane-matches"></div>
+<div class="tab-pane" id="pane-groups"></div>
+<div class="tab-pane" id="pane-bracket"></div>
 <div class="tab-pane" id="pane-awards"></div>
 <div class="tab-pane" id="pane-rules"></div>
 
@@ -505,32 +536,86 @@ function renderMatches() {
   };
 
   let html = '';
-  // group tables first (once any group match has finished)
-  const stats = computeTeamStats();
-  const groupFinished = ms.some(m => m.stage === 'group' && m.status === 'FINISHED');
-  if (groupFinished) {
-    const groups = {};
-    TEAMS.forEach(t => (groups[t.group] = groups[t.group] || []).push(t));
-    html += '<div class="stage-h">Group Tables</div><div class="grp-grid">';
-    for (const g of Object.keys(groups).sort()) {
-      const rows = groups[g].map(t => {
-        const s = stats[t.id];
-        return { t, pts: s.gPts, gd: s.gGF - s.gGA, gf: s.gGF, w: s.gW, d: s.gD, l: s.gL };
-      }).sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf);
-      html += `<div class="card"><div class="section-title">Group ${g}</div><table class="grp-table">
-        <tr><th>Team</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>Pts</th></tr>
-        ${rows.map(r => `<tr><td>${flag(r.t.id)} ${esc(r.t.name)}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td><td>${r.gd > 0 ? '+' : ''}${r.gd}</td><td><strong>${r.pts}</strong></td></tr>`).join('')}
-      </table></div>`;
-    }
-    html += '</div>';
-  }
-
   for (const stage of [...STAGE_ORDER].reverse()) {
     const sm = ms.filter(m => m.stage === stage);
     if (!sm.length) continue;
     sm.sort((a, b) => (a.utcDate || '').localeCompare(b.utcDate || ''));
     html += `<div class="stage-h">${STAGE_LABEL[stage]}</div>` + sm.map(row).join('');
   }
+  pane.innerHTML = html;
+}
+
+function renderGroups(teamStats) {
+  const groups = {};
+  TEAMS.forEach(t => (groups[t.group] = groups[t.group] || []).push(t));
+  let html = '<div class="grp-grid">';
+  for (const g of Object.keys(groups).sort()) {
+    const rows = groups[g].map(t => {
+      const s = teamStats[t.id];
+      return { t, p: s.gW + s.gD + s.gL, w: s.gW, d: s.gD, l: s.gL,
+               gf: s.gGF, ga: s.gGA, gd: s.gGF - s.gGA, pts: s.gPts };
+    }).sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf || a.t.rank - b.t.rank);
+    html += `<div class="card"><div class="section-title">Group ${g}</div><table class="grp-table">
+      <tr><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr>
+      ${rows.map(r => `<tr>
+        <td>${flag(r.t.id)} ${esc(r.t.name)}</td>
+        <td>${r.p}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td>
+        <td>${r.gf}</td><td>${r.ga}</td><td>${r.gd > 0 ? '+' : ''}${r.gd}</td>
+        <td><strong>${r.pts}</strong></td>
+      </tr>`).join('')}
+    </table></div>`;
+  }
+  html += `</div>
+    <p style="color:var(--muted);font-size:0.72rem;margin-top:10px;line-height:1.5">
+      The top two in each group qualify for the Round of 32, along with the eight best third-placed teams.
+    </p>`;
+  $('pane-groups').innerHTML = html;
+}
+
+function renderBracket() {
+  const pane = $('pane-bracket');
+  const byStage = s => RESULTS.matches
+    .filter(m => m.stage === s)
+    .sort((a, b) => (a.utcDate || '').localeCompare(b.utcDate || ''));
+
+  const stages = [['r32', 'Round of 32'], ['r16', 'Round of 16'], ['qf', 'Quarter-finals'], ['sf', 'Semi-finals'], ['final', 'Final']];
+  if (!stages.some(([s]) => byStage(s).length)) {
+    pane.innerHTML = '<div class="loading">The knockout ladder appears here once fixtures are synced.</div>';
+    return;
+  }
+
+  const w = m => matchWinner(m);
+  const sideRow = (m, id) => {
+    const isW = m.status === 'FINISHED' && w(m) === id;
+    const score = id === m.home ? m.hs : m.as;
+    const pens = m.penHome != null ? (id === m.home ? m.penHome : m.penAway) : null;
+    return `<div class="b-side ${isW ? 'winner' : ''}">
+      ${id ? flag(id) : '·'} ${id ? esc(tname(id)) : 'TBD'}
+      <span class="b-score">${score != null ? score + (pens != null ? ` (${pens})` : '') : ''}</span>
+    </div>`;
+  };
+  const cell = m => `
+    <div class="b-match">
+      ${sideRow(m, m.home)}
+      ${sideRow(m, m.away)}
+      ${m.status !== 'FINISHED' && m.utcDate ? `<div class="b-meta">${new Date(m.utcDate).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}</div>` : ''}
+    </div>`;
+
+  let html = '<div class="bracket">';
+  for (const [stage, label] of stages) {
+    const ms = byStage(stage);
+    if (!ms.length) continue;
+    html += `<div class="b-col ${stage === 'final' ? 'b-final' : ''}">
+      <div class="b-col-h">${label}</div>${ms.map(cell).join('')}</div>`;
+  }
+  html += '</div>';
+
+  const third = byStage('third');
+  if (third.length) {
+    html += `<div style="max-width:200px;margin-top:6px">
+      <div class="b-col-h" style="text-align:left">Third-place play-off</div>${third.map(cell).join('')}</div>`;
+  }
+  html += '<p style="color:var(--muted);font-size:0.7rem;margin-top:10px">Scroll sideways for later rounds. Numbers in brackets are penalty shoot-out scores.</p>';
   pane.innerHTML = html;
 }
 
@@ -630,6 +715,8 @@ function renderAll() {
   renderLeaderboard(rows);
   renderDraw();
   renderMatches();
+  renderGroups(stats);
+  renderBracket();
   renderAwards(rows, stats);
   renderRules();
   $('sampleBanner').style.display = DRAW.sample ? 'block' : 'none';
