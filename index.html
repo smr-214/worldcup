@@ -634,7 +634,7 @@ function renderAll() {
   renderRules();
   $('sampleBanner').style.display = DRAW.sample ? 'block' : 'none';
   $('updatedLine').textContent = RESULTS.updated
-    ? `Results last synced ${new Date(RESULTS.updated).toLocaleString()}`
+    ? `Results as of ${new Date(RESULTS.updated).toLocaleString()}`
     : 'Awaiting first results sync — leaderboard goes live with the opening match';
 }
 

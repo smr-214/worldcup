@@ -85,8 +85,11 @@ const res = await fetch('https://api.football-data.org/v4/competitions/WC/matche
   headers: { 'X-Auth-Token': TOKEN },
 });
 if (!res.ok) {
+  // process.exitCode (not process.exit) — exiting mid-teardown of the fetch
+  // socket trips a libuv assertion on Windows and clobbers the exit code.
   console.error(`football-data.org returned ${res.status}: ${await res.text()}`);
-  process.exit(1);
+  process.exitCode = 1;
+  throw new Error(`HTTP ${res.status}`);
 }
 const data = await res.json();
 
@@ -115,10 +118,20 @@ if (unmatched.size) {
   console.warn(`UNMATCHED TEAM NAMES (fix ALIASES): ${[...unmatched].join(' | ')}`);
 }
 
-const out = {
-  updated: new Date().toISOString(),
-  source: 'football-data.org',
-  matches,
-};
-writeFileSync(join(root, 'data', 'results.json'), JSON.stringify(out, null, 2) + '\n');
-console.log(`Wrote ${matches.length} matches (${matches.filter(m => m.status === 'FINISHED').length} finished)`);
+// Only rewrite the file when the data actually changed, so the scheduled
+// Action doesn't create a no-op commit (and Pages rebuild) every run.
+const outPath = join(root, 'data', 'results.json');
+let existing = null;
+try { existing = JSON.parse(readFileSync(outPath, 'utf8')); } catch {}
+const finishedCount = matches.filter(m => m.status === 'FINISHED').length;
+if (existing && JSON.stringify(existing.matches) === JSON.stringify(matches)) {
+  console.log(`No changes (${matches.length} matches, ${finishedCount} finished)`);
+} else {
+  const out = {
+    updated: new Date().toISOString(),
+    source: 'football-data.org',
+    matches,
+  };
+  writeFileSync(outPath, JSON.stringify(out, null, 2) + '\n');
+  console.log(`Wrote ${matches.length} matches (${finishedCount} finished)`);
+}
