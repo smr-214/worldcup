@@ -209,11 +209,10 @@ table.lb { width: 100%; border-collapse: collapse; }
 .grp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
 
 /* ── BRACKET ── */
-.bracket { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; }
-.b-col { display: flex; flex-direction: column; justify-content: space-around; min-width: 168px; flex-shrink: 0; }
+.b-round { margin-bottom: 20px; }
+.b-round-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; }
 .b-col-h {
-  text-align: center;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -225,7 +224,6 @@ table.lb { width: 100%; border-collapse: collapse; }
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 6px 8px;
-  margin: 4px 0;
   font-size: 0.76rem;
 }
 .b-side { display: flex; align-items: center; gap: 5px; padding: 2px 0; color: var(--muted); }
@@ -275,8 +273,8 @@ table.lb { width: 100%; border-collapse: collapse; }
   <button class="tab-btn active" data-tab="leaderboard">🏆 Leaderboard</button>
   <button class="tab-btn" data-tab="draw">👥 The Draw</button>
   <button class="tab-btn" data-tab="matches">⚽ Fixtures</button>
-  <button class="tab-btn" data-tab="groups">🌍 Group Stage</button>
-  <button class="tab-btn" data-tab="bracket">🪜 Knockout Stage</button>
+  <button class="tab-btn" data-tab="groups">🌍 Group Stage Results</button>
+  <button class="tab-btn" data-tab="bracket">🪜 Knockout Stage Results</button>
   <button class="tab-btn" data-tab="rules">📜 Rules</button>
 </div>
 
@@ -599,21 +597,16 @@ function renderBracket() {
       ${m.status !== 'FINISHED' && m.utcDate ? `<div class="b-meta">${new Date(m.utcDate).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}</div>` : ''}
     </div>`;
 
-  let html = '<div class="bracket">';
-  for (const [stage, label] of stages) {
+  let html = '';
+  for (const [stage, label] of [...stages, ['third', 'Third-place play-off']]) {
     const ms = byStage(stage);
     if (!ms.length) continue;
-    html += `<div class="b-col ${stage === 'final' ? 'b-final' : ''}">
-      <div class="b-col-h">${label}</div>${ms.map(cell).join('')}</div>`;
+    html += `<div class="b-round ${stage === 'final' ? 'b-final' : ''}">
+      <div class="b-col-h">${label}</div>
+      <div class="b-round-grid">${ms.map(cell).join('')}</div>
+    </div>`;
   }
-  html += '</div>';
-
-  const third = byStage('third');
-  if (third.length) {
-    html += `<div style="max-width:200px;margin-top:6px">
-      <div class="b-col-h" style="text-align:left">Third-place play-off</div>${third.map(cell).join('')}</div>`;
-  }
-  html += '<p style="color:var(--muted);font-size:0.7rem;margin-top:10px">Scroll sideways for later rounds. Numbers in brackets are penalty shoot-out scores.</p>';
+  html += '<p style="color:var(--muted);font-size:0.7rem;margin-top:4px">Numbers in brackets are penalty shoot-out scores.</p>';
   pane.innerHTML = html;
 }
 
