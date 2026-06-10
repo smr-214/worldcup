@@ -277,7 +277,6 @@ table.lb { width: 100%; border-collapse: collapse; }
   <button class="tab-btn" data-tab="matches">⚽ Matches</button>
   <button class="tab-btn" data-tab="groups">🌍 Groups</button>
   <button class="tab-btn" data-tab="bracket">🪜 Bracket</button>
-  <button class="tab-btn" data-tab="awards">🎖️ Awards</button>
   <button class="tab-btn" data-tab="rules">📜 Rules</button>
 </div>
 
@@ -286,7 +285,6 @@ table.lb { width: 100%; border-collapse: collapse; }
 <div class="tab-pane" id="pane-matches"></div>
 <div class="tab-pane" id="pane-groups"></div>
 <div class="tab-pane" id="pane-bracket"></div>
-<div class="tab-pane" id="pane-awards"></div>
 <div class="tab-pane" id="pane-rules"></div>
 
 <script>
@@ -449,9 +447,9 @@ function computeStandings(teamStats) {
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 
-function renderLeaderboard(rows) {
+function renderLeaderboard(rows, teamStats) {
   const anyResults = RESULTS.matches.some(m => m.status === 'FINISHED');
-  $('pane-leaderboard').innerHTML = `
+  $('pane-leaderboard').innerHTML = renderAwards(rows, teamStats) + `
     <div class="card">
       <div class="section-title">Standings — top 3 win prizes</div>
       ${anyResults ? '' : '<p style="color:var(--muted);font-size:0.8rem;margin-bottom:12px">No results yet — everyone starts level. Standings update automatically after each match.</p>'}
@@ -655,9 +653,10 @@ function renderAwards(rows, teamStats) {
     <div class="award-card"><div class="award-emoji">${emoji}</div>
     <div class="award-name">${name}</div><div class="award-desc">${desc}</div>${body}</div>`;
 
-  $('pane-awards').innerHTML = `
+  return `
+    <div class="section-title" style="margin-bottom:6px">🎖️ Fun Awards</div>
     <p style="color:var(--muted);font-size:0.8rem;margin-bottom:14px">Live holders — final winners decided after the Final. Everyone's in with a shout, football knowledge optional.</p>
-    <div class="award-grid">
+    <div class="award-grid" style="margin-bottom:22px">
       ${card('🥅', 'The Sieve', 'Most goals conceded by your six teams combined', holder(sieve, 'goals let in'))}
       ${card('😴', 'Snoozefest', 'Most 0-0 draws sat through', holder(snooze, '0-0 classics'))}
       ${card('🐕', 'Underdog Whisperer', 'Most points scored by your Tier-6 minnow', underdog ? `<div class="award-holder">${underdog.p.emoji} ${esc(underdog.p.name)}</div><div class="award-detail">${esc(underdog.team)} · ${underdog.v} pts</div>` : '<div class="award-detail">No contender yet</div>')}
@@ -699,7 +698,7 @@ function renderRules() {
         <li>🥇 1st place — <em>prize TBC</em></li>
         <li>🥈 2nd place — <em>prize TBC</em></li>
         <li>🥉 3rd place — <em>prize TBC</em></li>
-        <li>🎖️ Plus the fun awards on the Awards tab — football knowledge not required!</li>
+        <li>🎖️ Plus the fun awards at the top of the Leaderboard tab — football knowledge not required!</li>
       </ul>
       <h3>🔄 Updates</h3>
       <ul>
@@ -712,12 +711,11 @@ function renderRules() {
 function renderAll() {
   const stats = computeTeamStats();
   const rows = computeStandings(stats);
-  renderLeaderboard(rows);
+  renderLeaderboard(rows, stats);
   renderDraw();
   renderMatches();
   renderGroups(stats);
   renderBracket();
-  renderAwards(rows, stats);
   renderRules();
   $('sampleBanner').style.display = DRAW.sample ? 'block' : 'none';
   $('updatedLine').textContent = RESULTS.updated
