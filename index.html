@@ -118,6 +118,18 @@ body {
 }
 
 /* ── LEADERBOARD ── */
+.lb-toggle {
+  background: none;
+  border: 1px solid var(--green2);
+  color: var(--green);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.lb-toggle:hover { background: rgba(0,200,83,0.1); }
 table.lb { width: 100%; border-collapse: collapse; }
 .lb th {
   text-align: left;
@@ -252,8 +264,17 @@ table.lb { width: 100%; border-collapse: collapse; }
 .loading, .error-box { text-align: center; color: var(--muted); padding: 50px 20px; font-size: 0.9rem; line-height: 1.7; }
 .error-box code { background: var(--card2); padding: 2px 6px; border-radius: 4px; }
 
-@media (max-width: 560px) {
-  .lb th:nth-child(3), .lb td:nth-child(3) { display: none; }
+@media (max-width: 640px) {
+  /* Tabs: wrap into two rows of three so none sit hidden off-screen */
+  .tabs { flex-wrap: wrap; }
+  .tab-btn {
+    flex: 1 1 33.33%;
+    min-width: 0;
+    white-space: normal;
+    font-size: 0.7rem;
+    line-height: 1.25;
+    padding: 9px 3px;
+  }
 }
 </style>
 </head>
@@ -361,6 +382,13 @@ const STAGE_LABEL = {
 const STAGE_ORDER = ['group', 'r32', 'r16', 'qf', 'sf', 'third', 'final'];
 
 let DRAW = null, RESULTS = null, EXTRAS = { redCards: {} };
+let LB_DETAILED = false;
+const LAST = {};
+
+function toggleLb() {
+  LB_DETAILED = !LB_DETAILED;
+  if (LAST.rows) renderLeaderboard(LAST.rows, LAST.stats);
+}
 
 function matchWinner(m) {
   if (m.winner === 'HOME_TEAM') return m.home;
@@ -451,6 +479,7 @@ function renderLeaderboard(rows, teamStats) {
     <div class="card">
       <div class="section-title">Standings — top 3 win prizes</div>
       ${anyResults ? '' : '<p style="color:var(--muted);font-size:0.8rem;margin-bottom:12px">No results yet — everyone starts level. Standings update automatically after each match.</p>'}
+      <button class="lb-toggle" onclick="toggleLb()">${LB_DETAILED ? 'Hide details' : 'Press for details'}</button>
       <table class="lb">
         <thead><tr><th>#</th><th>Player</th><th style="text-align:right">GD</th><th style="text-align:right">Pts</th></tr></thead>
         <tbody>
@@ -459,20 +488,21 @@ function renderLeaderboard(rows, teamStats) {
               <td class="pos pos-${i + 1}">${i < 3 ? ['🥇','🥈','🥉'][i] : i + 1}</td>
               <td>
                 <span class="player-name">${p.emoji} ${esc(p.name)}</span>
+                ${LB_DETAILED ? `
                 <div class="team-chips">
                   ${p.teams.map(t => `
                     <span class="chip ${t.eliminated ? 'out' : ''}" title="Tier ${t.tier}">
                       ${flag(t.id)} <span class="chip-name">${esc(tname(t.id))}</span>
                       <span class="chip-pts">${t.pts}</span>
                     </span>`).join('')}
-                </div>
+                </div>` : ''}
               </td>
               <td style="text-align:right;color:var(--muted)">${p.gd > 0 ? '+' : ''}${p.gd}</td>
               <td class="total-pts">${p.total}</td>
             </tr>`).join('')}
         </tbody>
       </table>
-      <p class="gd-note" style="margin-top:10px">Ties broken by combined goal difference, then goals scored. Greyed-out teams are eliminated.</p>
+      <p class="gd-note" style="margin-top:10px">Ties broken by combined goal difference, then goals scored.${LB_DETAILED ? ' Numbers next to each team are that team\'s points; greyed-out teams are eliminated.' : ''}</p>
     </div>`;
 }
 
@@ -620,13 +650,7 @@ function renderAwards(rows, teamStats) {
     ? `<div class="award-holder">${x.p.emoji} ${esc(x.p.name)}</div><div class="award-detail">${x.v} ${unit}</div>`
     : '<div class="award-detail">No contender yet</div>';
 
-  const sieve = best(playerAgg((t, s) => s.ga));
   const snooze = best(playerAgg((t, s) => s.zeroDraws));
-  const underdogAgg = rows.map(p => {
-    const t6 = p.teams.find(t => t.tier === 6);
-    return { p, v: t6 ? teamStats[t6.id].pts : 0, team: t6 ? tname(t6.id) : '' };
-  });
-  const underdog = best(underdogAgg);
   const redAgg = playerAgg((t) => (EXTRAS.redCards || {})[t.id] || 0);
   const red = best(redAgg);
   const hasRed = Object.keys(EXTRAS.redCards || {}).length > 0;
@@ -639,22 +663,16 @@ function renderAwards(rows, teamStats) {
       if (!bath || when < bath.when) bath = { p, when };
     }
   }
-  const spoon = rows.length ? rows[rows.length - 1] : null;
-  const anyResults = RESULTS.matches.some(m => m.status === 'FINISHED');
-
   const card = (emoji, name, desc, body) => `
     <div class="award-card"><div class="award-emoji">${emoji}</div>
     <div class="award-name">${name}</div><div class="award-desc">${desc}</div>${body}</div>`;
 
   return `
-    <div class="section-title" style="margin-bottom:6px">🎖️ Fun Awards</div>
+    <div class="section-title" style="margin-bottom:6px">🎖️ Special Awards</div>
     <p style="color:var(--muted);font-size:0.8rem;margin-bottom:14px">Live holders — final winners decided after the Final. Everyone's in with a shout, football knowledge optional.</p>
     <div class="award-grid" style="margin-bottom:22px">
-      ${card('🥅', 'The Sieve', 'Most goals conceded by your six teams combined', holder(sieve, 'goals let in'))}
       ${card('😴', 'Snoozefest', 'Most 0-0 draws sat through', holder(snooze, '0-0 classics'))}
-      ${card('🐕', 'Underdog Whisperer', 'Most points scored by your Tier-6 minnow', underdog ? `<div class="award-holder">${underdog.p.emoji} ${esc(underdog.p.name)}</div><div class="award-detail">${esc(underdog.team)} · ${underdog.v} pts</div>` : '<div class="award-detail">No contender yet</div>')}
       ${card('🛁', 'Early Bath', 'First to have all six teams knocked out', bath ? `<div class="award-holder">${bath.p.emoji} ${esc(bath.p.name)}</div>` : '<div class="award-detail">Everyone still alive</div>')}
-      ${card('🥄', 'Wooden Spoon', 'Last place — wins the honour of organising the next office social', spoon && anyResults ? `<div class="award-holder">${spoon.emoji} ${esc(spoon.name)}</div><div class="award-detail">${spoon.total} pts</div>` : '<div class="award-detail">TBD</div>')}
       ${card('🟥', 'Red Mist', 'Most red cards collected by your teams', hasRed ? holder(red, 'red cards') : '<div class="award-detail">Tracking starts when card data is in</div>')}
     </div>`;
 }
@@ -691,7 +709,7 @@ function renderRules() {
         <li>🥇 1st place — <em>prize TBC</em></li>
         <li>🥈 2nd place — <em>prize TBC</em></li>
         <li>🥉 3rd place — <em>prize TBC</em></li>
-        <li>🎖️ Plus the fun awards at the top of the Leaderboard tab — football knowledge not required!</li>
+        <li>🎖️ Plus the special awards at the top of the Leaderboard tab — football knowledge not required!</li>
       </ul>
       <h3>🔄 Updates</h3>
       <ul>
@@ -704,6 +722,7 @@ function renderRules() {
 function renderAll() {
   const stats = computeTeamStats();
   const rows = computeStandings(stats);
+  LAST.rows = rows; LAST.stats = stats;
   renderLeaderboard(rows, stats);
   renderDraw();
   renderMatches();
