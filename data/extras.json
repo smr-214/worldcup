@@ -1,0 +1,4 @@
+{
+  "_comment": "Optional manual extras for awards the free API doesn't cover. Red cards per team id. Leave empty to hide the Red Mist award.",
+  "redCards": {}
+}

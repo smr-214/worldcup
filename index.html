@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚽ WC2026 Office Sweepstake</title>
+<meta property="og:title" content="WC2026 Office Sweepstake 🏆">
+<meta property="og:description" content="Live leaderboard · 48 teams · 6 tiers · auto-updating results">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0d3320">
+<style>
+:root {
+  --bg: #0a0f1a;
+  --card: #131a26;
+  --card2: #1a2335;
+  --border: #263044;
+  --text: #e8eef6;
+  --muted: #7a8fa8;
+  --green: #00c853;
+  --green2: #00a844;
+  --gold: #ffd700;
+  --silver: #c8d0d8;
+  --bronze: #cd7f32;
+  --red: #ff4444;
+  --blue: #4da6ff;
+  --purple: #b070ff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(135deg, #0a1f10 0%, #0d2e18 40%, #0a1f10 100%);
+  padding: 26px 20px 18px;
+  text-align: center;
+  border-bottom: 2px solid var(--green2);
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0,200,83,0.12) 0%, transparent 70%);
+}
+.header-trophy { font-size: 3.2rem; display: block; margin-bottom: 4px; position: relative; }
+.header h1 { font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; position: relative; }
+.header-sub {
+  color: var(--green);
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  position: relative;
+}
+.updated-line { color: var(--muted); font-size: 0.7rem; margin-top: 8px; position: relative; }
+
+.sample-banner {
+  background: rgba(255,215,0,0.12);
+  border-bottom: 1px solid rgba(255,215,0,0.35);
+  color: var(--gold);
+  text-align: center;
+  font-size: 0.78rem;
+  padding: 8px 14px;
+}
+
+/* ── TABS ── */
+.tabs {
+  display: flex;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex: 1;
+  min-width: 78px;
+  padding: 13px 6px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--green); border-bottom-color: var(--green); }
+
+.tab-pane { display: none; padding: 20px; max-width: 880px; margin: 0 auto; }
+.tab-pane.active { display: block; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.section-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+/* ── LEADERBOARD ── */
+table.lb { width: 100%; border-collapse: collapse; }
+.lb th {
+  text-align: left;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.lb td { padding: 10px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.lb tr:last-child td { border-bottom: none; }
+.pos { font-weight: 800; font-size: 1.05rem; width: 36px; }
+.pos-1 { color: var(--gold); } .pos-2 { color: var(--silver); } .pos-3 { color: var(--bronze); }
+.player-name { font-weight: 700; font-size: 0.95rem; }
+.team-chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  color: var(--text);
+}
+.chip.out { opacity: 0.45; }
+.chip.out .chip-name { text-decoration: line-through; }
+.chip-pts { color: var(--green); font-weight: 700; }
+.total-pts { font-weight: 900; font-size: 1.25rem; color: var(--green); text-align: right; }
+.gd-note { color: var(--muted); font-size: 0.65rem; text-align: right; }
+.flag-img { width: 18px; height: 13.5px; border-radius: 2px; vertical-align: -2px; }
+
+.t-tier { font-size: 0.6rem; padding: 1px 4px; border-radius: 3px; font-weight: 700; }
+.tier1 { background: rgba(255,215,0,0.18); color: var(--gold); }
+.tier2 { background: rgba(200,208,216,0.15); color: var(--silver); }
+.tier3 { background: rgba(205,127,50,0.15); color: var(--bronze); }
+.tier4 { background: rgba(77,166,255,0.15); color: var(--blue); }
+.tier5 { background: rgba(176,112,255,0.15); color: var(--purple); }
+.tier6 { background: rgba(122,143,168,0.12); color: var(--muted); }
+
+/* ── DRAW ── */
+.draw-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.draw-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+.draw-card h3 { font-size: 0.95rem; margin-bottom: 10px; }
+.draw-team {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 0;
+  font-size: 0.82rem;
+}
+.draw-team .t-tier { margin-left: auto; }
+.seed-note { color: var(--muted); font-size: 0.72rem; margin-top: 14px; line-height: 1.5; }
+
+/* ── MATCHES ── */
+.stage-h {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--green);
+  margin: 18px 0 8px;
+}
+.match-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  font-size: 0.84rem;
+  flex-wrap: wrap;
+}
+.m-team { flex: 1; min-width: 110px; display: flex; align-items: center; gap: 6px; }
+.m-team.away { justify-content: flex-end; text-align: right; }
+.m-score { font-weight: 800; min-width: 56px; text-align: center; font-size: 0.95rem; }
+.m-score.live { color: var(--red); }
+.m-meta { width: 100%; color: var(--muted); font-size: 0.66rem; text-align: center; }
+.owner-tag { color: var(--muted); font-size: 0.64rem; }
+.grp-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin-bottom: 4px; }
+.grp-table th { color: var(--muted); font-size: 0.62rem; text-transform: uppercase; padding: 3px 6px; text-align: right; }
+.grp-table th:first-child { text-align: left; }
+.grp-table td { padding: 4px 6px; text-align: right; border-top: 1px solid var(--border); }
+.grp-table td:first-child { text-align: left; }
+.grp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+
+/* ── AWARDS ── */
+.award-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.award-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
+.award-emoji { font-size: 2.2rem; }
+.award-name { font-weight: 800; margin: 6px 0 2px; }
+.award-desc { color: var(--muted); font-size: 0.72rem; margin-bottom: 10px; line-height: 1.4; }
+.award-holder { font-weight: 700; color: var(--gold); font-size: 0.92rem; }
+.award-detail { color: var(--muted); font-size: 0.7rem; margin-top: 2px; }
+
+/* ── RULES ── */
+.rules h3 { margin: 18px 0 8px; font-size: 1rem; }
+.rules ul { margin-left: 20px; line-height: 1.8; font-size: 0.86rem; }
+.rules table { border-collapse: collapse; margin: 8px 0; font-size: 0.84rem; }
+.rules td, .rules th { border: 1px solid var(--border); padding: 6px 12px; text-align: left; }
+.rules th { background: var(--card2); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+
+.loading, .error-box { text-align: center; color: var(--muted); padding: 50px 20px; font-size: 0.9rem; line-height: 1.7; }
+.error-box code { background: var(--card2); padding: 2px 6px; border-radius: 4px; }
+
+@media (max-width: 560px) {
+  .lb th:nth-child(3), .lb td:nth-child(3) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span class="header-trophy">🏆</span>
+  <h1>WC2026 Office Sweepstake</h1>
+  <p class="header-sub">48 Teams · 6 Tiers · Live Standings</p>
+  <p class="updated-line" id="updatedLine">loading…</p>
+</div>
+<div class="sample-banner" id="sampleBanner" style="display:none">
+  ⚠️ SAMPLE DRAW — demo names only. The real draw will be published once sign-ups close.
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="leaderboard">🏆 Leaderboard</button>
+  <button class="tab-btn" data-tab="draw">👥 The Draw</button>
+  <button class="tab-btn" data-tab="matches">⚽ Matches</button>
+  <button class="tab-btn" data-tab="awards">🎖️ Awards</button>
+  <button class="tab-btn" data-tab="rules">📜 Rules</button>
+</div>
+
+<div class="tab-pane active" id="pane-leaderboard"><div class="loading">Loading…</div></div>
+<div class="tab-pane" id="pane-draw"></div>
+<div class="tab-pane" id="pane-matches"></div>
+<div class="tab-pane" id="pane-awards"></div>
+<div class="tab-pane" id="pane-rules"></div>
+
+<script>
+// ═══════════════════════════════════════════════
+// STATIC DATA — the 48 qualified teams
+// (also in data/teams.json for the scripts)
+// ═══════════════════════════════════════════════
+const TEAMS = [
+  { id:'france', name:'France', iso:'fr', rank:1, group:'I' },
+  { id:'spain', name:'Spain', iso:'es', rank:2, group:'H' },
+  { id:'argentina', name:'Argentina', iso:'ar', rank:3, group:'J' },
+  { id:'england', name:'England', iso:'gb-eng', rank:4, group:'L' },
+  { id:'portugal', name:'Portugal', iso:'pt', rank:5, group:'K' },
+  { id:'brazil', name:'Brazil', iso:'br', rank:6, group:'C' },
+  { id:'netherlands', name:'Netherlands', iso:'nl', rank:7, group:'F' },
+  { id:'morocco', name:'Morocco', iso:'ma', rank:8, group:'C' },
+  { id:'belgium', name:'Belgium', iso:'be', rank:9, group:'G' },
+  { id:'germany', name:'Germany', iso:'de', rank:10, group:'E' },
+  { id:'croatia', name:'Croatia', iso:'hr', rank:11, group:'L' },
+  { id:'colombia', name:'Colombia', iso:'co', rank:13, group:'K' },
+  { id:'senegal', name:'Senegal', iso:'sn', rank:14, group:'I' },
+  { id:'mexico', name:'Mexico', iso:'mx', rank:15, group:'A' },
+  { id:'usa', name:'USA', iso:'us', rank:16, group:'D' },
+  { id:'uruguay', name:'Uruguay', iso:'uy', rank:17, group:'H' },
+  { id:'japan', name:'Japan', iso:'jp', rank:18, group:'F' },
+  { id:'switzerland', name:'Switzerland', iso:'ch', rank:19, group:'B' },
+  { id:'iran', name:'Iran', iso:'ir', rank:21, group:'G' },
+  { id:'austria', name:'Austria', iso:'at', rank:23, group:'J' },
+  { id:'ecuador', name:'Ecuador', iso:'ec', rank:24, group:'E' },
+  { id:'southkorea', name:'South Korea', iso:'kr', rank:25, group:'A' },
+  { id:'australia', name:'Australia', iso:'au', rank:26, group:'D' },
+  { id:'egypt', name:'Egypt', iso:'eg', rank:29, group:'G' },
+  { id:'canada', name:'Canada', iso:'ca', rank:30, group:'B' },
+  { id:'ivorycoast', name:'Ivory Coast', iso:'ci', rank:33, group:'E' },
+  { id:'qatar', name:'Qatar', iso:'qa', rank:35, group:'B' },
+  { id:'algeria', name:'Algeria', iso:'dz', rank:36, group:'J' },
+  { id:'sweden', name:'Sweden', iso:'se', rank:39, group:'F' },
+  { id:'tunisia', name:'Tunisia', iso:'tn', rank:40, group:'F' },
+  { id:'czechia', name:'Czechia', iso:'cz', rank:41, group:'A' },
+  { id:'turkey', name:'Türkiye', iso:'tr', rank:42, group:'D' },
+  { id:'norway', name:'Norway', iso:'no', rank:44, group:'I' },
+  { id:'scotland', name:'Scotland', iso:'gb-sct', rank:47, group:'C' },
+  { id:'drcongo', name:'DR Congo', iso:'cd', rank:51, group:'K' },
+  { id:'bosnia', name:'Bosnia & Herz.', iso:'ba', rank:52, group:'B' },
+  { id:'panama', name:'Panama', iso:'pa', rank:53, group:'L' },
+  { id:'saudi', name:'Saudi Arabia', iso:'sa', rank:57, group:'H' },
+  { id:'southafrica', name:'South Africa', iso:'za', rank:60, group:'A' },
+  { id:'iraq', name:'Iraq', iso:'iq', rank:61, group:'I' },
+  { id:'uzbekistan', name:'Uzbekistan', iso:'uz', rank:62, group:'K' },
+  { id:'paraguay', name:'Paraguay', iso:'py', rank:64, group:'D' },
+  { id:'ghana', name:'Ghana', iso:'gh', rank:65, group:'L' },
+  { id:'jordan', name:'Jordan', iso:'jo', rank:68, group:'J' },
+  { id:'capeverde', name:'Cape Verde', iso:'cv', rank:70, group:'H' },
+  { id:'curacao', name:'Curaçao', iso:'cw', rank:81, group:'E' },
+  { id:'haiti', name:'Haiti', iso:'ht', rank:83, group:'C' },
+  { id:'newzealand', name:'New Zealand', iso:'nz', rank:95, group:'G' },
+];
+const teamById = Object.fromEntries(TEAMS.map(t => [t.id, t]));
+const flag = id => {
+  const t = teamById[id];
+  return t ? `<img class="flag-img" src="https://flagcdn.com/20x15/${t.iso}.png" alt="" loading="lazy">` : '';
+};
+const tname = id => (teamById[id] || { name: id }).name;
+
+// ═══════════════════════════════════════════════
+// SCORING
+// ═══════════════════════════════════════════════
+const PTS = {
+  groupWin: 3, groupDraw: 1, goal: 1,
+  r32: 4, r16: 6, qf: 8, sf: 12, third: 4, final: 16,
+};
+const STAGE_LABEL = {
+  group: 'Group Stage', r32: 'Round of 32', r16: 'Round of 16',
+  qf: 'Quarter-finals', sf: 'Semi-finals', third: 'Third-place play-off', final: 'Final',
+};
+const STAGE_ORDER = ['group', 'r32', 'r16', 'qf', 'sf', 'third', 'final'];
+
+let DRAW = null, RESULTS = null, EXTRAS = { redCards: {} };
+
+function matchWinner(m) {
+  if (m.winner === 'HOME_TEAM') return m.home;
+  if (m.winner === 'AWAY_TEAM') return m.away;
+  if (m.winner === 'DRAW') return null;
+  if (m.hs == null || m.as == null) return null;
+  if (m.hs > m.as) return m.home;
+  if (m.as > m.hs) return m.away;
+  if (m.penHome != null && m.penAway != null) return m.penHome > m.penAway ? m.home : m.away;
+  return null;
+}
+
+// Per-team tournament stats from finished matches
+function computeTeamStats() {
+  const s = {};
+  TEAMS.forEach(t => {
+    s[t.id] = { pts: 0, gf: 0, ga: 0, played: 0, zeroDraws: 0, eliminated: false,
+                gPts: 0, gW: 0, gD: 0, gL: 0, gGF: 0, gGA: 0, elimDate: null };
+  });
+  const finished = RESULTS.matches.filter(m => m.status === 'FINISHED' && m.home && m.away);
+
+  for (const m of finished) {
+    const w = matchWinner(m);
+    for (const [me, them, gf, ga] of [[m.home, m.away, m.hs, m.as], [m.away, m.home, m.as, m.hs]]) {
+      const st = s[me];
+      if (!st) continue;
+      st.played++; st.gf += gf; st.ga += ga;
+      st.pts += gf * PTS.goal;
+      if (gf === 0 && ga === 0) st.zeroDraws++;
+      if (m.stage === 'group') {
+        st.gGF += gf; st.gGA += ga;
+        if (w === me) { st.pts += PTS.groupWin; st.gPts += 3; st.gW++; }
+        else if (w === null) { st.pts += PTS.groupDraw; st.gPts += 1; st.gD++; }
+        else { st.gL++; }
+      } else {
+        if (w === me) st.pts += PTS[m.stage] || 0;
+        else if (m.stage !== 'third') { st.eliminated = true; st.elimDate = m.utcDate; }
+      }
+    }
+  }
+
+  // Group-stage elimination: once the round-of-32 line-up is known, any team
+  // not in a knockout match is out.
+  const koTeams = new Set();
+  RESULTS.matches.forEach(m => {
+    if (m.stage !== 'group') { if (m.home) koTeams.add(m.home); if (m.away) koTeams.add(m.away); }
+  });
+  const r32Known = RESULTS.matches.filter(m => m.stage === 'r32' && m.home && m.away).length >= 16;
+  if (r32Known) {
+    TEAMS.forEach(t => {
+      if (!koTeams.has(t.id)) {
+        const st = s[t.id];
+        st.eliminated = true;
+        if (!st.elimDate) {
+          const last = finished.filter(m => m.home === t.id || m.away === t.id).map(m => m.utcDate).sort().pop();
+          st.elimDate = last || null;
+        }
+      }
+    });
+  }
+  return s;
+}
+
+function computeStandings(teamStats) {
+  if (!DRAW) return [];
+  const rows = DRAW.players.map(p => {
+    let total = 0, gd = 0, gf = 0;
+    const teams = p.teams.map(t => {
+      const st = teamStats[t.id];
+      total += st.pts; gd += st.gf - st.ga; gf += st.gf;
+      return { ...t, pts: st.pts, eliminated: st.eliminated };
+    }).sort((a, b) => b.pts - a.pts || a.tier - b.tier);
+    return { ...p, teams, total, gd, gf };
+  });
+  rows.sort((a, b) => b.total - a.total || b.gd - a.gd || b.gf - a.gf || a.name.localeCompare(b.name));
+  return rows;
+}
+
+// ═══════════════════════════════════════════════
+// RENDERING
+// ═══════════════════════════════════════════════
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+
+function renderLeaderboard(rows) {
+  const anyResults = RESULTS.matches.some(m => m.status === 'FINISHED');
+  $('pane-leaderboard').innerHTML = `
+    <div class="card">
+      <div class="section-title">Standings — top 3 win prizes</div>
+      ${anyResults ? '' : '<p style="color:var(--muted);font-size:0.8rem;margin-bottom:12px">No results yet — everyone starts level. Standings update automatically after each match.</p>'}
+      <table class="lb">
+        <thead><tr><th>#</th><th>Player</th><th style="text-align:right">GD</th><th style="text-align:right">Pts</th></tr></thead>
+        <tbody>
+          ${rows.map((p, i) => `
+            <tr>
+              <td class="pos pos-${i + 1}">${i < 3 ? ['🥇','🥈','🥉'][i] : i + 1}</td>
+              <td>
+                <span class="player-name">${p.emoji} ${esc(p.name)}</span>
+                <div class="team-chips">
+                  ${p.teams.map(t => `
+                    <span class="chip ${t.eliminated ? 'out' : ''}" title="Tier ${t.tier}">
+                      ${flag(t.id)} <span class="chip-name">${esc(tname(t.id))}</span>
+                      <span class="chip-pts">${t.pts}</span>
+                    </span>`).join('')}
+                </div>
+              </td>
+              <td style="text-align:right;color:var(--muted)">${p.gd > 0 ? '+' : ''}${p.gd}</td>
+              <td class="total-pts">${p.total}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>
+      <p class="gd-note" style="margin-top:10px">Ties broken by combined goal difference, then goals scored. Greyed-out teams are eliminated.</p>
+    </div>`;
+}
+
+function renderDraw() {
+  const shared = DRAW.players.length > 8;
+  $('pane-draw').innerHTML = `
+    <div class="draw-grid">
+      ${DRAW.players.map(p => `
+        <div class="draw-card">
+          <h3>${p.emoji} ${esc(p.name)}</h3>
+          ${p.teams.slice().sort((a, b) => a.tier - b.tier).map(t => `
+            <div class="draw-team">
+              ${flag(t.id)} ${esc(tname(t.id))}
+              <span style="color:var(--muted);font-size:0.68rem">#${teamById[t.id].rank}</span>
+              <span class="t-tier tier${t.tier}">T${t.tier}</span>
+            </div>`).join('')}
+        </div>`).join('')}
+    </div>
+    <p class="seed-note">
+      🎲 Teams are split into 6 tiers of 8 by FIFA world ranking; everyone gets one random team per tier, so all hands are equally strong on paper.
+      ${shared ? 'With more than 8 players, each team has multiple owners — your team scores points for you regardless of who else has it.' : ''}
+      <br>🔍 The draw is fully auditable: it was generated by a public script with the recorded random seed
+      <code>${esc(DRAW.seed)}</code> — anyone can re-run it and get the identical result. No re-rolls possible.
+    </p>`;
+}
+
+function renderMatches() {
+  const pane = $('pane-matches');
+  const ms = RESULTS.matches.filter(m => m.home || m.away);
+  if (!ms.length) {
+    pane.innerHTML = '<div class="loading">Fixtures appear here automatically once the first data sync runs.</div>';
+    return;
+  }
+  const owners = {};
+  if (DRAW) DRAW.players.forEach(p => p.teams.forEach(t => (owners[t.id] = owners[t.id] || []).push(p.name)));
+  const ownerTag = id => owners[id] ? `<div class="owner-tag">${owners[id].map(esc).join(' · ')}</div>` : '';
+
+  const fmtDate = iso => iso ? new Date(iso).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '';
+  const side = (id, away) => `
+    <div class="m-team ${away ? 'away' : ''}">
+      ${away ? '' : flag(id)}
+      <div>${id ? esc(tname(id)) : 'TBD'}${ownerTag(id)}</div>
+      ${away ? flag(id) : ''}
+    </div>`;
+  const row = m => {
+    const live = m.status === 'IN_PLAY' || m.status === 'PAUSED';
+    const score = m.hs != null
+      ? `${m.hs} – ${m.as}${m.penHome != null ? `<div style="font-size:0.62rem;color:var(--muted)">(${m.penHome}–${m.penAway} pens)</div>` : ''}`
+      : fmtDate(m.utcDate).split(',')[0] || 'TBD';
+    return `
+      <div class="match-row">
+        ${side(m.home, false)}
+        <div class="m-score ${live ? 'live' : ''}">${live ? '🔴 ' : ''}${score}</div>
+        ${side(m.away, true)}
+        <div class="m-meta">${m.group ? 'Group ' + esc(m.group) + ' · ' : ''}${m.hs != null ? esc(m.status === 'FINISHED' ? 'FT' : m.status) : fmtDate(m.utcDate)}</div>
+      </div>`;
+  };
+
+  let html = '';
+  // group tables first (once any group match has finished)
+  const stats = computeTeamStats();
+  const groupFinished = ms.some(m => m.stage === 'group' && m.status === 'FINISHED');
+  if (groupFinished) {
+    const groups = {};
+    TEAMS.forEach(t => (groups[t.group] = groups[t.group] || []).push(t));
+    html += '<div class="stage-h">Group Tables</div><div class="grp-grid">';
+    for (const g of Object.keys(groups).sort()) {
+      const rows = groups[g].map(t => {
+        const s = stats[t.id];
+        return { t, pts: s.gPts, gd: s.gGF - s.gGA, gf: s.gGF, w: s.gW, d: s.gD, l: s.gL };
+      }).sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf);
+      html += `<div class="card"><div class="section-title">Group ${g}</div><table class="grp-table">
+        <tr><th>Team</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>Pts</th></tr>
+        ${rows.map(r => `<tr><td>${flag(r.t.id)} ${esc(r.t.name)}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td><td>${r.gd > 0 ? '+' : ''}${r.gd}</td><td><strong>${r.pts}</strong></td></tr>`).join('')}
+      </table></div>`;
+    }
+    html += '</div>';
+  }
+
+  for (const stage of [...STAGE_ORDER].reverse()) {
+    const sm = ms.filter(m => m.stage === stage);
+    if (!sm.length) continue;
+    sm.sort((a, b) => (a.utcDate || '').localeCompare(b.utcDate || ''));
+    html += `<div class="stage-h">${STAGE_LABEL[stage]}</div>` + sm.map(row).join('');
+  }
+  pane.innerHTML = html;
+}
+
+function renderAwards(rows, teamStats) {
+  const playerAgg = fn => rows.map(p => ({ p, v: p.teams.reduce((s, t) => s + fn(t, teamStats[t.id]), 0) }));
+  const best = (agg, min = 1) => {
+    const top = agg.slice().sort((a, b) => b.v - a.v)[0];
+    return top && top.v >= min ? top : null;
+  };
+  const holder = (x, unit) => x
+    ? `<div class="award-holder">${x.p.emoji} ${esc(x.p.name)}</div><div class="award-detail">${x.v} ${unit}</div>`
+    : '<div class="award-detail">No contender yet</div>';
+
+  const sieve = best(playerAgg((t, s) => s.ga));
+  const snooze = best(playerAgg((t, s) => s.zeroDraws));
+  const underdogAgg = rows.map(p => {
+    const t6 = p.teams.find(t => t.tier === 6);
+    return { p, v: t6 ? teamStats[t6.id].pts : 0, team: t6 ? tname(t6.id) : '' };
+  });
+  const underdog = best(underdogAgg);
+  const redAgg = playerAgg((t) => (EXTRAS.redCards || {})[t.id] || 0);
+  const red = best(redAgg);
+  const hasRed = Object.keys(EXTRAS.redCards || {}).length > 0;
+
+  // Early Bath: first player to have all 6 teams eliminated
+  let bath = null;
+  for (const p of rows) {
+    if (p.teams.every(t => teamStats[t.id].eliminated)) {
+      const when = p.teams.map(t => teamStats[t.id].elimDate || '').sort().pop();
+      if (!bath || when < bath.when) bath = { p, when };
+    }
+  }
+  const spoon = rows.length ? rows[rows.length - 1] : null;
+  const anyResults = RESULTS.matches.some(m => m.status === 'FINISHED');
+
+  const card = (emoji, name, desc, body) => `
+    <div class="award-card"><div class="award-emoji">${emoji}</div>
+    <div class="award-name">${name}</div><div class="award-desc">${desc}</div>${body}</div>`;
+
+  $('pane-awards').innerHTML = `
+    <p style="color:var(--muted);font-size:0.8rem;margin-bottom:14px">Live holders — final winners decided after the Final. Everyone's in with a shout, football knowledge optional.</p>
+    <div class="award-grid">
+      ${card('🥅', 'The Sieve', 'Most goals conceded by your six teams combined', holder(sieve, 'goals let in'))}
+      ${card('😴', 'Snoozefest', 'Most 0-0 draws sat through', holder(snooze, '0-0 classics'))}
+      ${card('🐕', 'Underdog Whisperer', 'Most points scored by your Tier-6 minnow', underdog ? `<div class="award-holder">${underdog.p.emoji} ${esc(underdog.p.name)}</div><div class="award-detail">${esc(underdog.team)} · ${underdog.v} pts</div>` : '<div class="award-detail">No contender yet</div>')}
+      ${card('🛁', 'Early Bath', 'First to have all six teams knocked out', bath ? `<div class="award-holder">${bath.p.emoji} ${esc(bath.p.name)}</div>` : '<div class="award-detail">Everyone still alive</div>')}
+      ${card('🥄', 'Wooden Spoon', 'Last place — wins the honour of organising the next office social', spoon && anyResults ? `<div class="award-holder">${spoon.emoji} ${esc(spoon.name)}</div><div class="award-detail">${spoon.total} pts</div>` : '<div class="award-detail">TBD</div>')}
+      ${card('🟥', 'Red Mist', 'Most red cards collected by your teams', hasRed ? holder(red, 'red cards') : '<div class="award-detail">Tracking starts when card data is in</div>')}
+    </div>`;
+}
+
+function renderRules() {
+  $('pane-rules').innerHTML = `
+    <div class="card rules">
+      <h3 style="margin-top:0">🎲 How it works</h3>
+      <ul>
+        <li>The 48 teams are split into <strong>6 tiers of 8</strong> by FIFA world ranking (Tier 1 = the favourites, Tier 6 = the underdogs).</li>
+        <li>Every player gets <strong>one random team from each tier</strong> — so everyone's hand is equally strong on paper.</li>
+        <li>The draw is generated by a published script with a recorded random seed, so it's verifiable and tamper-proof.</li>
+        <li>All six of your teams score for you. Results sync automatically — nothing is entered by hand.</li>
+      </ul>
+      <h3>⚽ Scoring</h3>
+      <table>
+        <tr><th>Event</th><th>Points</th></tr>
+        <tr><td>Group-stage win</td><td>+3</td></tr>
+        <tr><td>Group-stage draw</td><td>+1</td></tr>
+        <tr><td>Every goal your team scores (any stage, excl. shoot-outs)</td><td>+1</td></tr>
+        <tr><td>Winning a Round-of-32 match</td><td>+4</td></tr>
+        <tr><td>Winning a Round-of-16 match</td><td>+6</td></tr>
+        <tr><td>Winning a Quarter-final</td><td>+8</td></tr>
+        <tr><td>Winning a Semi-final</td><td>+12</td></tr>
+        <tr><td>Winning the Third-place play-off</td><td>+4</td></tr>
+        <tr><td>Winning the Final 🏆</td><td>+16</td></tr>
+      </table>
+      <ul>
+        <li>A win on penalties counts as a win (shoot-out goals don't count as goals).</li>
+        <li>Ties are broken by your teams' combined goal difference, then total goals scored.</li>
+      </ul>
+      <h3>🏆 Prizes</h3>
+      <ul>
+        <li>🥇 1st place — <em>prize TBC</em></li>
+        <li>🥈 2nd place — <em>prize TBC</em></li>
+        <li>🥉 3rd place — <em>prize TBC</em></li>
+        <li>🎖️ Plus the fun awards on the Awards tab — football knowledge not required!</li>
+      </ul>
+      <h3>🔄 Updates</h3>
+      <ul>
+        <li>Results are pulled automatically from football-data.org every 30 minutes on match days.</li>
+        <li>This page refreshes itself — just leave it open during matches.</li>
+      </ul>
+    </div>`;
+}
+
+function renderAll() {
+  const stats = computeTeamStats();
+  const rows = computeStandings(stats);
+  renderLeaderboard(rows);
+  renderDraw();
+  renderMatches();
+  renderAwards(rows, stats);
+  renderRules();
+  $('sampleBanner').style.display = DRAW.sample ? 'block' : 'none';
+  $('updatedLine').textContent = RESULTS.updated
+    ? `Results last synced ${new Date(RESULTS.updated).toLocaleString()}`
+    : 'Awaiting first results sync — leaderboard goes live with the opening match';
+}
+
+// ═══════════════════════════════════════════════
+// LOAD + AUTO-REFRESH
+// ═══════════════════════════════════════════════
+async function loadJSON(path, fallback) {
+  try {
+    const r = await fetch(`${path}?t=${Date.now()}`);
+    if (!r.ok) throw new Error(r.status);
+    return await r.json();
+  } catch (e) {
+    if (fallback !== undefined) return fallback;
+    throw e;
+  }
+}
+
+async function load() {
+  try {
+    [DRAW, RESULTS, EXTRAS] = await Promise.all([
+      loadJSON('data/draw.json'),
+      loadJSON('data/results.json', { updated: null, matches: [] }),
+      loadJSON('data/extras.json', { redCards: {} }),
+    ]);
+    renderAll();
+  } catch (e) {
+    $('pane-leaderboard').innerHTML = `
+      <div class="error-box">Couldn't load <code>data/draw.json</code> (${esc(e.message)}).<br>
+      If you opened this file directly, serve it over HTTP instead, e.g. <code>npx serve</code> or <code>python -m http.server</code>.</div>`;
+  }
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === 'pane-' + btn.dataset.tab));
+}));
+
+load();
+setInterval(load, 5 * 60 * 1000); // re-pull results every 5 minutes
+</script>
+</body>
+</html>

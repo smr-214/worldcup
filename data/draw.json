@@ -1,0 +1,565 @@
+{
+  "seed": "WC2026-OFFICE-SWEEPSTAKE-V1",
+  "sample": true,
+  "generatedAt": "2026-06-10T13:25:58.668Z",
+  "players": [
+    {
+      "id": "alice",
+      "name": "Alice",
+      "emoji": "🔥",
+      "teams": [
+        {
+          "id": "france",
+          "tier": 1
+        },
+        {
+          "id": "usa",
+          "tier": 2
+        },
+        {
+          "id": "iran",
+          "tier": 3
+        },
+        {
+          "id": "tunisia",
+          "tier": 4
+        },
+        {
+          "id": "norway",
+          "tier": 5
+        },
+        {
+          "id": "jordan",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "ben",
+      "name": "Ben",
+      "emoji": "🦅",
+      "teams": [
+        {
+          "id": "argentina",
+          "tier": 1
+        },
+        {
+          "id": "uruguay",
+          "tier": 2
+        },
+        {
+          "id": "egypt",
+          "tier": 3
+        },
+        {
+          "id": "czechia",
+          "tier": 4
+        },
+        {
+          "id": "iraq",
+          "tier": 5
+        },
+        {
+          "id": "capeverde",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "chen",
+      "name": "Chen",
+      "emoji": "🎲",
+      "teams": [
+        {
+          "id": "portugal",
+          "tier": 1
+        },
+        {
+          "id": "mexico",
+          "tier": 2
+        },
+        {
+          "id": "japan",
+          "tier": 3
+        },
+        {
+          "id": "czechia",
+          "tier": 4
+        },
+        {
+          "id": "panama",
+          "tier": 5
+        },
+        {
+          "id": "haiti",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "dana",
+      "name": "Dana",
+      "emoji": "🌈",
+      "teams": [
+        {
+          "id": "morocco",
+          "tier": 1
+        },
+        {
+          "id": "senegal",
+          "tier": 2
+        },
+        {
+          "id": "egypt",
+          "tier": 3
+        },
+        {
+          "id": "sweden",
+          "tier": 4
+        },
+        {
+          "id": "saudi",
+          "tier": 5
+        },
+        {
+          "id": "newzealand",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "eli",
+      "name": "Eli",
+      "emoji": "🌟",
+      "teams": [
+        {
+          "id": "spain",
+          "tier": 1
+        },
+        {
+          "id": "mexico",
+          "tier": 2
+        },
+        {
+          "id": "switzerland",
+          "tier": 3
+        },
+        {
+          "id": "algeria",
+          "tier": 4
+        },
+        {
+          "id": "southafrica",
+          "tier": 5
+        },
+        {
+          "id": "newzealand",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "fatima",
+      "name": "Fatima",
+      "emoji": "🚀",
+      "teams": [
+        {
+          "id": "portugal",
+          "tier": 1
+        },
+        {
+          "id": "croatia",
+          "tier": 2
+        },
+        {
+          "id": "austria",
+          "tier": 3
+        },
+        {
+          "id": "sweden",
+          "tier": 4
+        },
+        {
+          "id": "drcongo",
+          "tier": 5
+        },
+        {
+          "id": "curacao",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "grace",
+      "name": "Grace",
+      "emoji": "🐯",
+      "teams": [
+        {
+          "id": "spain",
+          "tier": 1
+        },
+        {
+          "id": "croatia",
+          "tier": 2
+        },
+        {
+          "id": "australia",
+          "tier": 3
+        },
+        {
+          "id": "qatar",
+          "tier": 4
+        },
+        {
+          "id": "iraq",
+          "tier": 5
+        },
+        {
+          "id": "paraguay",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "hugo",
+      "name": "Hugo",
+      "emoji": "🐙",
+      "teams": [
+        {
+          "id": "argentina",
+          "tier": 1
+        },
+        {
+          "id": "colombia",
+          "tier": 2
+        },
+        {
+          "id": "egypt",
+          "tier": 3
+        },
+        {
+          "id": "czechia",
+          "tier": 4
+        },
+        {
+          "id": "iraq",
+          "tier": 5
+        },
+        {
+          "id": "capeverde",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "ines",
+      "name": "Ines",
+      "emoji": "🌶️",
+      "teams": [
+        {
+          "id": "netherlands",
+          "tier": 1
+        },
+        {
+          "id": "germany",
+          "tier": 2
+        },
+        {
+          "id": "austria",
+          "tier": 3
+        },
+        {
+          "id": "tunisia",
+          "tier": 4
+        },
+        {
+          "id": "bosnia",
+          "tier": 5
+        },
+        {
+          "id": "capeverde",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "jack",
+      "name": "Jack",
+      "emoji": "🥑",
+      "teams": [
+        {
+          "id": "brazil",
+          "tier": 1
+        },
+        {
+          "id": "senegal",
+          "tier": 2
+        },
+        {
+          "id": "ecuador",
+          "tier": 3
+        },
+        {
+          "id": "ivorycoast",
+          "tier": 4
+        },
+        {
+          "id": "southafrica",
+          "tier": 5
+        },
+        {
+          "id": "jordan",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "kavya",
+      "name": "Kavya",
+      "emoji": "🧊",
+      "teams": [
+        {
+          "id": "brazil",
+          "tier": 1
+        },
+        {
+          "id": "uruguay",
+          "tier": 2
+        },
+        {
+          "id": "ecuador",
+          "tier": 3
+        },
+        {
+          "id": "ivorycoast",
+          "tier": 4
+        },
+        {
+          "id": "scotland",
+          "tier": 5
+        },
+        {
+          "id": "curacao",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "liam",
+      "name": "Liam",
+      "emoji": "🦁",
+      "teams": [
+        {
+          "id": "morocco",
+          "tier": 1
+        },
+        {
+          "id": "colombia",
+          "tier": 2
+        },
+        {
+          "id": "southkorea",
+          "tier": 3
+        },
+        {
+          "id": "qatar",
+          "tier": 4
+        },
+        {
+          "id": "panama",
+          "tier": 5
+        },
+        {
+          "id": "paraguay",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "mei",
+      "name": "Mei",
+      "emoji": "🦈",
+      "teams": [
+        {
+          "id": "france",
+          "tier": 1
+        },
+        {
+          "id": "colombia",
+          "tier": 2
+        },
+        {
+          "id": "southkorea",
+          "tier": 3
+        },
+        {
+          "id": "canada",
+          "tier": 4
+        },
+        {
+          "id": "drcongo",
+          "tier": 5
+        },
+        {
+          "id": "uzbekistan",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "noah",
+      "name": "Noah",
+      "emoji": "⚽",
+      "teams": [
+        {
+          "id": "england",
+          "tier": 1
+        },
+        {
+          "id": "senegal",
+          "tier": 2
+        },
+        {
+          "id": "australia",
+          "tier": 3
+        },
+        {
+          "id": "ivorycoast",
+          "tier": 4
+        },
+        {
+          "id": "scotland",
+          "tier": 5
+        },
+        {
+          "id": "uzbekistan",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "olu",
+      "name": "Olu",
+      "emoji": "🍀",
+      "teams": [
+        {
+          "id": "brazil",
+          "tier": 1
+        },
+        {
+          "id": "belgium",
+          "tier": 2
+        },
+        {
+          "id": "ecuador",
+          "tier": 3
+        },
+        {
+          "id": "canada",
+          "tier": 4
+        },
+        {
+          "id": "saudi",
+          "tier": 5
+        },
+        {
+          "id": "ghana",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "priya",
+      "name": "Priya",
+      "emoji": "🎯",
+      "teams": [
+        {
+          "id": "netherlands",
+          "tier": 1
+        },
+        {
+          "id": "germany",
+          "tier": 2
+        },
+        {
+          "id": "japan",
+          "tier": 3
+        },
+        {
+          "id": "turkey",
+          "tier": 4
+        },
+        {
+          "id": "bosnia",
+          "tier": 5
+        },
+        {
+          "id": "haiti",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "quinn",
+      "name": "Quinn",
+      "emoji": "🪩",
+      "teams": [
+        {
+          "id": "england",
+          "tier": 1
+        },
+        {
+          "id": "usa",
+          "tier": 2
+        },
+        {
+          "id": "switzerland",
+          "tier": 3
+        },
+        {
+          "id": "turkey",
+          "tier": 4
+        },
+        {
+          "id": "southafrica",
+          "tier": 5
+        },
+        {
+          "id": "ghana",
+          "tier": 6
+        }
+      ]
+    },
+    {
+      "id": "rosa",
+      "name": "Rosa",
+      "emoji": "🎸",
+      "teams": [
+        {
+          "id": "argentina",
+          "tier": 1
+        },
+        {
+          "id": "belgium",
+          "tier": 2
+        },
+        {
+          "id": "iran",
+          "tier": 3
+        },
+        {
+          "id": "algeria",
+          "tier": 4
+        },
+        {
+          "id": "norway",
+          "tier": 5
+        },
+        {
+          "id": "jordan",
+          "tier": 6
+        }
+      ]
+    }
+  ]
+}
