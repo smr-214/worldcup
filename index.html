@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>⚽ WC2026 Office Sweepstake</title>
 <meta property="og:title" content="WC2026 Office Sweepstake 🏆">
-<meta property="og:description" content="Live leaderboard · 48 teams · 6 tiers · auto-updating results">
+<meta property="og:description" content="74 colleagues · 48 nations · one champion — live auto-updating leaderboard">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0d3320">
 <style>
@@ -283,7 +283,7 @@ table.lb { width: 100%; border-collapse: collapse; }
 <div class="header">
   <span class="header-trophy">🏆</span>
   <h1>WC2026 Office Sweepstake</h1>
-  <p class="header-sub">48 Teams · 6 Tiers · Live Standings</p>
+  <p class="header-sub">74 Colleagues · 48 Nations · One Champion</p>
   <p class="updated-line" id="updatedLine">loading…</p>
 </div>
 <div class="sample-banner" id="sampleBanner" style="display:none">
@@ -672,7 +672,7 @@ function renderAwards(rows, teamStats) {
 
   return `
     <div class="section-title" style="margin-bottom:6px">🎖️ Special Awards</div>
-    <p style="color:var(--muted);font-size:0.8rem;margin-bottom:14px">Live holders — final winners decided after the Final. Everyone's in with a shout, football knowledge optional.</p>
+    <p style="color:var(--muted);font-size:0.8rem;margin-bottom:14px">Live holders — final winners decided after the Final. Each award wins a SGD 50 <a href="https://www.natureland.com.sg" target="_blank" rel="noopener" style="color:var(--green)">Natureland</a> voucher. Everyone's in with a shout, football knowledge optional.</p>
     <div class="award-grid" style="margin-bottom:22px">
       ${card('😴', 'Snoozefest', 'Most 0-0 draws sat through', holder(snooze, '0-0 classics'))}
       ${card('🛁', 'Early Bath', 'First to have all six teams knocked out', bath ? `<div class="award-holder">${pflag(bath.p)} ${esc(bath.p.name)}</div>` : '<div class="award-detail">Everyone still alive</div>')}
@@ -709,10 +709,10 @@ function renderRules() {
       </ul>
       <h3>🏆 Prizes</h3>
       <ul>
-        <li>🥇 1st place — <em>prize TBC</em></li>
-        <li>🥈 2nd place — <em>prize TBC</em></li>
-        <li>🥉 3rd place — <em>prize TBC</em></li>
-        <li>🎖️ Plus the special awards at the top of the Leaderboard tab — football knowledge not required!</li>
+        <li>🥇 1st place — SGD 80 voucher for <a href="https://maps.app.goo.gl/bFBXbaqE9YeQigLt5" target="_blank" rel="noopener" style="color:var(--green)">Liberty</a></li>
+        <li>🥈 2nd place — SGD 50 voucher for <a href="https://maps.app.goo.gl/bFBXbaqE9YeQigLt5" target="_blank" rel="noopener" style="color:var(--green)">Liberty</a></li>
+        <li>🥉 3rd place — SGD 30 voucher for <a href="https://maps.app.goo.gl/bFBXbaqE9YeQigLt5" target="_blank" rel="noopener" style="color:var(--green)">Liberty</a></li>
+        <li>🎖️ Special awards (Snoozefest, Early Bath, Red Mist) — SGD 50 voucher each for <a href="https://www.natureland.com.sg" target="_blank" rel="noopener" style="color:var(--green)">Natureland</a> — football knowledge not required!</li>
       </ul>
       <h3>🔄 Updates</h3>
       <ul>
