@@ -1,0 +1,47 @@
+name: Update red cards
+
+on:
+  schedule:
+    # 6:07 / 10:07 / 15:07 Singapore time daily during the tournament
+    # (= 22:07 prev-day / 02:07 / 07:07 UTC). Offset minutes dodge
+    # GitHub's congested on-the-hour scheduling.
+    - cron: '7 22 10-30 6 *'
+    - cron: '7 2,7 11-30 6 *'
+    - cron: '7 22 1-18 7 *'
+    - cron: '7 2,7 1-19 7 *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-cards
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Tally red cards
+        env:
+          APIFOOTBALL_KEY: ${{ secrets.APIFOOTBALL_KEY }}
+        run: node scripts/fetch-cards.mjs
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet data/extras.json; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "cards-bot"
+          git config user.email "actions@github.com"
+          git pull --rebase
+          git add data/extras.json
+          git commit -m "Update red-card tally"
+          git push
