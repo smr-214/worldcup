@@ -743,9 +743,15 @@ function renderAll() {
   renderBracket();
   renderRules();
   $('sampleBanner').style.display = DRAW.sample ? 'block' : 'none';
-  $('updatedLine').textContent = RESULTS.updated
-    ? `Results as of ${new Date(RESULTS.updated).toLocaleString()}`
-    : 'Awaiting first results sync — leaderboard goes live with the opening match';
+  const anyPlayed = RESULTS.matches.some(m => m.status === 'FINISHED' || m.status === 'IN_PLAY' || m.status === 'PAUSED');
+  if (anyPlayed) {
+    $('updatedLine').textContent = `Results as of ${new Date(RESULTS.updated).toLocaleString()}`;
+  } else if (RESULTS.matches.length) {
+    const kickoff = RESULTS.matches.map(m => m.utcDate).filter(Boolean).sort()[0];
+    $('updatedLine').textContent = `All fixtures loaded — leaderboard goes live after the opening match (kick-off ${new Date(kickoff).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })})`;
+  } else {
+    $('updatedLine').textContent = 'Awaiting first results sync — leaderboard goes live with the opening match';
+  }
 }
 
 // ═══════════════════════════════════════════════
