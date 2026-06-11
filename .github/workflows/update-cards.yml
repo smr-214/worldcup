@@ -29,8 +29,6 @@ jobs:
           node-version: 20
 
       - name: Tally red cards
-        env:
-          APIFOOTBALL_KEY: ${{ secrets.APIFOOTBALL_KEY }}
         run: node scripts/fetch-cards.mjs
 
       - name: Commit if changed
