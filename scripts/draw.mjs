@@ -109,6 +109,33 @@ for (let tier = 0; tier < 6; tier++) {
   players.forEach((p, i) => p.teams.push({ id: pool[i].id, tier: tier + 1 }));
 }
 
+// Guarantee no two players share an identical 6-team lineup. Vanishingly
+// unlikely by chance, but if it happens it's repaired deterministically by
+// swapping same-tier teams with another player — this preserves both the
+// one-team-per-tier structure and the per-team owner counts.
+const sig = p => p.teams.map(t => t.id).join('|');
+let guard = 0;
+while (guard < 1000) {
+  const seen = new Set();
+  let dup = null;
+  for (const p of players) {
+    const s = sig(p);
+    if (seen.has(s)) { dup = p; break; }
+    seen.add(s);
+  }
+  if (!dup) break;
+  const tier = guard % 6;
+  const partner = players[(players.indexOf(dup) + 1 + guard) % players.length];
+  if (partner !== dup) {
+    [dup.teams[tier], partner.teams[tier]] = [partner.teams[tier], dup.teams[tier]];
+  }
+  guard++;
+}
+if (guard >= 1000) {
+  console.error('Could not make all lineups unique');
+  process.exit(1);
+}
+
 // Guard: nobody holds the same team twice (impossible by construction, but cheap to assert)
 for (const p of players) {
   const ids = p.teams.map(t => t.id);
@@ -132,3 +159,4 @@ players.forEach(p => p.teams.forEach(t => counts[t.id] = (counts[t.id] || 0) + 1
 const spread = Object.values(counts);
 console.log(`Owners per team: min ${Math.min(...spread)}, max ${Math.max(...spread)}`);
 console.log(`No pick (neutral ⚽): ${players.filter(p => !p.pick).map(p => p.name).join(', ')}`);
+console.log(`Unique lineups: ${new Set(players.map(sig)).size}/${players.length}${guard ? ` (after ${guard} repair swaps)` : ''}`);

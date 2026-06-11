@@ -367,6 +367,8 @@ const flag = id => {
   return t ? `<img class="flag-img" src="https://flagcdn.com/20x15/${t.iso}.png" alt="" loading="lazy">` : '';
 };
 const tname = id => (teamById[id] || { name: id }).name;
+// Player badge: pick's flag as an image (emoji flags don't render on Windows), neutral ⚽ otherwise
+const pflag = p => p.pick ? flag(p.pick) : '⚽';
 
 // ═══════════════════════════════════════════════
 // SCORING
@@ -487,7 +489,7 @@ function renderLeaderboard(rows, teamStats) {
             <tr>
               <td class="pos pos-${i + 1}">${i < 3 ? ['🥇','🥈','🥉'][i] : i + 1}</td>
               <td>
-                <span class="player-name">${p.emoji} ${esc(p.name)}</span>
+                <span class="player-name">${pflag(p)} ${esc(p.name)}</span>
                 ${LB_DETAILED ? `
                 <div class="team-chips">
                   ${p.teams.map(t => `
@@ -512,7 +514,7 @@ function renderDraw() {
     <div class="draw-grid">
       ${DRAW.players.map(p => `
         <div class="draw-card">
-          <h3>${p.emoji} ${esc(p.name)}</h3>
+          <h3>${pflag(p)} ${esc(p.name)}</h3>
           ${p.pick ? `<p style="color:var(--muted);font-size:0.72rem;margin:-4px 0 8px">🏆 Winner pick: ${flag(p.pick)} ${esc(tname(p.pick))}</p>` : ''}
           ${p.teams.slice().sort((a, b) => a.tier - b.tier).map(t => `
             <div class="draw-team">
@@ -648,7 +650,7 @@ function renderAwards(rows, teamStats) {
     return top && top.v >= min ? top : null;
   };
   const holder = (x, unit) => x
-    ? `<div class="award-holder">${x.p.emoji} ${esc(x.p.name)}</div><div class="award-detail">${x.v} ${unit}</div>`
+    ? `<div class="award-holder">${pflag(x.p)} ${esc(x.p.name)}</div><div class="award-detail">${x.v} ${unit}</div>`
     : '<div class="award-detail">No contender yet</div>';
 
   const snooze = best(playerAgg((t, s) => s.zeroDraws));
@@ -673,7 +675,7 @@ function renderAwards(rows, teamStats) {
     <p style="color:var(--muted);font-size:0.8rem;margin-bottom:14px">Live holders — final winners decided after the Final. Everyone's in with a shout, football knowledge optional.</p>
     <div class="award-grid" style="margin-bottom:22px">
       ${card('😴', 'Snoozefest', 'Most 0-0 draws sat through', holder(snooze, '0-0 classics'))}
-      ${card('🛁', 'Early Bath', 'First to have all six teams knocked out', bath ? `<div class="award-holder">${bath.p.emoji} ${esc(bath.p.name)}</div>` : '<div class="award-detail">Everyone still alive</div>')}
+      ${card('🛁', 'Early Bath', 'First to have all six teams knocked out', bath ? `<div class="award-holder">${pflag(bath.p)} ${esc(bath.p.name)}</div>` : '<div class="award-detail">Everyone still alive</div>')}
       ${card('🟥', 'Red Mist', 'Most red cards collected by your teams', hasRed ? holder(red, 'red cards') : '<div class="award-detail">Tracking starts when card data is in</div>')}
     </div>`;
 }
