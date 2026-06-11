@@ -541,7 +541,16 @@ function renderMatches() {
     return;
   }
   const owners = {};
-  if (DRAW) DRAW.players.forEach(p => p.teams.forEach(t => (owners[t.id] = owners[t.id] || []).push(p.name)));
+  if (DRAW) {
+    // First names only (cleaner); add a surname initial only when shared
+    const firstCount = {};
+    DRAW.players.forEach(p => { const f = p.name.split(' ')[0]; firstCount[f] = (firstCount[f] || 0) + 1; });
+    const short = p => {
+      const parts = p.name.split(' ');
+      return firstCount[parts[0]] > 1 && parts[1] ? `${parts[0]} ${parts[1][0]}.` : parts[0];
+    };
+    DRAW.players.forEach(p => p.teams.forEach(t => (owners[t.id] = owners[t.id] || []).push(short(p))));
+  }
   const ownerTag = id => owners[id] ? `<div class="owner-tag">${owners[id].map(esc).join(' · ')}</div>` : '';
 
   const fmtDate = iso => iso ? new Date(iso).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '';
