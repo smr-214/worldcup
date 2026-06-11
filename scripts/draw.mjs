@@ -11,7 +11,7 @@
 // can be independently verified by anyone.
 //
 // Each player's emoji is the flag of their "who will win" pick. Players
-// who didn't pick adopt their drawn Tier-1 team as a lucky-dip pick.
+// who didn't pick get a neutral ⚽.
 //
 // Writes data/draw.json.
 
@@ -93,8 +93,7 @@ const players = shuffle(entries).map(e => {
     id: slug(e.name),
     name: e.name,
     pick: pickTeam ? pickTeam.id : null,
-    pickAdopted: !pickTeam,   // no guess → adopts their Tier-1 team below
-    emoji: pickTeam ? flagEmoji(pickTeam.iso) : null,
+    emoji: pickTeam ? flagEmoji(pickTeam.iso) : '⚽',
     teams: [],
   };
 });
@@ -108,16 +107,6 @@ for (let tier = 0; tier < 6; tier++) {
   const pool = [];
   while (pool.length < players.length) pool.push(...shuffle(tierTeams));
   players.forEach((p, i) => p.teams.push({ id: pool[i].id, tier: tier + 1 }));
-}
-
-// Lucky dip: players without a pick adopt their Tier-1 team
-const teamById = Object.fromEntries(teams.map(t => [t.id, t]));
-for (const p of players) {
-  if (!p.pick) {
-    const t1 = teamById[p.teams.find(t => t.tier === 1).id];
-    p.pick = t1.id;
-    p.emoji = flagEmoji(t1.iso);
-  }
 }
 
 // Guard: nobody holds the same team twice (impossible by construction, but cheap to assert)
@@ -142,4 +131,4 @@ const counts = {};
 players.forEach(p => p.teams.forEach(t => counts[t.id] = (counts[t.id] || 0) + 1));
 const spread = Object.values(counts);
 console.log(`Owners per team: min ${Math.min(...spread)}, max ${Math.max(...spread)}`);
-console.log(`Lucky-dip picks: ${players.filter(p => p.pickAdopted).map(p => `${p.name}→${p.pick}`).join(', ')}`);
+console.log(`No pick (neutral ⚽): ${players.filter(p => !p.pick).map(p => p.name).join(', ')}`);

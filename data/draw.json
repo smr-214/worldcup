@@ -1,13 +1,12 @@
 {
   "seed": "WC2026-SG-OFFICE-FINAL-DRAW-2026-06-11",
   "sample": false,
-  "generatedAt": "2026-06-11T12:27:09.417Z",
+  "generatedAt": "2026-06-11T12:32:33.558Z",
   "players": [
     {
       "id": "alexsetchina",
       "name": "Alex Setchina",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -40,7 +39,6 @@
       "id": "alisatoh",
       "name": "Alisa Toh",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -73,7 +71,6 @@
       "id": "apoorvamohan",
       "name": "Apoorva Mohan",
       "pick": "france",
-      "pickAdopted": false,
       "emoji": "🇫🇷",
       "teams": [
         {
@@ -106,7 +103,6 @@
       "id": "aqilahandin",
       "name": "Aqilah Andin",
       "pick": "portugal",
-      "pickAdopted": false,
       "emoji": "🇵🇹",
       "teams": [
         {
@@ -139,7 +135,6 @@
       "id": "ashley",
       "name": "Ashley",
       "pick": "france",
-      "pickAdopted": false,
       "emoji": "🇫🇷",
       "teams": [
         {
@@ -172,7 +167,6 @@
       "id": "astonlai",
       "name": "Aston Lai",
       "pick": "argentina",
-      "pickAdopted": false,
       "emoji": "🇦🇷",
       "teams": [
         {
@@ -205,7 +199,6 @@
       "id": "audreycheam",
       "name": "Audrey Cheam",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -238,7 +231,6 @@
       "id": "avrillim",
       "name": "Avril Lim",
       "pick": "portugal",
-      "pickAdopted": false,
       "emoji": "🇵🇹",
       "teams": [
         {
@@ -271,7 +263,6 @@
       "id": "carolinelim",
       "name": "Caroline Lim",
       "pick": "netherlands",
-      "pickAdopted": false,
       "emoji": "🇳🇱",
       "teams": [
         {
@@ -304,7 +295,6 @@
       "id": "ceciliatan",
       "name": "Cecilia Tan",
       "pick": "argentina",
-      "pickAdopted": false,
       "emoji": "🇦🇷",
       "teams": [
         {
@@ -337,7 +327,6 @@
       "id": "chandravesoonathan",
       "name": "Chandra Vesoonathan",
       "pick": "brazil",
-      "pickAdopted": false,
       "emoji": "🇧🇷",
       "teams": [
         {
@@ -369,9 +358,8 @@
     {
       "id": "chinsengchew",
       "name": "Chin Seng Chew",
-      "pick": "england",
-      "pickAdopted": true,
-      "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "pick": null,
+      "emoji": "⚽",
       "teams": [
         {
           "id": "england",
@@ -402,9 +390,8 @@
     {
       "id": "chloecheng",
       "name": "Chloe Cheng",
-      "pick": "portugal",
-      "pickAdopted": true,
-      "emoji": "🇵🇹",
+      "pick": null,
+      "emoji": "⚽",
       "teams": [
         {
           "id": "portugal",
@@ -435,9 +422,8 @@
     {
       "id": "chloeteng",
       "name": "Chloe Teng",
-      "pick": "england",
-      "pickAdopted": true,
-      "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "pick": null,
+      "emoji": "⚽",
       "teams": [
         {
           "id": "england",
@@ -469,7 +455,6 @@
       "id": "chuayuxuan",
       "name": "Chua Yu Xuan",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -502,7 +487,6 @@
       "id": "crystal",
       "name": "Crystal",
       "pick": "france",
-      "pickAdopted": false,
       "emoji": "🇫🇷",
       "teams": [
         {
@@ -535,7 +519,6 @@
       "id": "davidho",
       "name": "David Ho",
       "pick": "france",
-      "pickAdopted": false,
       "emoji": "🇫🇷",
       "teams": [
         {
@@ -568,7 +551,6 @@
       "id": "davidthomas",
       "name": "David Thomas",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -600,9 +582,8 @@
     {
       "id": "denzylang",
       "name": "Denzyl Ang",
-      "pick": "brazil",
-      "pickAdopted": true,
-      "emoji": "🇧🇷",
+      "pick": null,
+      "emoji": "⚽",
       "teams": [
         {
           "id": "brazil",
@@ -634,7 +615,6 @@
       "id": "diansumadi",
       "name": "Dian Sumadi",
       "pick": "france",
-      "pickAdopted": false,
       "emoji": "🇫🇷",
       "teams": [
         {
@@ -667,7 +647,6 @@
       "id": "dilshaangill",
       "name": "Dilshaan Gill",
       "pick": "portugal",
-      "pickAdopted": false,
       "emoji": "🇵🇹",
       "teams": [
         {
@@ -700,7 +679,6 @@
       "id": "eunicechan",
       "name": "Eunice Chan",
       "pick": "brazil",
-      "pickAdopted": false,
       "emoji": "🇧🇷",
       "teams": [
         {
@@ -733,7 +711,6 @@
       "id": "fergusevans",
       "name": "Fergus Evans",
       "pick": "england",
-      "pickAdopted": false,
       "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "teams": [
         {
@@ -766,7 +743,6 @@
       "id": "gemmatresser",
       "name": "Gemma Tresser",
       "pick": "england",
-      "pickAdopted": false,
       "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "teams": [
         {
@@ -799,7 +775,6 @@
       "id": "haeyoung",
       "name": "Haeyoung",
       "pick": "france",
-      "pickAdopted": false,
       "emoji": "🇫🇷",
       "teams": [
         {
@@ -832,7 +807,6 @@
       "id": "jacquelinewong",
       "name": "Jacqueline Wong",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -865,7 +839,6 @@
       "id": "jamesthornton",
       "name": "James Thornton",
       "pick": "england",
-      "pickAdopted": false,
       "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "teams": [
         {
@@ -898,7 +871,6 @@
       "id": "jasminewales",
       "name": "Jasmine Wales",
       "pick": "england",
-      "pickAdopted": false,
       "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "teams": [
         {
@@ -931,7 +903,6 @@
       "id": "jennifersim",
       "name": "Jennifer Sim",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -964,7 +935,6 @@
       "id": "jiadeyam",
       "name": "Jia De Yam",
       "pick": "netherlands",
-      "pickAdopted": false,
       "emoji": "🇳🇱",
       "teams": [
         {
@@ -997,7 +967,6 @@
       "id": "jingwenwong",
       "name": "JingWen Wong",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -1030,7 +999,6 @@
       "id": "joanneleong",
       "name": "Joanne Leong",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -1063,7 +1031,6 @@
       "id": "jocelineng",
       "name": "Joceline Ng",
       "pick": "netherlands",
-      "pickAdopted": false,
       "emoji": "🇳🇱",
       "teams": [
         {
@@ -1096,7 +1063,6 @@
       "id": "joeyng",
       "name": "Joey Ng",
       "pick": "portugal",
-      "pickAdopted": false,
       "emoji": "🇵🇹",
       "teams": [
         {
@@ -1129,7 +1095,6 @@
       "id": "johnwu",
       "name": "John Wu",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -1162,7 +1127,6 @@
       "id": "jonathanmok",
       "name": "Jonathan Mok",
       "pick": "portugal",
-      "pickAdopted": false,
       "emoji": "🇵🇹",
       "teams": [
         {
@@ -1195,7 +1159,6 @@
       "id": "josephinetang",
       "name": "Josephine Tang",
       "pick": "france",
-      "pickAdopted": false,
       "emoji": "🇫🇷",
       "teams": [
         {
@@ -1228,7 +1191,6 @@
       "id": "joshprietzel",
       "name": "Josh Prietzel",
       "pick": "england",
-      "pickAdopted": false,
       "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "teams": [
         {
@@ -1261,7 +1223,6 @@
       "id": "kellywanji",
       "name": "Kelly Wanji",
       "pick": "england",
-      "pickAdopted": false,
       "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "teams": [
         {
@@ -1294,7 +1255,6 @@
       "id": "kwekzhengyu",
       "name": "Kwek Zheng Yu",
       "pick": "portugal",
-      "pickAdopted": false,
       "emoji": "🇵🇹",
       "teams": [
         {
@@ -1327,7 +1287,6 @@
       "id": "laurelinechang",
       "name": "Laureline Chang",
       "pick": "france",
-      "pickAdopted": false,
       "emoji": "🇫🇷",
       "teams": [
         {
@@ -1360,7 +1319,6 @@
       "id": "lindawee",
       "name": "Linda Wee",
       "pick": "portugal",
-      "pickAdopted": false,
       "emoji": "🇵🇹",
       "teams": [
         {
@@ -1393,7 +1351,6 @@
       "id": "litingkoh",
       "name": "Liting Koh",
       "pick": "france",
-      "pickAdopted": false,
       "emoji": "🇫🇷",
       "teams": [
         {
@@ -1426,7 +1383,6 @@
       "id": "mariechan",
       "name": "Marie Chan",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -1459,7 +1415,6 @@
       "id": "markhangchi",
       "name": "Mark Hangchi",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -1492,7 +1447,6 @@
       "id": "nicolechua",
       "name": "Nicole Chua",
       "pick": "brazil",
-      "pickAdopted": false,
       "emoji": "🇧🇷",
       "teams": [
         {
@@ -1525,7 +1479,6 @@
       "id": "nishshetty",
       "name": "Nish Shetty",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -1558,7 +1511,6 @@
       "id": "noahlim",
       "name": "Noah Lim",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -1590,9 +1542,8 @@
     {
       "id": "paulsandosham",
       "name": "Paul Sandosham",
-      "pick": "morocco",
-      "pickAdopted": true,
-      "emoji": "🇲🇦",
+      "pick": null,
+      "emoji": "⚽",
       "teams": [
         {
           "id": "morocco",
@@ -1624,7 +1575,6 @@
       "id": "phonemyatthu",
       "name": "Phone Myat Thu",
       "pick": "portugal",
-      "pickAdopted": false,
       "emoji": "🇵🇹",
       "teams": [
         {
@@ -1656,9 +1606,8 @@
     {
       "id": "rebeccaliu",
       "name": "Rebecca Liu",
-      "pick": "spain",
-      "pickAdopted": true,
-      "emoji": "🇪🇸",
+      "pick": null,
+      "emoji": "⚽",
       "teams": [
         {
           "id": "spain",
@@ -1690,7 +1639,6 @@
       "id": "roslindabasri",
       "name": "Roslinda Basri",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -1723,7 +1671,6 @@
       "id": "ryantok",
       "name": "Ryan Tok",
       "pick": "france",
-      "pickAdopted": false,
       "emoji": "🇫🇷",
       "teams": [
         {
@@ -1756,7 +1703,6 @@
       "id": "sachinkinger",
       "name": "Sachin Kinger",
       "pick": "australia",
-      "pickAdopted": false,
       "emoji": "🇦🇺",
       "teams": [
         {
@@ -1789,7 +1735,6 @@
       "id": "shanechua",
       "name": "Shane Chua",
       "pick": "portugal",
-      "pickAdopted": false,
       "emoji": "🇵🇹",
       "teams": [
         {
@@ -1822,7 +1767,6 @@
       "id": "shellymaneth",
       "name": "Shelly Maneth",
       "pick": "usa",
-      "pickAdopted": false,
       "emoji": "🇺🇸",
       "teams": [
         {
@@ -1855,7 +1799,6 @@
       "id": "shomiksengupta",
       "name": "Shomik Sengupta",
       "pick": "argentina",
-      "pickAdopted": false,
       "emoji": "🇦🇷",
       "teams": [
         {
@@ -1888,7 +1831,6 @@
       "id": "sophieelder",
       "name": "Sophie Elder",
       "pick": "england",
-      "pickAdopted": false,
       "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "teams": [
         {
@@ -1921,7 +1863,6 @@
       "id": "stefanrossler",
       "name": "Stefan Rossler",
       "pick": "southafrica",
-      "pickAdopted": false,
       "emoji": "🇿🇦",
       "teams": [
         {
@@ -1954,7 +1895,6 @@
       "id": "tanwenhao",
       "name": "Tan WenHao",
       "pick": "england",
-      "pickAdopted": false,
       "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "teams": [
         {
@@ -1986,9 +1926,8 @@
     {
       "id": "thomasengland",
       "name": "Thomas England",
-      "pick": "england",
-      "pickAdopted": true,
-      "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "pick": null,
+      "emoji": "⚽",
       "teams": [
         {
           "id": "england",
@@ -2020,7 +1959,6 @@
       "id": "thomashobbsmartin",
       "name": "Thomas Hobbs Martin",
       "pick": "france",
-      "pickAdopted": false,
       "emoji": "🇫🇷",
       "teams": [
         {
@@ -2053,7 +1991,6 @@
       "id": "timchung",
       "name": "Tim Chung",
       "pick": "brazil",
-      "pickAdopted": false,
       "emoji": "🇧🇷",
       "teams": [
         {
@@ -2086,7 +2023,6 @@
       "id": "tomcapel",
       "name": "Tom Capel",
       "pick": "portugal",
-      "pickAdopted": false,
       "emoji": "🇵🇹",
       "teams": [
         {
@@ -2119,7 +2055,6 @@
       "id": "tracylau",
       "name": "Tracy Lau",
       "pick": "netherlands",
-      "pickAdopted": false,
       "emoji": "🇳🇱",
       "teams": [
         {
@@ -2152,7 +2087,6 @@
       "id": "vanessali",
       "name": "Vanessa Li",
       "pick": "portugal",
-      "pickAdopted": false,
       "emoji": "🇵🇹",
       "teams": [
         {
@@ -2184,9 +2118,8 @@
     {
       "id": "vasumuthyala",
       "name": "Vasu Muthyala",
-      "pick": "spain",
-      "pickAdopted": true,
-      "emoji": "🇪🇸",
+      "pick": null,
+      "emoji": "⚽",
       "teams": [
         {
           "id": "spain",
@@ -2218,7 +2151,6 @@
       "id": "victorleung",
       "name": "Victor Leung",
       "pick": "spain",
-      "pickAdopted": false,
       "emoji": "🇪🇸",
       "teams": [
         {
@@ -2251,7 +2183,6 @@
       "id": "vivijohari",
       "name": "Vivi Johari",
       "pick": "france",
-      "pickAdopted": false,
       "emoji": "🇫🇷",
       "teams": [
         {
@@ -2284,7 +2215,6 @@
       "id": "wailam",
       "name": "Wai Lam",
       "pick": "england",
-      "pickAdopted": false,
       "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "teams": [
         {
@@ -2316,9 +2246,8 @@
     {
       "id": "wenkailyu",
       "name": "Wenkai Lyu",
-      "pick": "argentina",
-      "pickAdopted": true,
-      "emoji": "🇦🇷",
+      "pick": null,
+      "emoji": "⚽",
       "teams": [
         {
           "id": "argentina",
@@ -2350,7 +2279,6 @@
       "id": "yuetmeichee",
       "name": "Yuet Mei Chee",
       "pick": "england",
-      "pickAdopted": false,
       "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "teams": [
         {
@@ -2382,9 +2310,8 @@
     {
       "id": "zhangyuqian",
       "name": "Zhang Yuqian",
-      "pick": "france",
-      "pickAdopted": true,
-      "emoji": "🇫🇷",
+      "pick": null,
+      "emoji": "⚽",
       "teams": [
         {
           "id": "france",
@@ -2416,7 +2343,6 @@
       "id": "zonghanlow",
       "name": "Zonghan Low",
       "pick": "england",
-      "pickAdopted": false,
       "emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "teams": [
         {
