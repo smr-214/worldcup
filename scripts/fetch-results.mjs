@@ -93,23 +93,28 @@ if (!res.ok) {
 }
 const data = await res.json();
 
+// Scores must be finite numbers or null — the site interpolates them into
+// HTML, so this also guarantees nothing string-shaped from the API can
+// reach the page.
+const num = v => (typeof v === 'number' && Number.isFinite(v)) ? v : null;
+
 const matches = (data.matches || []).map(m => {
   const stage = STAGE_MAP[m.stage];
   if (!stage) { console.warn(`Skipping unknown stage: ${m.stage}`); return null; }
   const home = teamId(m.homeTeam);
   const away = teamId(m.awayTeam);
-  const finished = m.status === 'FINISHED';
+  const live = m.status === 'FINISHED' || m.status === 'IN_PLAY' || m.status === 'PAUSED';
   return {
     stage,
-    group: m.group ? m.group.replace('GROUP_', '') : null,
+    group: m.group ? String(m.group).replace('GROUP_', '').slice(0, 2) : null,
     utcDate: m.utcDate,
     status: m.status,            // SCHEDULED | TIMED | IN_PLAY | PAUSED | FINISHED ...
     home, away,                  // null until the API knows the team (e.g. unplayed knockout slots)
-    hs: finished || m.status === 'IN_PLAY' || m.status === 'PAUSED' ? m.score?.fullTime?.home ?? null : null,
-    as: finished || m.status === 'IN_PLAY' || m.status === 'PAUSED' ? m.score?.fullTime?.away ?? null : null,
+    hs: live ? num(m.score?.fullTime?.home) : null,
+    as: live ? num(m.score?.fullTime?.away) : null,
     duration: m.score?.duration || 'REGULAR',           // REGULAR | EXTRA_TIME | PENALTY_SHOOTOUT
-    penHome: m.score?.penalties?.home ?? null,
-    penAway: m.score?.penalties?.away ?? null,
+    penHome: num(m.score?.penalties?.home),
+    penAway: num(m.score?.penalties?.away),
     winner: m.score?.winner || null,                    // HOME_TEAM | AWAY_TEAM | DRAW
   };
 }).filter(Boolean);
