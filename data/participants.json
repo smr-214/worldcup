@@ -1,9 +1,302 @@
 {
-  "sample": true,
-  "seed": "WC2026-OFFICE-SWEEPSTAKE-V1",
-  "names": [
-    "Alice", "Ben", "Chen", "Dana", "Eli", "Fatima",
-    "Grace", "Hugo", "Ines", "Jack", "Kavya", "Liam",
-    "Mei", "Noah", "Olu", "Priya", "Quinn", "Rosa"
+  "sample": false,
+  "seed": "WC2026-SG-OFFICE-FINAL-DRAW-2026-06-11",
+  "players": [
+    {
+      "name": "Stefan Rossler",
+      "pick": "South Africa"
+    },
+    {
+      "name": "David Ho",
+      "pick": "France"
+    },
+    {
+      "name": "Phone Myat Thu",
+      "pick": "Portugal"
+    },
+    {
+      "name": "JingWen Wong",
+      "pick": "Spain"
+    },
+    {
+      "name": "Haeyoung",
+      "pick": "France"
+    },
+    {
+      "name": "John Wu",
+      "pick": "Spain"
+    },
+    {
+      "name": "Dilshaan Gill",
+      "pick": "Portugal"
+    },
+    {
+      "name": "Jasmine Wales",
+      "pick": "England"
+    },
+    {
+      "name": "Chloe Teng",
+      "pick": null
+    },
+    {
+      "name": "Jonathan Mok",
+      "pick": "Portugal"
+    },
+    {
+      "name": "James Thornton",
+      "pick": "England"
+    },
+    {
+      "name": "Mark Hangchi",
+      "pick": "Spain"
+    },
+    {
+      "name": "Tom Capel",
+      "pick": "Portugal"
+    },
+    {
+      "name": "Joey Ng",
+      "pick": "Portugal"
+    },
+    {
+      "name": "Zonghan Low",
+      "pick": "England"
+    },
+    {
+      "name": "Fergus Evans",
+      "pick": "England"
+    },
+    {
+      "name": "Aston Lai",
+      "pick": "Argentina"
+    },
+    {
+      "name": "Roslinda Basri",
+      "pick": "Spain"
+    },
+    {
+      "name": "Nish Shetty",
+      "pick": "Spain"
+    },
+    {
+      "name": "Caroline Lim",
+      "pick": "Netherlands"
+    },
+    {
+      "name": "Linda Wee",
+      "pick": "Portugal"
+    },
+    {
+      "name": "Chua Yu Xuan",
+      "pick": "Spain"
+    },
+    {
+      "name": "Audrey Cheam",
+      "pick": "Spain"
+    },
+    {
+      "name": "Vivi Johari",
+      "pick": "France"
+    },
+    {
+      "name": "Josh Prietzel",
+      "pick": "England"
+    },
+    {
+      "name": "Yuet Mei Chee",
+      "pick": "England"
+    },
+    {
+      "name": "Aqilah Andin",
+      "pick": "Portugal"
+    },
+    {
+      "name": "Apoorva Mohan",
+      "pick": "France"
+    },
+    {
+      "name": "Gemma Tresser",
+      "pick": "England"
+    },
+    {
+      "name": "Kwek Zheng Yu",
+      "pick": "Portugal"
+    },
+    {
+      "name": "Kelly Wanji",
+      "pick": "England"
+    },
+    {
+      "name": "Dian Sumadi",
+      "pick": "France"
+    },
+    {
+      "name": "Sophie Elder",
+      "pick": "England"
+    },
+    {
+      "name": "Shelly Maneth",
+      "pick": "USA"
+    },
+    {
+      "name": "Cecilia Tan",
+      "pick": "Argentina"
+    },
+    {
+      "name": "Josephine Tang",
+      "pick": "France"
+    },
+    {
+      "name": "Tan WenHao",
+      "pick": "England"
+    },
+    {
+      "name": "Jennifer Sim",
+      "pick": "Spain"
+    },
+    {
+      "name": "Ashley",
+      "pick": "France"
+    },
+    {
+      "name": "Sachin Kinger",
+      "pick": "Australia"
+    },
+    {
+      "name": "Avril Lim",
+      "pick": "Portugal"
+    },
+    {
+      "name": "Shomik Sengupta",
+      "pick": "Argentina"
+    },
+    {
+      "name": "Eunice Chan",
+      "pick": "Brazil"
+    },
+    {
+      "name": "Jacqueline Wong",
+      "pick": "Spain"
+    },
+    {
+      "name": "Marie Chan",
+      "pick": "Spain"
+    },
+    {
+      "name": "Tim Chung",
+      "pick": "Brazil"
+    },
+    {
+      "name": "Liting Koh",
+      "pick": "France"
+    },
+    {
+      "name": "Denzyl Ang",
+      "pick": null
+    },
+    {
+      "name": "Nicole Chua",
+      "pick": "Brazil"
+    },
+    {
+      "name": "Shane Chua",
+      "pick": "Portugal"
+    },
+    {
+      "name": "Noah Lim",
+      "pick": "Spain"
+    },
+    {
+      "name": "Paul Sandosham",
+      "pick": null
+    },
+    {
+      "name": "Alex Setchina",
+      "pick": "Spain"
+    },
+    {
+      "name": "Chandra Vesoonathan",
+      "pick": "Brazil"
+    },
+    {
+      "name": "Ryan Tok",
+      "pick": "France"
+    },
+    {
+      "name": "Victor Leung",
+      "pick": "Spain"
+    },
+    {
+      "name": "Wai Lam",
+      "pick": "England"
+    },
+    {
+      "name": "Wenkai Lyu",
+      "pick": null
+    },
+    {
+      "name": "Alisa Toh",
+      "pick": "Spain"
+    },
+    {
+      "name": "David Thomas",
+      "pick": "Spain"
+    },
+    {
+      "name": "Thomas England",
+      "pick": null
+    },
+    {
+      "name": "Rebecca Liu",
+      "pick": null
+    },
+    {
+      "name": "Zhang Yuqian",
+      "pick": null
+    },
+    {
+      "name": "Crystal",
+      "pick": "France"
+    },
+    {
+      "name": "Thomas Hobbs Martin",
+      "pick": "France"
+    },
+    {
+      "name": "Vanessa Li",
+      "pick": "Portugal"
+    },
+    {
+      "name": "Chloe Cheng",
+      "pick": null
+    },
+    {
+      "name": "Joanne Leong",
+      "pick": "Spain"
+    },
+    {
+      "name": "Jia De Yam",
+      "pick": "Netherlands"
+    },
+    {
+      "name": "Laureline Chang",
+      "pick": "France"
+    },
+    {
+      "name": "Chin Seng Chew",
+      "pick": null
+    },
+    {
+      "name": "Tracy Lau",
+      "pick": "Netherlands"
+    },
+    {
+      "name": "Joceline Ng",
+      "pick": "Netherlands"
+    },
+    {
+      "name": "Vasu Muthyala",
+      "pick": null
+    }
   ]
 }

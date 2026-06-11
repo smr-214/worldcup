@@ -2,13 +2,16 @@
 //
 //   node scripts/draw.mjs
 //
-// Reads data/participants.json (names + seed), splits the 48 teams into
+// Reads data/participants.json (players + seed), splits the 48 teams into
 // 6 tiers of 8 by FIFA ranking, and gives every participant exactly one
 // team per tier. Works for any headcount: with more than 8 people, teams
 // within a tier are shared by multiple owners, never differing by more
 // than one owner per team. Re-running with the same seed and the same
-// name list (order included) reproduces the identical draw, so the draw
+// player list (order included) reproduces the identical draw, so the draw
 // can be independently verified by anyone.
+//
+// Each player's emoji is the flag of their "who will win" pick. Players
+// who didn't pick adopt their drawn Tier-1 team as a lucky-dip pick.
 //
 // Writes data/draw.json.
 
@@ -18,11 +21,36 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const { teams } = JSON.parse(readFileSync(join(root, 'data', 'teams.json'), 'utf8'));
-const { names, seed, sample } = JSON.parse(readFileSync(join(root, 'data', 'participants.json'), 'utf8'));
+const { players: entries, seed, sample } = JSON.parse(readFileSync(join(root, 'data', 'participants.json'), 'utf8'));
 
-if (!Array.isArray(names) || names.length < 2) {
-  console.error('participants.json needs at least 2 names');
+if (!Array.isArray(entries) || entries.length < 2) {
+  console.error('participants.json needs at least 2 players');
   process.exit(1);
+}
+
+// ── flag emoji from ISO code (regional indicator pairs; GB subdivisions use tag sequences) ──
+const SPECIAL_FLAGS = {
+  'gb-eng': '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+  'gb-sct': '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+};
+const flagEmoji = iso => SPECIAL_FLAGS[iso] ||
+  [...iso.toUpperCase()].map(c => String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65)).join('');
+
+// ── resolve "who will win" picks to team ids ──
+const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z]+/g, ' ').trim();
+const byName = new Map(teams.map(t => [norm(t.name), t]));
+byName.set('turkey', byName.get(norm('Türkiye')));
+byName.set('bosnia', teams.find(t => t.id === 'bosnia'));
+byName.set('bosnia and herzegovina', teams.find(t => t.id === 'bosnia'));
+
+function resolvePick(pick) {
+  if (!pick) return null;
+  const t = byName.get(norm(pick));
+  if (!t) {
+    console.error(`Unrecognised pick "${pick}" — fix participants.json`);
+    process.exit(1);
+  }
+  return t;
 }
 
 // ── deterministic RNG (mulberry32 over a string hash) ──
@@ -50,17 +78,26 @@ const shuffle = arr => {
   return a;
 };
 
-const EMOJIS = ['⚽','🦁','🚀','🌟','🔥','🎯','🦅','🍀','🌈','🐯','🎸','🧊','🌶️','🦈','🎲','🪩','🥑','🐙','🛡️','🎷','🦄','🏄','🧨','🎺'];
+const usedIds = new Set();
+const slug = name => {
+  let base = name.toLowerCase().replace(/[^a-z0-9]+/g, '') || 'p';
+  let id = base, n = 2;
+  while (usedIds.has(id)) id = base + n++;
+  usedIds.add(id);
+  return id;
+};
 
-const slug = (name, i) =>
-  name.toLowerCase().replace(/[^a-z0-9]+/g, '') || `p${i}`;
-
-const players = shuffle(names).map((name, i) => ({
-  id: slug(name, i),
-  name,
-  emoji: EMOJIS[i % EMOJIS.length],
-  teams: [],
-}));
+const players = shuffle(entries).map(e => {
+  const pickTeam = resolvePick(e.pick);
+  return {
+    id: slug(e.name),
+    name: e.name,
+    pick: pickTeam ? pickTeam.id : null,
+    pickAdopted: !pickTeam,   // no guess → adopts their Tier-1 team below
+    emoji: pickTeam ? flagEmoji(pickTeam.iso) : null,
+    teams: [],
+  };
+});
 
 // 6 tiers of 8 by FIFA ranking (tier 1 = ranks 1–8, … tier 6 = bottom 8)
 const sorted = [...teams].sort((a, b) => a.rank - b.rank);
@@ -71,6 +108,16 @@ for (let tier = 0; tier < 6; tier++) {
   const pool = [];
   while (pool.length < players.length) pool.push(...shuffle(tierTeams));
   players.forEach((p, i) => p.teams.push({ id: pool[i].id, tier: tier + 1 }));
+}
+
+// Lucky dip: players without a pick adopt their Tier-1 team
+const teamById = Object.fromEntries(teams.map(t => [t.id, t]));
+for (const p of players) {
+  if (!p.pick) {
+    const t1 = teamById[p.teams.find(t => t.tier === 1).id];
+    p.pick = t1.id;
+    p.emoji = flagEmoji(t1.iso);
+  }
 }
 
 // Guard: nobody holds the same team twice (impossible by construction, but cheap to assert)
@@ -91,7 +138,8 @@ const out = {
 writeFileSync(join(root, 'data', 'draw.json'), JSON.stringify(out, null, 2) + '\n');
 
 console.log(`Draw complete — ${players.length} players, seed "${seed}"${sample ? ' (SAMPLE)' : ''}`);
-for (const p of out.players) {
-  const list = p.teams.map(t => `T${t.tier}:${t.id}`).join('  ');
-  console.log(`  ${p.emoji} ${p.name.padEnd(12)} ${list}`);
-}
+const counts = {};
+players.forEach(p => p.teams.forEach(t => counts[t.id] = (counts[t.id] || 0) + 1));
+const spread = Object.values(counts);
+console.log(`Owners per team: min ${Math.min(...spread)}, max ${Math.max(...spread)}`);
+console.log(`Lucky-dip picks: ${players.filter(p => p.pickAdopted).map(p => `${p.name}→${p.pick}`).join(', ')}`);

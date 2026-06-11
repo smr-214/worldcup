@@ -513,6 +513,7 @@ function renderDraw() {
       ${DRAW.players.map(p => `
         <div class="draw-card">
           <h3>${p.emoji} ${esc(p.name)}</h3>
+          ${p.pick ? `<p style="color:var(--muted);font-size:0.72rem;margin:-4px 0 8px">🏆 Winner pick: ${flag(p.pick)} ${esc(tname(p.pick))}${p.pickAdopted ? ' <em>(lucky dip — their Tier-1 team)</em>' : ''}</p>` : ''}
           ${p.teams.slice().sort((a, b) => a.tier - b.tier).map(t => `
             <div class="draw-team">
               ${flag(t.id)} ${esc(tname(t.id))}
