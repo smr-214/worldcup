@@ -490,8 +490,8 @@ function renderLeaderboard(rows, teamStats) {
         <thead><tr><th>#</th><th>Player</th><th style="text-align:right">GD</th><th style="text-align:right">GF</th><th style="text-align:right">Pts</th></tr></thead>
         <tbody>
           ${rows.map((p, i) => {
-            // competition ranking: equal points share a rank (1, 1, 3, ...)
-            const rank = i > 0 && p.total === rows[i - 1].total ? rows[i - 1]._rank : i + 1;
+            // competition ranking: level on points AND goal difference shares a rank (1, 1, 3, ...)
+            const rank = i > 0 && p.total === rows[i - 1].total && p.gd === rows[i - 1].gd ? rows[i - 1]._rank : i + 1;
             p._rank = rank;
             return `
             <tr>
@@ -514,7 +514,7 @@ function renderLeaderboard(rows, teamStats) {
           }).join('')}
         </tbody>
       </table>
-      <p class="gd-note" style="margin-top:10px">Players level on points share a rank. Final prize ties are broken by combined goal difference (GD), then goals scored (GF).${LB_DETAILED ? ' Numbers next to each team are that team\'s points; greyed-out teams are eliminated.' : ''}</p>
+      <p class="gd-note" style="margin-top:10px">Players level on both points and goal difference share a rank. Final prize ties are broken by combined goal difference (GD), then goals scored (GF).${LB_DETAILED ? ' Numbers next to each team are that team\'s points; greyed-out teams are eliminated.' : ''}</p>
     </div>`;
 }
 
