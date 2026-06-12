@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-12T19:26:14.088Z",
+  "updated": "2026-06-12T21:18:02.669Z",
   "source": "football-data.org",
   "matches": [
     {
@@ -34,11 +34,11 @@
       "stage": "group",
       "group": "B",
       "utcDate": "2026-06-12T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "canada",
       "away": "bosnia",
-      "hs": 0,
-      "as": 0,
+      "hs": 1,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
