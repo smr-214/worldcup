@@ -2,11 +2,11 @@ name: Update results
 
 on:
   schedule:
-    # Every 30 minutes during the tournament window (Jun 11 – Jul 19 2026).
-    # Offset minutes (:07/:37) — GitHub deprioritises on-the-hour crons,
-    # which made the job fire only sporadically.
-    - cron: '7,37 * 11-30 6 *'
-    - cron: '7,37 * 1-19 7 *'
+    # Every 15 minutes during the tournament window (Jun 11 – Jul 19 2026).
+    # Offset minutes — GitHub deprioritises on-the-hour crons, which made
+    # the job fire only sporadically.
+    - cron: '7,22,37,52 * 11-30 6 *'
+    - cron: '7,22,37,52 * 1-19 7 *'
   workflow_dispatch: {}
 
 permissions:
