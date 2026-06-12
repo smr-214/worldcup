@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-11T22:11:29.373Z",
+  "updated": "2026-06-12T00:07:44.391Z",
   "source": "football-data.org",
   "matches": [
     {
@@ -9,12 +9,12 @@
       "status": "FINISHED",
       "home": "mexico",
       "away": "southafrica",
-      "hs": null,
-      "as": null,
+      "hs": 2,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "group",
@@ -146,7 +146,7 @@
       "stage": "group",
       "group": "E",
       "utcDate": "2026-06-14T23:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": "ivorycoast",
       "away": "ecuador",
       "hs": null,
