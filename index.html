@@ -466,7 +466,7 @@ function computeStandings(teamStats) {
     }).sort((a, b) => b.pts - a.pts || a.tier - b.tier);
     return { ...p, teams, total, gd, gf };
   });
-  rows.sort((a, b) => b.total - a.total || b.gd - a.gd || b.gf - a.gf || a.name.localeCompare(b.name));
+  rows.sort((a, b) => b.total - a.total || b.gf - a.gf || b.gd - a.gd || a.name.localeCompare(b.name));
   return rows;
 }
 
@@ -514,7 +514,7 @@ function renderLeaderboard(rows, teamStats) {
           }).join('')}
         </tbody>
       </table>
-      <p class="gd-note" style="margin-top:10px">Players level on points share a rank. Final prize ties are broken by combined goal difference, then goals scored.${LB_DETAILED ? ' Numbers next to each team are that team\'s points; greyed-out teams are eliminated.' : ''}</p>
+      <p class="gd-note" style="margin-top:10px">Players level on points share a rank. Final prize ties are broken by combined goals scored (GF), then goal difference (GD).${LB_DETAILED ? ' Numbers next to each team are that team\'s points; greyed-out teams are eliminated.' : ''}</p>
     </div>`;
 }
 
@@ -727,7 +727,7 @@ function renderRules() {
       </table>
       <ul>
         <li>A win on penalties counts as a win (shoot-out goals don't count as goals).</li>
-        <li>Ties are broken by your teams' combined goal difference, then total goals scored.</li>
+        <li>Ties are broken by your teams' combined goals scored, then goal difference.</li>
       </ul>
       <h3>🏆 Prizes</h3>
       <ul>
