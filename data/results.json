@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-12T17:18:32.284Z",
+  "updated": "2026-06-12T19:26:14.088Z",
   "source": "football-data.org",
   "matches": [
     {
@@ -34,15 +34,15 @@
       "stage": "group",
       "group": "B",
       "utcDate": "2026-06-12T19:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "canada",
       "away": "bosnia",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "stage": "group",
@@ -146,7 +146,7 @@
       "stage": "group",
       "group": "E",
       "utcDate": "2026-06-14T23:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": "ivorycoast",
       "away": "ecuador",
       "hs": null,
