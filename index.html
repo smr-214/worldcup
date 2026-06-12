@@ -466,7 +466,7 @@ function computeStandings(teamStats) {
     }).sort((a, b) => b.pts - a.pts || a.tier - b.tier);
     return { ...p, teams, total, gd, gf };
   });
-  rows.sort((a, b) => b.total - a.total || b.gf - a.gf || b.gd - a.gd || a.name.localeCompare(b.name));
+  rows.sort((a, b) => b.total - a.total || b.gd - a.gd || b.gf - a.gf || a.name.localeCompare(b.name));
   return rows;
 }
 
@@ -487,7 +487,7 @@ function renderLeaderboard(rows, teamStats) {
       ${anyResults ? '' : '<p style="color:var(--muted);font-size:0.8rem;margin-bottom:12px">No results yet — everyone starts level. Standings update automatically after each match.</p>'}
       <button class="lb-toggle" onclick="toggleLb()">${LB_DETAILED ? 'Hide details' : 'Press for details'}</button>
       <table class="lb">
-        <thead><tr><th>#</th><th>Player</th><th style="text-align:right">GF</th><th style="text-align:right">GD</th><th style="text-align:right">Pts</th></tr></thead>
+        <thead><tr><th>#</th><th>Player</th><th style="text-align:right">GD</th><th style="text-align:right">GF</th><th style="text-align:right">Pts</th></tr></thead>
         <tbody>
           ${rows.map((p, i) => {
             // competition ranking: equal points share a rank (1, 1, 3, ...)
@@ -507,14 +507,14 @@ function renderLeaderboard(rows, teamStats) {
                     </span>`).join('')}
                 </div>` : ''}
               </td>
-              <td style="text-align:right;color:var(--muted)">${p.gf}</td>
               <td style="text-align:right;color:var(--muted)">${p.gd > 0 ? '+' : ''}${p.gd}</td>
+              <td style="text-align:right;color:var(--muted)">${p.gf}</td>
               <td class="total-pts">${p.total}</td>
             </tr>`;
           }).join('')}
         </tbody>
       </table>
-      <p class="gd-note" style="margin-top:10px">Players level on points share a rank. Final prize ties are broken by combined goals scored (GF), then goal difference (GD).${LB_DETAILED ? ' Numbers next to each team are that team\'s points; greyed-out teams are eliminated.' : ''}</p>
+      <p class="gd-note" style="margin-top:10px">Players level on points share a rank. Final prize ties are broken by combined goal difference (GD), then goals scored (GF).${LB_DETAILED ? ' Numbers next to each team are that team\'s points; greyed-out teams are eliminated.' : ''}</p>
     </div>`;
 }
 
@@ -727,7 +727,7 @@ function renderRules() {
       </table>
       <ul>
         <li>A win on penalties counts as a win (shoot-out goals don't count as goals).</li>
-        <li>Ties are broken by your teams' combined goals scored, then goal difference.</li>
+        <li>Ties are broken by your teams' combined goal difference, then total goals scored.</li>
       </ul>
       <h3>🏆 Prizes</h3>
       <ul>
