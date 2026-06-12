@@ -665,25 +665,27 @@ function renderBracket() {
 
 function renderAwards(rows, teamStats) {
   const playerAgg = fn => rows.map(p => ({ p, v: p.teams.reduce((s, t) => s + fn(t, teamStats[t.id]), 0) }));
+  // everyone level on the top value is shown — ties share the award
   const best = (agg, min = 1) => {
-    const top = agg.slice().sort((a, b) => b.v - a.v)[0];
-    return top && top.v >= min ? top : null;
+    const top = Math.max(0, ...agg.map(a => a.v));
+    return top >= min ? agg.filter(a => a.v === top) : [];
   };
-  const holder = (x, unit) => x
-    ? `<div class="award-holder">${pflag(x.p)} ${esc(x.p.name)}</div><div class="award-detail">${x.v} ${unit}</div>`
+  const holder = (list, unit) => list.length
+    ? `${list.map(x => `<div class="award-holder">${pflag(x.p)} ${esc(x.p.name)}</div>`).join('')}
+       <div class="award-detail">${list[0].v} ${list[0].v === 1 ? unit.replace(/s$/, '') : unit}${list.length > 1 ? ' each — currently tied' : ''}</div>`
     : '<div class="award-detail">No contender yet</div>';
 
   const snooze = best(playerAgg((t, s) => s.zeroDraws));
-  const redAgg = playerAgg((t) => (EXTRAS.redCards || {})[t.id] || 0);
-  const red = best(redAgg);
+  const red = best(playerAgg((t) => (EXTRAS.redCards || {})[t.id] || 0));
   const hasRed = Object.keys(EXTRAS.redCards || {}).length > 0;
 
-  // Early Bath: first player to have all 6 teams eliminated
-  let bath = null;
+  // Early Bath: first player(s) to have all 6 teams eliminated
+  let bath = [], bathWhen = null;
   for (const p of rows) {
     if (p.teams.every(t => teamStats[t.id].eliminated)) {
       const when = p.teams.map(t => teamStats[t.id].elimDate || '').sort().pop();
-      if (!bath || when < bath.when) bath = { p, when };
+      if (!bathWhen || when < bathWhen) { bathWhen = when; bath = [p]; }
+      else if (when === bathWhen) bath.push(p);
     }
   }
   const card = (emoji, name, desc, body) => `
@@ -695,7 +697,7 @@ function renderAwards(rows, teamStats) {
     <p style="color:var(--muted);font-size:0.8rem;margin-bottom:14px">Live holders — final winners decided after the Final. Each award wins a SGD 50 <a href="https://www.natureland.com.sg" target="_blank" rel="noopener" style="color:var(--green)">Natureland</a> voucher. Everyone's in with a shout, football knowledge optional.</p>
     <div class="award-grid" style="margin-bottom:22px">
       ${card('😴', 'Snoozefest', 'Most 0-0 draws sat through', holder(snooze, '0-0 classics'))}
-      ${card('🛁', 'Early Bath', 'First to have all six teams knocked out', bath ? `<div class="award-holder">${pflag(bath.p)} ${esc(bath.p.name)}</div>` : '<div class="award-detail">Everyone still alive</div>')}
+      ${card('🛁', 'Early Bath', 'First to have all six teams knocked out', bath.length ? `${bath.map(p => `<div class="award-holder">${pflag(p)} ${esc(p.name)}</div>`).join('')}${bath.length > 1 ? '<div class="award-detail">knocked out together — tied</div>' : ''}` : '<div class="award-detail">Everyone still alive</div>')}
       ${card('🟥', 'Red Mist', 'Most red cards collected by your teams', hasRed ? holder(red, 'red cards') : '<div class="award-detail">Tracking starts when card data is in</div>')}
     </div>`;
 }
