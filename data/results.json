@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-12T00:07:44.391Z",
+  "updated": "2026-06-12T05:18:49.847Z",
   "source": "football-data.org",
   "matches": [
     {
@@ -20,15 +20,15 @@
       "stage": "group",
       "group": "A",
       "utcDate": "2026-06-12T02:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": "southkorea",
       "away": "czechia",
-      "hs": null,
-      "as": null,
+      "hs": 2,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "group",
