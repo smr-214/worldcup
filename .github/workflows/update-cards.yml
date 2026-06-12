@@ -39,7 +39,8 @@ jobs:
           fi
           git config user.name "cards-bot"
           git config user.email "actions@github.com"
-          git pull --rebase
           git add data/extras.json
           git commit -m "Update red-card tally"
+          # rebase after committing — the results bot may have pushed meanwhile
+          git pull --rebase
           git push
