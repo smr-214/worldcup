@@ -11,8 +11,12 @@
 //     no redCard detail (ESPN sometimes logs second-yellow dismissals as
 //     two yellows only — verified against the 2022 tournament).
 //
+// Also tallies penalty goals scored in normal play (scoringPlay +
+// penaltyKick, excluding shoot-out attempts).
+//
 // Maintains cumulative totals in data/extras.json:
-//   { "redCards": { "<teamId>": n }, "tallied": ["espn-<eventId>", ...] }
+//   { "redCards": { "<teamId>": n }, "penGoals": { "<teamId>": n },
+//     "tallied": ["espn-<eventId>", ...] }
 // "tallied" prevents double-counting a match across runs. Run by
 // .github/workflows/update-cards.yml — fully cloud-side, no manual entry.
 
@@ -63,6 +67,7 @@ function teamId(name) {
 const extrasPath = join(root, 'data', 'extras.json');
 const extras = JSON.parse(readFileSync(extrasPath, 'utf8'));
 extras.redCards = extras.redCards || {};
+extras.penGoals = extras.penGoals || {};
 extras.tallied = extras.tallied || [];
 const tallied = new Set(extras.tallied);
 
@@ -108,6 +113,12 @@ for (const ev of data.events || []) {
       const ours = espnToOurs[y.teamEspn];
       if (ours) { extras.redCards[ours] = (extras.redCards[ours] || 0) + 1; added++; }
     }
+  }
+
+  // penalty goals in normal play (shoot-out attempts excluded)
+  for (const d of details.filter(d => d.scoringPlay === true && d.penaltyKick === true && !d.shootout)) {
+    const ours = espnToOurs[d.team?.id];
+    if (ours) extras.penGoals[ours] = (extras.penGoals[ours] || 0) + 1;
   }
 
   tallied.add(key);
