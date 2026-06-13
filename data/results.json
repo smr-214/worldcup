@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T11:03:50.509Z",
+  "updated": "2026-06-13T19:49:59.249Z",
   "source": "football-data.org",
   "matches": [
     {
@@ -62,15 +62,15 @@
       "stage": "group",
       "group": "B",
       "utcDate": "2026-06-13T19:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "qatar",
       "away": "switzerland",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "stage": "group",
