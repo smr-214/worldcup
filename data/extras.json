@@ -11,13 +11,18 @@
     "bosnia": 3,
     "canada": 2,
     "paraguay": 5,
-    "usa": 1
+    "usa": 1,
+    "switzerland": 1,
+    "qatar": 2
   },
-  "penGoals": {},
+  "penGoals": {
+    "switzerland": 1
+  },
   "tallied": [
     "espn-760414",
     "espn-760415",
     "espn-760416",
-    "espn-760417"
+    "espn-760417",
+    "espn-760420"
   ]
 }
