@@ -1,13 +1,23 @@
 {
-  "_comment": "Red cards and regular-play penalty goals per team id, maintained by scripts/fetch-cards.mjs.",
+  "_comment": "Cards and regular-play penalty goals per team id, maintained by scripts/fetch-cards.mjs. Card score = reds*2 + yellows*1.",
   "redCards": {
     "southafrica": 2,
     "mexico": 1
+  },
+  "yellowCards": {
+    "southafrica": 2,
+    "mexico": 1,
+    "southkorea": 1,
+    "bosnia": 3,
+    "canada": 2,
+    "paraguay": 5,
+    "usa": 1
   },
   "penGoals": {},
   "tallied": [
     "espn-760414",
     "espn-760415",
-    "espn-760416"
+    "espn-760416",
+    "espn-760417"
   ]
 }

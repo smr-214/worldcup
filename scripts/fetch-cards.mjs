@@ -1,21 +1,25 @@
-// Red-card tally for the Red Mist award, via ESPN's public scoreboard JSON
-// (keyless; football-data.org's free tier has no cards, API-Football's
-// free plan doesn't cover the 2026 season).
+// Card + penalty tally for the special prizes, via ESPN's public
+// scoreboard JSON (keyless; football-data.org's free tier has no cards,
+// API-Football's free plan doesn't cover the 2026 season).
 //
 //   node scripts/fetch-cards.mjs
 //
 // One request fetches every tournament match with card events embedded.
-// A dismissal is counted when either:
-//   - a detail is flagged redCard: true (straight red, most second yellows), or
-//   - one player collects two yellowCard details in the same match and has
-//     no redCard detail (ESPN sometimes logs second-yellow dismissals as
-//     two yellows only — verified against the 2022 tournament).
+// Cards are counted PER PLAYER PER MATCH to avoid double-counting a
+// second-yellow dismissal (ESPN logs that as one Yellow Card event for the
+// first booking plus one Red Card event for the sending-off — verified
+// against the 2022 tournament):
+//   - if a player has any red, OR two yellows, in a match → 1 red, 0 yellows
+//     for that player that match (the sending-off subsumes the booking);
+//   - otherwise → their yellows count as yellows.
+// So every sending-off is exactly one red and is never also counted as a
+// yellow. Card score elsewhere = reds×2 + yellows×1.
 //
 // Also tallies penalty goals scored in normal play (scoringPlay +
 // penaltyKick, excluding shoot-out attempts).
 //
 // Maintains cumulative totals in data/extras.json:
-//   { "redCards": { "<teamId>": n }, "penGoals": { "<teamId>": n },
+//   { "redCards": {…}, "yellowCards": {…}, "penGoals": {…},
 //     "tallied": ["espn-<eventId>", ...] }
 // "tallied" prevents double-counting a match across runs. Run by
 // .github/workflows/update-cards.yml — fully cloud-side, no manual entry.
@@ -67,6 +71,7 @@ function teamId(name) {
 const extrasPath = join(root, 'data', 'extras.json');
 const extras = JSON.parse(readFileSync(extrasPath, 'utf8'));
 extras.redCards = extras.redCards || {};
+extras.yellowCards = extras.yellowCards || {};
 extras.penGoals = extras.penGoals || {};
 extras.tallied = extras.tallied || [];
 const tallied = new Set(extras.tallied);
@@ -92,27 +97,24 @@ for (const ev of data.events || []) {
     if (id) espnToOurs[c.team?.id] = id;
   }
 
-  // straight reds + flagged second yellows
+  // tally cards per player, then resolve each player's match once so a
+  // second-yellow dismissal becomes a single red, never a yellow + red
   const details = comp.details || [];
-  const redAthletes = new Set();
-  for (const d of details.filter(d => d.redCard === true)) {
-    const ours = espnToOurs[d.team?.id];
-    if (ours) { extras.redCards[ours] = (extras.redCards[ours] || 0) + 1; added++; }
-    (d.athletesInvolved || []).forEach(a => redAthletes.add(a.id));
-  }
-  // two yellows to one player with no red logged = second-yellow dismissal
-  const yellowsByAthlete = {};
-  for (const d of details.filter(d => d.yellowCard === true && !d.redCard)) {
+  const perAthlete = {};   // athleteId → { teamEspn, yellows, reds }
+  for (const d of details) {
+    if (!d.yellowCard && !d.redCard) continue;
     for (const a of d.athletesInvolved || []) {
-      yellowsByAthlete[a.id] = yellowsByAthlete[a.id] || { n: 0, teamEspn: d.team?.id };
-      yellowsByAthlete[a.id].n++;
+      const rec = perAthlete[a.id] || (perAthlete[a.id] = { teamEspn: d.team?.id, yellows: 0, reds: 0 });
+      if (d.redCard) rec.reds++;
+      else if (d.yellowCard) rec.yellows++;
     }
   }
-  for (const [athleteId, y] of Object.entries(yellowsByAthlete)) {
-    if (y.n >= 2 && !redAthletes.has(athleteId)) {
-      const ours = espnToOurs[y.teamEspn];
-      if (ours) { extras.redCards[ours] = (extras.redCards[ours] || 0) + 1; added++; }
-    }
+  for (const rec of Object.values(perAthlete)) {
+    const ours = espnToOurs[rec.teamEspn];
+    if (!ours) continue;
+    const sentOff = rec.reds > 0 || rec.yellows >= 2;   // second yellow ⇒ red
+    if (sentOff) { extras.redCards[ours] = (extras.redCards[ours] || 0) + 1; added++; }
+    else if (rec.yellows > 0) { extras.yellowCards[ours] = (extras.yellowCards[ours] || 0) + rec.yellows; added += rec.yellows; }
   }
 
   // penalty goals in normal play (shoot-out attempts excluded)
@@ -133,5 +135,5 @@ if (!newMatches) {
 } else {
   extras.tallied = [...tallied].sort();
   writeFileSync(extrasPath, JSON.stringify(extras, null, 2) + '\n');
-  console.log(`Tallied ${newMatches} match(es), ${added} red card(s) added. Totals: ${JSON.stringify(extras.redCards)}`);
+  console.log(`Tallied ${newMatches} match(es). Reds: ${JSON.stringify(extras.redCards)} Yellows: ${JSON.stringify(extras.yellowCards)}`);
 }

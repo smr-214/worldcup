@@ -677,8 +677,23 @@ function renderAwards(rows, teamStats) {
     : '<div class="award-detail">No contender yet</div>';
 
   const snooze = best(playerAgg((t, s) => s.zeroDraws));
-  const red = best(playerAgg((t) => (EXTRAS.redCards || {})[t.id] || 0));
-  const hasRed = Object.keys(EXTRAS.redCards || {}).length > 0;
+
+  // Red Mist — card points across a player's six teams: red = 2, yellow = 1.
+  // A second-yellow sending-off is already stored as one red (not red+yellow)
+  // by the tally script, so there's no double counting here.
+  const reds = EXTRAS.redCards || {}, yellows = EXTRAS.yellowCards || {};
+  const cardAgg = rows.map(p => {
+    const r = p.teams.reduce((s, t) => s + (reds[t.id] || 0), 0);
+    const y = p.teams.reduce((s, t) => s + (yellows[t.id] || 0), 0);
+    return { p, v: r * 2 + y, r, y };
+  });
+  const anyCards = cardAgg.some(x => x.r || x.y);
+  const topCard = Math.max(0, ...cardAgg.map(x => x.v));
+  const redMist = topCard > 0 ? cardAgg.filter(x => x.v === topCard) : [];
+  const redMistBody = redMist.length
+    ? redMist.map(x => `<div class="award-holder">${pflag(x.p)} ${esc(x.p.name)}</div>`).join('')
+      + `<div class="award-detail">${redMist[0].v} pts · ${redMist[0].y} 🟨 · ${redMist[0].r} 🟥${redMist.length > 1 ? ' each — currently tied' : ''}</div>`
+    : `<div class="award-detail">${anyCards ? 'No card points yet' : 'Tracking starts when card data is in'}</div>`;
 
   // Early Bath: first player(s) to have all 6 teams eliminated
   let bath = [], bathWhen = null;
@@ -699,7 +714,7 @@ function renderAwards(rows, teamStats) {
     <div class="award-grid" style="margin-bottom:22px">
       ${card('😴', 'Snoozefest', 'Most 0-0 draws sat through', holder(snooze, '0-0 classics'))}
       ${card('🛁', 'Early Bath', 'First to have all six teams knocked out', bath.length ? `${bath.map(p => `<div class="award-holder">${pflag(p)} ${esc(p.name)}</div>`).join('')}${bath.length > 1 ? '<div class="award-detail">knocked out together — tied</div>' : ''}` : '<div class="award-detail">Everyone still alive</div>')}
-      ${card('🟥', 'Red Mist', 'Most red cards collected by your teams', hasRed ? holder(red, 'red cards') : '<div class="award-detail">Tracking starts when card data is in</div>')}
+      ${card('🟥', 'Red Mist', 'Most card points across your teams — red card = 2, yellow = 1', redMistBody)}
     </div>`;
 }
 
@@ -802,7 +817,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => btn.addEventListener('click
 }));
 
 load();
-setInterval(load, 5 * 60 * 1000); // re-pull results every 5 minutes
+setInterval(load, 2 * 60 * 1000); // re-pull results every 2 minutes
 </script>
 </body>
 </html>
