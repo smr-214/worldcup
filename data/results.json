@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T04:55:30.037Z",
+  "updated": "2026-06-13T08:41:14.824Z",
   "source": "football-data.org",
   "matches": [
     {
@@ -146,7 +146,7 @@
       "stage": "group",
       "group": "E",
       "utcDate": "2026-06-14T23:00:00Z",
-      "status": "TIMED",
+      "status": "SCHEDULED",
       "home": "ivorycoast",
       "away": "ecuador",
       "hs": null,
