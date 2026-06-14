@@ -1,10 +1,13 @@
-// Pulls World Cup 2026 fixtures & results from football-data.org (free tier)
-// and writes data/results.json in the shape the leaderboard consumes.
+// Pulls World Cup 2026 fixtures & results from ESPN's public scoreboard
+// (keyless, live — no API token, no free-tier delay) and writes
+// data/results.json in the shape the leaderboard consumes.
 //
-//   FOOTBALL_DATA_TOKEN=xxx node scripts/fetch-results.mjs
+//   node scripts/fetch-results.mjs
 //
-// Run on a schedule by .github/workflows/update-results.yml — no manual
-// result entry anywhere.
+// Same source as scripts/fetch-cards.mjs, so results and cards stay
+// consistent. Run on a schedule by .github/workflows/update-results.yml —
+// no manual result entry anywhere. Set RESULTS_OUT to write elsewhere
+// (used for parity testing).
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -12,17 +15,9 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const { teams } = JSON.parse(readFileSync(join(root, 'data', 'teams.json'), 'utf8'));
+const teamById = Object.fromEntries(teams.map(t => [t.id, t]));
 
-const TOKEN = process.env.FOOTBALL_DATA_TOKEN;
-if (!TOKEN) {
-  console.error('FOOTBALL_DATA_TOKEN not set — get a free key at https://www.football-data.org/client/register');
-  process.exit(1);
-}
-
-// Map football-data.org team names to our ids. Aliases cover the naming
-// variants the API has used across tournaments; anything unmatched is
-// logged loudly so it shows up in the Action log instead of silently
-// dropping a team's results.
+// ESPN display names → our team ids (anything unmatched is logged loudly).
 const ALIASES = {
   france: ['france'], spain: ['spain'], argentina: ['argentina'],
   england: ['england'], portugal: ['portugal'], brazil: ['brazil'],
@@ -31,8 +26,8 @@ const ALIASES = {
   colombia: ['colombia'], senegal: ['senegal'], mexico: ['mexico'],
   usa: ['usa', 'united states', 'united states of america'],
   uruguay: ['uruguay'], japan: ['japan'], switzerland: ['switzerland'],
-  iran: ['iran', 'ir iran', 'iran ir'], austria: ['austria'],
-  ecuador: ['ecuador'], southkorea: ['south korea', 'korea republic', 'korea'],
+  iran: ['iran', 'ir iran'], austria: ['austria'],
+  ecuador: ['ecuador'], southkorea: ['south korea', 'korea republic'],
   australia: ['australia'], egypt: ['egypt'], canada: ['canada'],
   ivorycoast: ['ivory coast', 'cote divoire', 'cote d ivoire'],
   qatar: ['qatar'], algeria: ['algeria'], sweden: ['sweden'],
@@ -45,92 +40,111 @@ const ALIASES = {
   ghana: ['ghana'], jordan: ['jordan'], capeverde: ['cape verde', 'cabo verde'],
   curacao: ['curacao'], haiti: ['haiti'], newzealand: ['new zealand'],
 };
-
-const normalize = s => s
-  .toLowerCase()
-  .normalize('NFD').replace(/[̀-ͯ]/g, '')   // strip accents
-  .replace(/[^a-z ]+/g, ' ')
-  .replace(/\s+/g, ' ')
-  .trim();
-
+const normalize = s => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z ]+/g, ' ').replace(/\s+/g, ' ').trim();
 const nameToId = new Map();
-for (const [id, names] of Object.entries(ALIASES)) {
-  for (const n of names) nameToId.set(n, id);
-}
-
+for (const [id, names] of Object.entries(ALIASES)) for (const n of names) nameToId.set(n, id);
+// ESPN lists unplayed knockout slots with placeholder names like
+// "Group A Winner", "Round of 32 1 Winner", "Semifinal 1 Loser" — expected,
+// resolve to null (TBD) without logging.
+const PLACEHOLDER = /winner|loser|\bplace\b|round of|quarterfinal|semifinal|\bgroup [a-l]\b/i;
 const unmatched = new Set();
-function teamId(apiTeam) {
-  if (!apiTeam || !apiTeam.name) return null;
-  const n = normalize(apiTeam.name);
+function teamId(name) {
+  const n = normalize(name);
+  if (!n) return null;
   if (nameToId.has(n)) return nameToId.get(n);
-  // fallback: containment either way (handles e.g. "Korea Republic KOR")
-  for (const [alias, id] of nameToId) {
-    if (n.includes(alias) || alias.includes(n)) return id;
-  }
-  unmatched.add(apiTeam.name);
+  for (const [alias, id] of nameToId) if (n.includes(alias) || alias.includes(n)) return id;
+  if (!PLACEHOLDER.test(name)) unmatched.add(name);
   return null;
 }
 
-const STAGE_MAP = {
-  GROUP_STAGE: 'group',
-  LAST_32: 'r32', ROUND_OF_32: 'r32',
-  LAST_16: 'r16', ROUND_OF_16: 'r16',
-  QUARTER_FINALS: 'qf',
-  SEMI_FINALS: 'sf',
-  THIRD_PLACE: 'third', THIRD_PLACE_PLAYOFF: 'third',
-  FINAL: 'final',
-};
+// ESPN season.slug → our stage. Order matters: "quarterfinals"/"semifinals"
+// both contain "final", so check those before the bare final.
+function stageFromSlug(slug) {
+  const s = (slug || '').toLowerCase();
+  if (s.includes('group')) return 'group';
+  if (s.includes('32')) return 'r32';
+  if (s.includes('16')) return 'r16';
+  if (s.includes('quarter')) return 'qf';
+  if (s.includes('semi')) return 'sf';
+  if (s.includes('third') || s.includes('3rd')) return 'third';
+  if (s.includes('final')) return 'final';
+  return null;
+}
 
-const res = await fetch('https://api.football-data.org/v4/competitions/WC/matches', {
-  headers: { 'X-Auth-Token': TOKEN },
-});
+const num = v => (typeof v === 'number' && Number.isFinite(v)) ? v : null;
+
+const res = await fetch('https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=400');
 if (!res.ok) {
-  // process.exitCode (not process.exit) — exiting mid-teardown of the fetch
-  // socket trips a libuv assertion on Windows and clobbers the exit code.
-  console.error(`football-data.org returned ${res.status}: ${await res.text()}`);
+  console.error(`ESPN scoreboard returned ${res.status}`);
   process.exitCode = 1;
   throw new Error(`HTTP ${res.status}`);
 }
 const data = await res.json();
 
-// Scores must be finite numbers or null — the site interpolates them into
-// HTML, so this also guarantees nothing string-shaped from the API can
-// reach the page.
-const num = v => (typeof v === 'number' && Number.isFinite(v)) ? v : null;
+const matches = (data.events || []).map(ev => {
+  const stage = stageFromSlug(ev.season?.slug);
+  if (!stage) { console.warn(`Skipping event with unknown stage slug: ${ev.season?.slug} (${ev.name})`); return null; }
+  const comp = ev.competitions?.[0] || {};
+  const homeC = (comp.competitors || []).find(c => c.homeAway === 'home');
+  const awayC = (comp.competitors || []).find(c => c.homeAway === 'away');
+  const home = teamId(homeC?.team?.displayName);
+  const away = teamId(awayC?.team?.displayName);
 
-const matches = (data.matches || []).map(m => {
-  const stage = STAGE_MAP[m.stage];
-  if (!stage) { console.warn(`Skipping unknown stage: ${m.stage}`); return null; }
-  const home = teamId(m.homeTeam);
-  const away = teamId(m.awayTeam);
-  const live = m.status === 'FINISHED' || m.status === 'IN_PLAY' || m.status === 'PAUSED';
+  const st = ev.status?.type || {};
+  let status;
+  if (st.state === 'post' || st.completed) status = 'FINISHED';
+  else if (st.state === 'in') status = 'IN_PLAY';
+  else status = 'TIMED';
+  const live = status === 'FINISHED' || status === 'IN_PLAY';
+
+  const hs = live ? num(parseInt(homeC?.score, 10)) : null;
+  const as = live ? num(parseInt(awayC?.score, 10)) : null;
+
+  let winner = null;
+  if (status === 'FINISHED') {
+    if (homeC?.winner) winner = 'HOME_TEAM';
+    else if (awayC?.winner) winner = 'AWAY_TEAM';
+    else winner = 'DRAW';
+  }
+
+  const sname = st.name || '';
+  let duration = 'REGULAR', penHome = null, penAway = null;
+  if (/PEN/i.test(sname)) {
+    duration = 'PENALTY_SHOOTOUT';
+    const note = (comp.notes || []).map(n => n.headline || n.text || '').find(t => /penalt/i.test(t)) || '';
+    const mm = note.match(/(\d+)\s*-\s*(\d+)/);          // "<winner> win A-B on penalties"
+    if (mm) {
+      const hi = Math.max(+mm[1], +mm[2]), lo = Math.min(+mm[1], +mm[2]);
+      if (homeC?.winner) { penHome = hi; penAway = lo; } else { penHome = lo; penAway = hi; }
+    }
+  } else if (/AET|EXTRA/i.test(sname)) {
+    duration = 'EXTRA_TIME';
+  }
+
   return {
     stage,
-    group: m.group ? String(m.group).replace('GROUP_', '').slice(0, 2) : null,
-    utcDate: m.utcDate,
-    status: m.status,            // SCHEDULED | TIMED | IN_PLAY | PAUSED | FINISHED ...
-    home, away,                  // null until the API knows the team (e.g. unplayed knockout slots)
-    hs: live ? num(m.score?.fullTime?.home) : null,
-    as: live ? num(m.score?.fullTime?.away) : null,
-    duration: m.score?.duration || 'REGULAR',           // REGULAR | EXTRA_TIME | PENALTY_SHOOTOUT
-    penHome: num(m.score?.penalties?.home),
-    penAway: num(m.score?.penalties?.away),
-    winner: m.score?.winner || null,                    // HOME_TEAM | AWAY_TEAM | DRAW
+    group: stage === 'group' && home && teamById[home] ? teamById[home].group : null,
+    utcDate: ev.date ? new Date(ev.date).toISOString().replace('.000Z', 'Z') : null,
+    status,
+    home, away,
+    hs, as, duration, penHome, penAway, winner,
   };
 }).filter(Boolean);
+
+// Stable order so the no-op check below is deterministic.
+matches.sort((a, b) => (a.utcDate || '').localeCompare(b.utcDate || '') || (a.home || '').localeCompare(b.home || ''));
 
 if (unmatched.size) {
   console.warn(`UNMATCHED TEAM NAMES (fix ALIASES): ${[...unmatched].join(' | ')}`);
 }
 
-const outPath = join(root, 'data', 'results.json');
+const outPath = join(root, 'data', process.env.RESULTS_OUT || 'results.json');
 let existing = null;
 try { existing = JSON.parse(readFileSync(outPath, 'utf8')); } catch {}
 
-// Sticky scores: football-data's free "delayed" feed can briefly report a
-// match FINISHED before attaching the score (giving hs/as = null). Never let
-// a real score we've already recorded be overwritten by a null — once a match
-// has a score it doesn't change, so keep the known result.
+// Sticky scores: never let a real score we've already recorded be replaced
+// by a null (defends against any transient feed gap; once a match has a
+// score it doesn't change).
 if (existing && Array.isArray(existing.matches)) {
   const key = m => `${m.stage}|${m.home}|${m.away}|${m.utcDate}`;
   const prior = new Map(existing.matches.map(m => [key(m), m]));
@@ -146,17 +160,10 @@ if (existing && Array.isArray(existing.matches)) {
   }
 }
 
-// Only rewrite the file when the data actually changed, so the scheduled
-// Action doesn't create a no-op commit (and Pages rebuild) every run.
 const finishedCount = matches.filter(m => m.status === 'FINISHED').length;
 if (existing && JSON.stringify(existing.matches) === JSON.stringify(matches)) {
   console.log(`No changes (${matches.length} matches, ${finishedCount} finished)`);
 } else {
-  const out = {
-    updated: new Date().toISOString(),
-    source: 'football-data.org',
-    matches,
-  };
-  writeFileSync(outPath, JSON.stringify(out, null, 2) + '\n');
+  writeFileSync(outPath, JSON.stringify({ updated: new Date().toISOString(), source: 'espn', matches }, null, 2) + '\n');
   console.log(`Wrote ${matches.length} matches (${finishedCount} finished)`);
 }

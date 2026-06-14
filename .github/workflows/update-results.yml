@@ -28,8 +28,6 @@ jobs:
           node-version: 20
 
       - name: Fetch latest results
-        env:
-          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
         run: node scripts/fetch-results.mjs
 
       - name: Commit if changed
@@ -42,4 +40,5 @@ jobs:
           git config user.email "actions@github.com"
           git add data/results.json
           git commit -m "Auto-update results"
+          git pull --rebase
           git push
