@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T22:45:32.923Z",
+  "updated": "2026-06-14T23:57:22.552Z",
   "source": "espn",
   "matches": [
     {
@@ -146,11 +146,11 @@
       "stage": "group",
       "group": "E",
       "utcDate": "2026-06-14T23:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "ivorycoast",
       "away": "ecuador",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
