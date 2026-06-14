@@ -13,7 +13,11 @@
     "paraguay": 5,
     "usa": 1,
     "switzerland": 1,
-    "qatar": 2
+    "qatar": 2,
+    "brazil": 2,
+    "scotland": 3,
+    "haiti": 1,
+    "turkey": 1
   },
   "penGoals": {
     "switzerland": 1
@@ -23,6 +27,9 @@
     "espn-760415",
     "espn-760416",
     "espn-760417",
-    "espn-760420"
+    "espn-760418",
+    "espn-760419",
+    "espn-760420",
+    "espn-760421"
   ]
 }
