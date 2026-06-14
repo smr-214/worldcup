@@ -17,10 +17,12 @@
     "brazil": 2,
     "scotland": 3,
     "haiti": 1,
-    "turkey": 1
+    "turkey": 1,
+    "netherlands": 3
   },
   "penGoals": {
-    "switzerland": 1
+    "switzerland": 1,
+    "germany": 1
   },
   "tallied": [
     "espn-760414",
@@ -30,6 +32,8 @@
     "espn-760418",
     "espn-760419",
     "espn-760420",
-    "espn-760421"
+    "espn-760421",
+    "espn-760422",
+    "espn-760425"
   ]
 }
