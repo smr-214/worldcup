@@ -691,8 +691,8 @@ function renderAwards(rows, teamStats) {
   const topCard = Math.max(0, ...cardAgg.map(x => x.v));
   const redMist = topCard > 0 ? cardAgg.filter(x => x.v === topCard) : [];
   const redMistBody = redMist.length
-    ? redMist.map(x => `<div class="award-holder">${pflag(x.p)} ${esc(x.p.name)}</div>`).join('')
-      + `<div class="award-detail">${redMist[0].v} pts · ${redMist[0].y} 🟨 · ${redMist[0].r} 🟥${redMist.length > 1 ? ' each — currently tied' : ''}</div>`
+    ? redMist.map(x => `<div class="award-holder">${pflag(x.p)} ${esc(x.p.name)} <span style="color:var(--muted);font-weight:600;font-size:0.78rem">${x.y} 🟨 ${x.r} 🟥</span></div>`).join('')
+      + `<div class="award-detail">${redMist[0].v} points${redMist.length > 1 ? ' · currently tied' : ''}</div>`
     : `<div class="award-detail">${anyCards ? 'No card points yet' : 'Tracking starts when card data is in'}</div>`;
 
   // Early Bath: first player(s) to have all 6 teams eliminated
@@ -714,7 +714,7 @@ function renderAwards(rows, teamStats) {
     <div class="award-grid" style="margin-bottom:22px">
       ${card('😴', 'Snoozefest', 'Most 0-0 draws sat through', holder(snooze, '0-0 classics'))}
       ${card('🛁', 'Early Bath', 'First to have all six teams knocked out', bath.length ? `${bath.map(p => `<div class="award-holder">${pflag(p)} ${esc(p.name)}</div>`).join('')}${bath.length > 1 ? '<div class="award-detail">knocked out together — tied</div>' : ''}` : '<div class="award-detail">Everyone still alive</div>')}
-      ${card('🟥', 'Red Mist', 'Most card points across your teams — red card = 2, yellow = 1', redMistBody)}
+      ${card('🟥', 'Red Mist', 'Most card points across your teams — red card = 2 points, yellow card = 1 point', redMistBody)}
     </div>`;
 }
 
