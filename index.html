@@ -689,7 +689,7 @@ function renderAwards(rows, teamStats) {
   });
   const anyCards = cardAgg.some(x => x.r || x.y);
   const topCard = Math.max(0, ...cardAgg.map(x => x.v));
-  const redMist = topCard > 0 ? cardAgg.filter(x => x.v === topCard) : [];
+  const redMist = (topCard > 0 ? cardAgg.filter(x => x.v === topCard) : []).sort((a, b) => a.p.name.localeCompare(b.p.name));
   const redMistBody = redMist.length
     ? redMist.map(x => `<div class="award-holder">${pflag(x.p)} ${esc(x.p.name)} <span style="color:var(--muted);font-weight:600;font-size:0.78rem">${x.y} 🟨 ${x.r} 🟥</span></div>`).join('')
       + `<div class="award-detail">${redMist[0].v} points${redMist.length > 1 ? ' · currently tied' : ''}</div>`
@@ -714,7 +714,7 @@ function renderAwards(rows, teamStats) {
     <div class="award-grid" style="margin-bottom:22px">
       ${card('😴', 'Snoozefest', 'Most 0-0 draws sat through', holder(snooze, '0-0 classics'))}
       ${card('🛁', 'Early Bath', 'First to have all six teams knocked out', bath.length ? `${bath.map(p => `<div class="award-holder">${pflag(p)} ${esc(p.name)}</div>`).join('')}${bath.length > 1 ? '<div class="award-detail">knocked out together — tied</div>' : ''}` : '<div class="award-detail">Everyone still alive</div>')}
-      ${card('🟥', 'Red Mist', 'Most card points across your teams — red card = 2 points, yellow card = 1 point', redMistBody)}
+      ${card('🟥', 'Red Mist', 'Most card points across your teams<br>red card = 2 points, yellow card = 1 point', redMistBody)}
     </div>`;
 }
 
