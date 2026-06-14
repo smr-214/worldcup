@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T21:23:17.943Z",
+  "updated": "2026-06-14T22:45:32.923Z",
   "source": "espn",
   "matches": [
     {
@@ -132,15 +132,15 @@
       "stage": "group",
       "group": "F",
       "utcDate": "2026-06-14T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "netherlands",
       "away": "japan",
-      "hs": 1,
-      "as": 1,
+      "hs": 2,
+      "as": 2,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "stage": "group",
