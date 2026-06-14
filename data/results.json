@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T09:57:59.467Z",
+  "updated": "2026-06-14T18:05:20.733Z",
   "source": "espn",
   "matches": [
     {
@@ -118,11 +118,11 @@
       "stage": "group",
       "group": "E",
       "utcDate": "2026-06-14T17:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "germany",
       "away": "curacao",
-      "hs": null,
-      "as": null,
+      "hs": 3,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
