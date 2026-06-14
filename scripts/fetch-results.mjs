@@ -123,11 +123,31 @@ if (unmatched.size) {
   console.warn(`UNMATCHED TEAM NAMES (fix ALIASES): ${[...unmatched].join(' | ')}`);
 }
 
-// Only rewrite the file when the data actually changed, so the scheduled
-// Action doesn't create a no-op commit (and Pages rebuild) every run.
 const outPath = join(root, 'data', 'results.json');
 let existing = null;
 try { existing = JSON.parse(readFileSync(outPath, 'utf8')); } catch {}
+
+// Sticky scores: football-data's free "delayed" feed can briefly report a
+// match FINISHED before attaching the score (giving hs/as = null). Never let
+// a real score we've already recorded be overwritten by a null — once a match
+// has a score it doesn't change, so keep the known result.
+if (existing && Array.isArray(existing.matches)) {
+  const key = m => `${m.stage}|${m.home}|${m.away}|${m.utcDate}`;
+  const prior = new Map(existing.matches.map(m => [key(m), m]));
+  for (const m of matches) {
+    if (m.hs == null) {
+      const p = prior.get(key(m));
+      if (p && p.hs != null) {
+        m.status = p.status; m.hs = p.hs; m.as = p.as;
+        m.duration = p.duration; m.penHome = p.penHome; m.penAway = p.penAway; m.winner = p.winner;
+        console.warn(`Kept prior score for ${m.home} v ${m.away} (feed returned null)`);
+      }
+    }
+  }
+}
+
+// Only rewrite the file when the data actually changed, so the scheduled
+// Action doesn't create a no-op commit (and Pages rebuild) every run.
 const finishedCount = matches.filter(m => m.status === 'FINISHED').length;
 if (existing && JSON.stringify(existing.matches) === JSON.stringify(matches)) {
   console.log(`No changes (${matches.length} matches, ${finishedCount} finished)`);
