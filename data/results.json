@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T20:05:35.607Z",
+  "updated": "2026-06-15T22:28:51.027Z",
   "source": "espn",
   "matches": [
     {
@@ -188,25 +188,25 @@
       "stage": "group",
       "group": "G",
       "utcDate": "2026-06-15T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "belgium",
       "away": "egypt",
-      "hs": 0,
+      "hs": 1,
       "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "stage": "group",
       "group": "H",
       "utcDate": "2026-06-15T22:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "saudi",
       "away": "uruguay",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
