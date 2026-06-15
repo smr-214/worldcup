@@ -18,7 +18,10 @@
     "scotland": 3,
     "haiti": 1,
     "turkey": 1,
-    "netherlands": 3
+    "netherlands": 3,
+    "ivorycoast": 3,
+    "ecuador": 1,
+    "tunisia": 1
   },
   "penGoals": {
     "switzerland": 1,
@@ -34,6 +37,8 @@
     "espn-760420",
     "espn-760421",
     "espn-760422",
+    "espn-760423",
+    "espn-760424",
     "espn-760425"
   ]
 }
