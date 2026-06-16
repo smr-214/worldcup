@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T22:28:51.027Z",
+  "updated": "2026-06-16T00:14:42.476Z",
   "source": "espn",
   "matches": [
     {
@@ -202,15 +202,15 @@
       "stage": "group",
       "group": "H",
       "utcDate": "2026-06-15T22:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "saudi",
       "away": "uruguay",
-      "hs": 0,
-      "as": 0,
+      "hs": 1,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "stage": "group",
