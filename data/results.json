@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T21:48:58.956Z",
+  "updated": "2026-06-16T23:16:16.935Z",
   "source": "espn",
   "matches": [
     {
@@ -244,11 +244,11 @@
       "stage": "group",
       "group": "I",
       "utcDate": "2026-06-16T22:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "iraq",
       "away": "norway",
-      "hs": null,
-      "as": null,
+      "hs": 1,
+      "as": 2,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
