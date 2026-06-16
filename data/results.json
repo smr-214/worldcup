@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T00:14:42.476Z",
+  "updated": "2026-06-16T05:40:37.173Z",
   "source": "espn",
   "matches": [
     {
@@ -216,15 +216,15 @@
       "stage": "group",
       "group": "G",
       "utcDate": "2026-06-16T01:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": "iran",
       "away": "newzealand",
-      "hs": null,
-      "as": null,
+      "hs": 2,
+      "as": 2,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "stage": "group",
