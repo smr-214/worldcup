@@ -25,7 +25,9 @@
     "spain": 1,
     "capeverde": 1,
     "belgium": 2,
-    "egypt": 2
+    "egypt": 2,
+    "saudi": 1,
+    "iran": 1
   },
   "penGoals": {
     "switzerland": 1,
@@ -45,6 +47,8 @@
     "espn-760424",
     "espn-760425",
     "espn-760426",
-    "espn-760428"
+    "espn-760427",
+    "espn-760428",
+    "espn-760429"
   ]
 }
