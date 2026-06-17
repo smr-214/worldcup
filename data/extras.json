@@ -29,12 +29,15 @@
     "saudi": 1,
     "iran": 1,
     "iraq": 1,
-    "austria": 1
+    "austria": 1,
+    "drcongo": 1,
+    "portugal": 3
   },
   "penGoals": {
     "switzerland": 1,
     "germany": 1,
-    "austria": 1
+    "austria": 1,
+    "england": 1
   },
   "tallied": [
     "espn-760414",
@@ -56,6 +59,8 @@
     "espn-760430",
     "espn-760431",
     "espn-760432",
-    "espn-760433"
+    "espn-760433",
+    "espn-760435",
+    "espn-760437"
   ]
 }
