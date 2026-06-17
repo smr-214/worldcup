@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T22:26:08.142Z",
+  "updated": "2026-06-17T23:59:54.776Z",
   "source": "espn",
   "matches": [
     {
@@ -314,11 +314,11 @@
       "stage": "group",
       "group": "L",
       "utcDate": "2026-06-17T23:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "ghana",
       "away": "panama",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
