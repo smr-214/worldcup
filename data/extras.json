@@ -31,7 +31,9 @@
     "iraq": 1,
     "austria": 1,
     "drcongo": 1,
-    "portugal": 3
+    "portugal": 3,
+    "panama": 2,
+    "ghana": 1
   },
   "penGoals": {
     "switzerland": 1,
@@ -60,6 +62,7 @@
     "espn-760431",
     "espn-760432",
     "espn-760433",
+    "espn-760434",
     "espn-760435",
     "espn-760437"
   ]
