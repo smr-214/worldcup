@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T03:04:49.760Z",
+  "updated": "2026-06-19T07:30:07.742Z",
   "source": "espn",
   "matches": [
     {
@@ -1099,7 +1099,7 @@
       "group": null,
       "utcDate": "2026-07-01T01:00:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "mexico",
       "away": null,
       "hs": null,
       "as": null,
