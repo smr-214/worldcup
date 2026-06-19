@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T21:56:16.136Z",
+  "updated": "2026-06-19T23:08:54.255Z",
   "source": "espn",
   "matches": [
     {
@@ -412,11 +412,11 @@
       "stage": "group",
       "group": "C",
       "utcDate": "2026-06-19T22:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "scotland",
       "away": "morocco",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
