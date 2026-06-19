@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-18T23:13:42.411Z",
+  "updated": "2026-06-19T00:10:54.196Z",
   "source": "espn",
   "matches": [
     {
@@ -370,15 +370,15 @@
       "stage": "group",
       "group": "B",
       "utcDate": "2026-06-18T22:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "canada",
       "away": "qatar",
-      "hs": 3,
+      "hs": 6,
       "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "group",
