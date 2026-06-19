@@ -13,7 +13,7 @@
     "bosnia": 5,
     "canada": 3,
     "paraguay": 5,
-    "usa": 1,
+    "usa": 4,
     "switzerland": 2,
     "qatar": 3,
     "brazil": 2,
@@ -38,7 +38,8 @@
     "ghana": 1,
     "colombia": 1,
     "uzbekistan": 1,
-    "czechia": 1
+    "czechia": 1,
+    "australia": 4
   },
   "penGoals": {
     "switzerland": 2,
@@ -75,6 +76,7 @@
     "espn-760438",
     "espn-760439",
     "espn-760440",
-    "espn-760441"
+    "espn-760441",
+    "espn-760442"
   ]
 }
