@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T00:10:54.196Z",
+  "updated": "2026-06-19T02:10:25.471Z",
   "source": "espn",
   "matches": [
     {
@@ -384,11 +384,11 @@
       "stage": "group",
       "group": "A",
       "utcDate": "2026-06-19T01:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "mexico",
       "away": "southkorea",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
