@@ -3,18 +3,19 @@
   "redCards": {
     "southafrica": 2,
     "mexico": 1,
-    "bosnia": 1
+    "bosnia": 1,
+    "qatar": 2
   },
   "yellowCards": {
     "southafrica": 4,
     "mexico": 1,
-    "southkorea": 1,
+    "southkorea": 3,
     "bosnia": 5,
-    "canada": 2,
+    "canada": 3,
     "paraguay": 5,
     "usa": 1,
     "switzerland": 2,
-    "qatar": 2,
+    "qatar": 3,
     "brazil": 2,
     "scotland": 3,
     "haiti": 1,
@@ -72,6 +73,8 @@
     "espn-760436",
     "espn-760437",
     "espn-760438",
-    "espn-760439"
+    "espn-760439",
+    "espn-760440",
+    "espn-760441"
   ]
 }
