@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T20:47:14.218Z",
+  "updated": "2026-06-19T21:56:16.136Z",
   "source": "espn",
   "matches": [
     {
@@ -398,7 +398,7 @@
       "stage": "group",
       "group": "D",
       "utcDate": "2026-06-19T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "usa",
       "away": "australia",
       "hs": 2,
@@ -406,7 +406,7 @@
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "group",
