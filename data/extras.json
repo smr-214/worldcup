@@ -4,7 +4,8 @@
     "southafrica": 2,
     "mexico": 1,
     "bosnia": 1,
-    "qatar": 2
+    "qatar": 2,
+    "paraguay": 1
   },
   "yellowCards": {
     "southafrica": 4,
@@ -12,14 +13,14 @@
     "southkorea": 3,
     "bosnia": 5,
     "canada": 3,
-    "paraguay": 5,
+    "paraguay": 6,
     "usa": 4,
     "switzerland": 2,
     "qatar": 3,
-    "brazil": 2,
-    "scotland": 3,
-    "haiti": 1,
-    "turkey": 1,
+    "brazil": 3,
+    "scotland": 4,
+    "haiti": 4,
+    "turkey": 2,
     "netherlands": 3,
     "ivorycoast": 3,
     "ecuador": 1,
@@ -39,7 +40,8 @@
     "colombia": 1,
     "uzbekistan": 1,
     "czechia": 1,
-    "australia": 4
+    "australia": 4,
+    "morocco": 1
   },
   "penGoals": {
     "switzerland": 2,
@@ -77,6 +79,9 @@
     "espn-760439",
     "espn-760440",
     "espn-760441",
-    "espn-760442"
+    "espn-760442",
+    "espn-760443",
+    "espn-760444",
+    "espn-760445"
   ]
 }
