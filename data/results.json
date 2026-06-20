@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T00:20:09.546Z",
+  "updated": "2026-06-20T04:47:51.597Z",
   "source": "espn",
   "matches": [
     {
@@ -426,25 +426,25 @@
       "stage": "group",
       "group": "C",
       "utcDate": "2026-06-20T00:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": "brazil",
       "away": "haiti",
-      "hs": null,
-      "as": null,
+      "hs": 3,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "group",
       "group": "D",
       "utcDate": "2026-06-20T03:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "turkey",
       "away": "paraguay",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
