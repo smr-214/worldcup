@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T19:03:23.987Z",
+  "updated": "2026-06-20T20:41:15.656Z",
   "source": "espn",
   "matches": [
     {
@@ -468,11 +468,11 @@
       "stage": "group",
       "group": "E",
       "utcDate": "2026-06-20T20:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "germany",
       "away": "ivorycoast",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
