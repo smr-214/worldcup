@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T04:47:51.597Z",
+  "updated": "2026-06-20T07:36:53.859Z",
   "source": "espn",
   "matches": [
     {
@@ -440,7 +440,7 @@
       "stage": "group",
       "group": "D",
       "utcDate": "2026-06-20T03:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "turkey",
       "away": "paraguay",
       "hs": 0,
@@ -448,7 +448,7 @@
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "stage": "group",
@@ -1141,7 +1141,7 @@
       "group": null,
       "utcDate": "2026-07-02T00:00:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "usa",
       "away": null,
       "hs": null,
       "as": null,
