@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T06:39:13.605Z",
+  "updated": "2026-06-21T16:52:10.930Z",
   "source": "espn",
   "matches": [
     {
@@ -510,11 +510,11 @@
       "stage": "group",
       "group": "H",
       "utcDate": "2026-06-21T16:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "spain",
       "away": "saudi",
-      "hs": null,
-      "as": null,
+      "hs": 3,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
