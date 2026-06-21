@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T05:52:29.419Z",
+  "updated": "2026-06-21T06:39:13.605Z",
   "source": "espn",
   "matches": [
     {
@@ -496,7 +496,7 @@
       "stage": "group",
       "group": "F",
       "utcDate": "2026-06-21T04:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "tunisia",
       "away": "japan",
       "hs": 0,
@@ -504,7 +504,7 @@
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "stage": "group",
