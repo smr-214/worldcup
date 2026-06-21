@@ -5,7 +5,8 @@
     "mexico": 1,
     "bosnia": 1,
     "qatar": 2,
-    "paraguay": 1
+    "paraguay": 1,
+    "belgium": 1
   },
   "yellowCards": {
     "southafrica": 4,
@@ -27,10 +28,10 @@
     "tunisia": 1,
     "spain": 1,
     "capeverde": 1,
-    "belgium": 2,
+    "belgium": 3,
     "egypt": 2,
-    "saudi": 1,
-    "iran": 1,
+    "saudi": 3,
+    "iran": 2,
     "iraq": 1,
     "austria": 1,
     "drcongo": 1,
@@ -88,6 +89,8 @@
     "espn-760446",
     "espn-760447",
     "espn-760448",
-    "espn-760449"
+    "espn-760449",
+    "espn-760451",
+    "espn-760453"
   ]
 }
