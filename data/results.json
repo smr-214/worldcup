@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T23:19:48.306Z",
+  "updated": "2026-06-21T01:44:39.128Z",
   "source": "espn",
   "matches": [
     {
@@ -482,11 +482,11 @@
       "stage": "group",
       "group": "E",
       "utcDate": "2026-06-21T00:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "ecuador",
       "away": "curacao",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
