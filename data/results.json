@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T01:44:39.128Z",
+  "updated": "2026-06-21T05:52:29.419Z",
   "source": "espn",
   "matches": [
     {
@@ -482,7 +482,7 @@
       "stage": "group",
       "group": "E",
       "utcDate": "2026-06-21T00:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "ecuador",
       "away": "curacao",
       "hs": 0,
@@ -490,17 +490,17 @@
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "stage": "group",
       "group": "F",
       "utcDate": "2026-06-21T04:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "tunisia",
       "away": "japan",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 4,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
@@ -1043,7 +1043,7 @@
       "group": null,
       "utcDate": "2026-06-29T20:30:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "germany",
       "away": null,
       "hs": null,
       "as": null,
