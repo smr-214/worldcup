@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T18:17:01.954Z",
+  "updated": "2026-06-21T20:08:39.788Z",
   "source": "espn",
   "matches": [
     {
@@ -524,11 +524,11 @@
       "stage": "group",
       "group": "G",
       "utcDate": "2026-06-21T19:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "belgium",
       "away": "iran",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
