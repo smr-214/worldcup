@@ -33,7 +33,7 @@
     "saudi": 3,
     "iran": 2,
     "iraq": 1,
-    "austria": 1,
+    "austria": 3,
     "drcongo": 1,
     "portugal": 3,
     "panama": 2,
@@ -46,7 +46,8 @@
     "sweden": 3,
     "curacao": 5,
     "uruguay": 2,
-    "newzealand": 2
+    "newzealand": 2,
+    "argentina": 2
   },
   "penGoals": {
     "switzerland": 2,
@@ -95,6 +96,7 @@
     "espn-760450",
     "espn-760451",
     "espn-760452",
-    "espn-760453"
+    "espn-760453",
+    "espn-760456"
   ]
 }
