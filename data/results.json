@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-22T03:47:04.116Z",
+  "updated": "2026-06-22T19:47:08.984Z",
   "source": "espn",
   "matches": [
     {
@@ -566,15 +566,15 @@
       "stage": "group",
       "group": "J",
       "utcDate": "2026-06-22T17:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": "argentina",
       "away": "austria",
-      "hs": null,
-      "as": null,
+      "hs": 2,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "group",
