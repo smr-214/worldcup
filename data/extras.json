@@ -27,9 +27,9 @@
     "ecuador": 2,
     "tunisia": 1,
     "spain": 1,
-    "capeverde": 1,
+    "capeverde": 3,
     "belgium": 3,
-    "egypt": 2,
+    "egypt": 3,
     "saudi": 3,
     "iran": 2,
     "iraq": 1,
@@ -44,7 +44,9 @@
     "australia": 4,
     "morocco": 1,
     "sweden": 3,
-    "curacao": 5
+    "curacao": 5,
+    "uruguay": 2,
+    "newzealand": 2
   },
   "penGoals": {
     "switzerland": 2,
@@ -90,7 +92,9 @@
     "espn-760447",
     "espn-760448",
     "espn-760449",
+    "espn-760450",
     "espn-760451",
+    "espn-760452",
     "espn-760453"
   ]
 }
