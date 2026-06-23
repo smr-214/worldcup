@@ -32,7 +32,7 @@
     "egypt": 3,
     "saudi": 3,
     "iran": 2,
-    "iraq": 1,
+    "iraq": 2,
     "austria": 3,
     "drcongo": 1,
     "portugal": 3,
@@ -97,6 +97,8 @@
     "espn-760451",
     "espn-760452",
     "espn-760453",
-    "espn-760456"
+    "espn-760454",
+    "espn-760456",
+    "espn-760457"
   ]
 }
