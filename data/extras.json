@@ -35,11 +35,11 @@
     "iraq": 2,
     "austria": 3,
     "drcongo": 1,
-    "portugal": 3,
+    "portugal": 4,
     "panama": 2,
-    "ghana": 1,
+    "ghana": 2,
     "colombia": 1,
-    "uzbekistan": 1,
+    "uzbekistan": 2,
     "czechia": 1,
     "australia": 4,
     "morocco": 1,
@@ -49,7 +49,8 @@
     "newzealand": 2,
     "argentina": 2,
     "algeria": 1,
-    "jordan": 1
+    "jordan": 1,
+    "england": 1
   },
   "penGoals": {
     "switzerland": 2,
@@ -102,6 +103,8 @@
     "espn-760454",
     "espn-760455",
     "espn-760456",
-    "espn-760457"
+    "espn-760457",
+    "espn-760458",
+    "espn-760461"
   ]
 }
