@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23T21:16:54.477Z",
+  "updated": "2026-06-23T22:42:24.005Z",
   "source": "espn",
   "matches": [
     {
@@ -636,7 +636,7 @@
       "stage": "group",
       "group": "L",
       "utcDate": "2026-06-23T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "england",
       "away": "ghana",
       "hs": 0,
@@ -644,7 +644,7 @@
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "stage": "group",
