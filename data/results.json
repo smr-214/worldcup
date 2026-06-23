@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-22T21:52:46.896Z",
+  "updated": "2026-06-23T01:26:44.632Z",
   "source": "espn",
   "matches": [
     {
@@ -580,25 +580,25 @@
       "stage": "group",
       "group": "I",
       "utcDate": "2026-06-22T21:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "france",
       "away": "iraq",
-      "hs": 1,
+      "hs": 3,
       "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "group",
       "group": "I",
       "utcDate": "2026-06-23T00:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "norway",
       "away": "senegal",
-      "hs": null,
-      "as": null,
+      "hs": 3,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
