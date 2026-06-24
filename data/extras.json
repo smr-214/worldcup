@@ -12,12 +12,12 @@
     "southafrica": 4,
     "mexico": 1,
     "southkorea": 3,
-    "bosnia": 5,
-    "canada": 3,
+    "bosnia": 6,
+    "canada": 5,
     "paraguay": 6,
     "usa": 4,
-    "switzerland": 2,
-    "qatar": 3,
+    "switzerland": 3,
+    "qatar": 4,
     "brazil": 3,
     "scotland": 4,
     "haiti": 4,
@@ -108,6 +108,8 @@
     "espn-760458",
     "espn-760459",
     "espn-760460",
-    "espn-760461"
+    "espn-760461",
+    "espn-760462",
+    "espn-760463"
   ]
 }
