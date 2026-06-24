@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23T23:42:29.879Z",
+  "updated": "2026-06-24T01:33:38.164Z",
   "source": "espn",
   "matches": [
     {
@@ -650,15 +650,15 @@
       "stage": "group",
       "group": "L",
       "utcDate": "2026-06-23T23:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "panama",
       "away": "croatia",
       "hs": 0,
-      "as": 0,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "stage": "group",
