@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24T20:15:52.013Z",
+  "updated": "2026-06-24T21:51:14.992Z",
   "source": "espn",
   "matches": [
     {
@@ -678,29 +678,29 @@
       "stage": "group",
       "group": "B",
       "utcDate": "2026-06-24T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "bosnia",
       "away": "qatar",
-      "hs": 2,
+      "hs": 3,
       "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "group",
       "group": "B",
       "utcDate": "2026-06-24T19:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "switzerland",
       "away": "canada",
-      "hs": 1,
-      "as": 0,
+      "hs": 2,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "group",
@@ -1016,7 +1016,7 @@
       "utcDate": "2026-06-28T19:00:00Z",
       "status": "TIMED",
       "home": null,
-      "away": null,
+      "away": "canada",
       "hs": null,
       "as": null,
       "duration": "REGULAR",
@@ -1183,7 +1183,7 @@
       "group": null,
       "utcDate": "2026-07-03T03:00:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "switzerland",
       "away": null,
       "hs": null,
       "as": null,
