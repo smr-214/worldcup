@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24T23:00:19.832Z",
+  "updated": "2026-06-25T00:11:54.889Z",
   "source": "espn",
   "matches": [
     {
@@ -706,29 +706,29 @@
       "stage": "group",
       "group": "C",
       "utcDate": "2026-06-24T22:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "morocco",
       "away": "haiti",
-      "hs": 2,
+      "hs": 4,
       "as": 2,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "group",
       "group": "C",
       "utcDate": "2026-06-24T22:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "scotland",
       "away": "brazil",
       "hs": 0,
-      "as": 2,
+      "as": 3,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "stage": "group",
@@ -1029,7 +1029,7 @@
       "group": null,
       "utcDate": "2026-06-29T17:00:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "brazil",
       "away": null,
       "hs": null,
       "as": null,
@@ -1058,7 +1058,7 @@
       "utcDate": "2026-06-30T01:00:00Z",
       "status": "TIMED",
       "home": null,
-      "away": null,
+      "away": "morocco",
       "hs": null,
       "as": null,
       "duration": "REGULAR",
