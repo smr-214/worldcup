@@ -23,8 +23,8 @@
     "haiti": 7,
     "turkey": 2,
     "netherlands": 3,
-    "ivorycoast": 3,
-    "ecuador": 2,
+    "ivorycoast": 4,
+    "ecuador": 5,
     "tunisia": 1,
     "spain": 1,
     "capeverde": 3,
@@ -44,14 +44,15 @@
     "australia": 4,
     "morocco": 1,
     "sweden": 3,
-    "curacao": 5,
+    "curacao": 7,
     "uruguay": 2,
     "newzealand": 2,
     "argentina": 2,
     "algeria": 1,
     "jordan": 1,
     "england": 1,
-    "croatia": 1
+    "croatia": 1,
+    "germany": 1
   },
   "penGoals": {
     "switzerland": 2,
@@ -114,6 +115,8 @@
     "espn-760464",
     "espn-760465",
     "espn-760466",
-    "espn-760467"
+    "espn-760467",
+    "espn-760468",
+    "espn-760473"
   ]
 }
