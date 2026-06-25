@@ -9,9 +9,9 @@
     "belgium": 1
   },
   "yellowCards": {
-    "southafrica": 4,
-    "mexico": 1,
-    "southkorea": 3,
+    "southafrica": 5,
+    "mexico": 2,
+    "southkorea": 4,
     "bosnia": 6,
     "canada": 5,
     "paraguay": 6,
@@ -112,6 +112,8 @@
     "espn-760462",
     "espn-760463",
     "espn-760464",
-    "espn-760465"
+    "espn-760465",
+    "espn-760466",
+    "espn-760467"
   ]
 }
