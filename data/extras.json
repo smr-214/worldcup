@@ -18,9 +18,9 @@
     "usa": 4,
     "switzerland": 3,
     "qatar": 4,
-    "brazil": 3,
-    "scotland": 4,
-    "haiti": 4,
+    "brazil": 5,
+    "scotland": 5,
+    "haiti": 7,
     "turkey": 2,
     "netherlands": 3,
     "ivorycoast": 3,
@@ -110,6 +110,8 @@
     "espn-760460",
     "espn-760461",
     "espn-760462",
-    "espn-760463"
+    "espn-760463",
+    "espn-760464",
+    "espn-760465"
   ]
 }
