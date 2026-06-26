@@ -6,7 +6,8 @@
     "bosnia": 1,
     "qatar": 2,
     "paraguay": 1,
-    "belgium": 1
+    "belgium": 1,
+    "iraq": 1
   },
   "yellowCards": {
     "southafrica": 5,
@@ -32,7 +33,7 @@
     "egypt": 3,
     "saudi": 3,
     "iran": 2,
-    "iraq": 2,
+    "iraq": 4,
     "austria": 3,
     "drcongo": 2,
     "portugal": 4,
@@ -53,7 +54,10 @@
     "england": 1,
     "croatia": 1,
     "germany": 1,
-    "japan": 1
+    "japan": 1,
+    "norway": 1,
+    "france": 1,
+    "senegal": 2
   },
   "penGoals": {
     "switzerland": 2,
@@ -122,6 +126,8 @@
     "espn-760470",
     "espn-760471",
     "espn-760472",
-    "espn-760473"
+    "espn-760473",
+    "espn-760474",
+    "espn-760475"
   ]
 }
