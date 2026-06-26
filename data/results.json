@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26T19:03:27.835Z",
+  "updated": "2026-06-26T20:58:51.589Z",
   "source": "espn",
   "matches": [
     {
@@ -849,8 +849,8 @@
       "status": "IN_PLAY",
       "home": "norway",
       "away": "france",
-      "hs": 0,
-      "as": 0,
+      "hs": 1,
+      "as": 4,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
@@ -863,7 +863,7 @@
       "status": "IN_PLAY",
       "home": "senegal",
       "away": "iraq",
-      "hs": 0,
+      "hs": 5,
       "as": 0,
       "duration": "REGULAR",
       "penHome": null,
