@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-25T23:36:17.504Z",
+  "updated": "2026-06-26T01:55:35.616Z",
   "source": "espn",
   "matches": [
     {
@@ -790,29 +790,29 @@
       "stage": "group",
       "group": "F",
       "utcDate": "2026-06-25T23:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "japan",
       "away": "sweden",
-      "hs": 0,
-      "as": 0,
+      "hs": 1,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "stage": "group",
       "group": "F",
       "utcDate": "2026-06-25T23:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "tunisia",
       "away": "netherlands",
-      "hs": 0,
-      "as": 2,
+      "hs": 1,
+      "as": 3,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "stage": "group",
@@ -1030,7 +1030,7 @@
       "utcDate": "2026-06-29T17:00:00Z",
       "status": "TIMED",
       "home": "brazil",
-      "away": null,
+      "away": "japan",
       "hs": null,
       "as": null,
       "duration": "REGULAR",
@@ -1057,7 +1057,7 @@
       "group": null,
       "utcDate": "2026-06-30T01:00:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "netherlands",
       "away": "morocco",
       "hs": null,
       "as": null,
@@ -1142,7 +1142,7 @@
       "utcDate": "2026-07-02T00:00:00Z",
       "status": "TIMED",
       "home": "usa",
-      "away": null,
+      "away": "bosnia",
       "hs": null,
       "as": null,
       "duration": "REGULAR",
