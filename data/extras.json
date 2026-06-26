@@ -14,8 +14,8 @@
     "southkorea": 4,
     "bosnia": 6,
     "canada": 5,
-    "paraguay": 6,
-    "usa": 4,
+    "paraguay": 7,
+    "usa": 5,
     "switzerland": 3,
     "qatar": 4,
     "brazil": 5,
@@ -41,9 +41,9 @@
     "colombia": 3,
     "uzbekistan": 2,
     "czechia": 1,
-    "australia": 4,
+    "australia": 5,
     "morocco": 1,
-    "sweden": 3,
+    "sweden": 5,
     "curacao": 7,
     "uruguay": 2,
     "newzealand": 2,
@@ -52,7 +52,8 @@
     "jordan": 1,
     "england": 1,
     "croatia": 1,
-    "germany": 1
+    "germany": 1,
+    "japan": 1
   },
   "penGoals": {
     "switzerland": 2,
@@ -117,6 +118,10 @@
     "espn-760466",
     "espn-760467",
     "espn-760468",
+    "espn-760469",
+    "espn-760470",
+    "espn-760471",
+    "espn-760472",
     "espn-760473"
   ]
 }
