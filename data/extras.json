@@ -38,8 +38,8 @@
     "austria": 3,
     "drcongo": 2,
     "portugal": 4,
-    "panama": 3,
-    "ghana": 2,
+    "panama": 5,
+    "ghana": 3,
     "colombia": 3,
     "uzbekistan": 2,
     "czechia": 1,
@@ -52,8 +52,8 @@
     "argentina": 2,
     "algeria": 1,
     "jordan": 1,
-    "england": 1,
-    "croatia": 1,
+    "england": 2,
+    "croatia": 2,
     "germany": 1,
     "japan": 1,
     "norway": 1,
@@ -133,6 +133,8 @@
     "espn-760476",
     "espn-760477",
     "espn-760478",
-    "espn-760479"
+    "espn-760479",
+    "espn-760480",
+    "espn-760485"
   ]
 }
