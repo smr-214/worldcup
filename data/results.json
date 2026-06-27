@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-27T00:35:54.248Z",
+  "updated": "2026-06-27T01:46:28.072Z",
   "source": "espn",
   "matches": [
     {
@@ -892,7 +892,7 @@
       "home": "uruguay",
       "away": "spain",
       "hs": 0,
-      "as": 0,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
