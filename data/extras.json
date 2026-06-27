@@ -7,7 +7,8 @@
     "qatar": 2,
     "paraguay": 1,
     "belgium": 1,
-    "iraq": 1
+    "iraq": 1,
+    "uruguay": 1
   },
   "yellowCards": {
     "southafrica": 5,
@@ -27,12 +28,12 @@
     "ivorycoast": 4,
     "ecuador": 5,
     "tunisia": 1,
-    "spain": 1,
-    "capeverde": 3,
+    "spain": 2,
+    "capeverde": 4,
     "belgium": 3,
-    "egypt": 3,
-    "saudi": 3,
-    "iran": 2,
+    "egypt": 6,
+    "saudi": 6,
+    "iran": 6,
     "iraq": 4,
     "austria": 3,
     "drcongo": 2,
@@ -46,8 +47,8 @@
     "morocco": 1,
     "sweden": 5,
     "curacao": 7,
-    "uruguay": 2,
-    "newzealand": 2,
+    "uruguay": 5,
+    "newzealand": 4,
     "argentina": 2,
     "algeria": 1,
     "jordan": 1,
@@ -128,6 +129,10 @@
     "espn-760472",
     "espn-760473",
     "espn-760474",
-    "espn-760475"
+    "espn-760475",
+    "espn-760476",
+    "espn-760477",
+    "espn-760478",
+    "espn-760479"
   ]
 }
