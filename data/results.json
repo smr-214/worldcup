@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-27T23:47:50.051Z",
+  "updated": "2026-06-28T01:58:09.190Z",
   "source": "espn",
   "matches": [
     {
@@ -958,7 +958,7 @@
       "stage": "group",
       "group": "K",
       "utcDate": "2026-06-27T23:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "colombia",
       "away": "portugal",
       "hs": 0,
@@ -966,21 +966,21 @@
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "DRAW"
     },
     {
       "stage": "group",
       "group": "K",
       "utcDate": "2026-06-27T23:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "drcongo",
       "away": "uzbekistan",
-      "hs": 0,
+      "hs": 3,
       "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "group",
@@ -1114,7 +1114,7 @@
       "utcDate": "2026-07-01T16:00:00Z",
       "status": "TIMED",
       "home": "england",
-      "away": null,
+      "away": "drcongo",
       "hs": null,
       "as": null,
       "duration": "REGULAR",
@@ -1128,7 +1128,7 @@
       "utcDate": "2026-07-01T20:00:00Z",
       "status": "TIMED",
       "home": "belgium",
-      "away": null,
+      "away": "senegal",
       "hs": null,
       "as": null,
       "duration": "REGULAR",
@@ -1169,7 +1169,7 @@
       "group": null,
       "utcDate": "2026-07-02T23:00:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "portugal",
       "away": "croatia",
       "hs": null,
       "as": null,
@@ -1225,7 +1225,7 @@
       "group": null,
       "utcDate": "2026-07-04T01:30:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "colombia",
       "away": "ghana",
       "hs": null,
       "as": null,
