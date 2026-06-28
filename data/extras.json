@@ -15,7 +15,7 @@
     "mexico": 2,
     "southkorea": 4,
     "bosnia": 6,
-    "canada": 5,
+    "canada": 7,
     "paraguay": 7,
     "usa": 5,
     "switzerland": 3,
@@ -141,6 +141,7 @@
     "espn-760482",
     "espn-760483",
     "espn-760484",
-    "espn-760485"
+    "espn-760485",
+    "espn-760486"
   ]
 }
