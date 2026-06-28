@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28T06:34:59.088Z",
+  "updated": "2026-06-28T20:20:00.050Z",
   "source": "espn",
   "matches": [
     {
@@ -1014,11 +1014,11 @@
       "stage": "r32",
       "group": null,
       "utcDate": "2026-06-28T19:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "southafrica",
       "away": "canada",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
