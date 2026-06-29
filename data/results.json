@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28T21:34:56.781Z",
+  "updated": "2026-06-29T17:15:10.389Z",
   "source": "espn",
   "matches": [
     {
@@ -1028,11 +1028,11 @@
       "stage": "r32",
       "group": null,
       "utcDate": "2026-06-29T17:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "brazil",
       "away": "japan",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
