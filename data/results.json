@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-29T22:17:23.273Z",
+  "updated": "2026-06-29T23:30:18.648Z",
   "source": "espn",
   "matches": [
     {
@@ -1042,15 +1042,15 @@
       "stage": "r32",
       "group": null,
       "utcDate": "2026-06-29T20:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "germany",
       "away": "paraguay",
       "hs": 1,
       "as": 1,
-      "duration": "REGULAR",
-      "penHome": null,
-      "penAway": null,
-      "winner": null
+      "duration": "PENALTY_SHOOTOUT",
+      "penHome": 3,
+      "penAway": 4,
+      "winner": "AWAY_TEAM"
     },
     {
       "stage": "r32",
