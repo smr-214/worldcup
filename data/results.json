@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-29T19:18:09.885Z",
+  "updated": "2026-06-29T21:00:44.158Z",
   "source": "espn",
   "matches": [
     {
@@ -1042,11 +1042,11 @@
       "stage": "r32",
       "group": null,
       "utcDate": "2026-06-29T20:30:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "germany",
       "away": "paraguay",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
