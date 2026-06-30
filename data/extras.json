@@ -56,7 +56,7 @@
     "croatia": 2,
     "germany": 3,
     "japan": 4,
-    "norway": 1,
+    "norway": 2,
     "france": 1,
     "senegal": 2
   },
@@ -145,6 +145,8 @@
     "espn-760486",
     "espn-760487",
     "espn-760488",
-    "espn-760489"
+    "espn-760489",
+    "espn-760490",
+    "espn-760492"
   ]
 }
