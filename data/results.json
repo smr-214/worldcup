@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30T22:39:38.315Z",
+  "updated": "2026-06-30T23:50:36.814Z",
   "source": "espn",
   "matches": [
     {
@@ -1084,7 +1084,7 @@
       "stage": "r32",
       "group": null,
       "utcDate": "2026-06-30T21:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "france",
       "away": "sweden",
       "hs": 3,
@@ -1092,7 +1092,7 @@
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "r32",
@@ -1254,7 +1254,7 @@
       "utcDate": "2026-07-04T21:00:00Z",
       "status": "TIMED",
       "home": "paraguay",
-      "away": null,
+      "away": "france",
       "hs": null,
       "as": null,
       "duration": "REGULAR",
