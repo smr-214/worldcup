@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-29T23:30:18.648Z",
+  "updated": "2026-06-30T01:33:54.866Z",
   "source": "espn",
   "matches": [
     {
@@ -1056,11 +1056,11 @@
       "stage": "r32",
       "group": null,
       "utcDate": "2026-06-30T01:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "netherlands",
       "away": "morocco",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
@@ -1253,7 +1253,7 @@
       "group": null,
       "utcDate": "2026-07-04T21:00:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "paraguay",
       "away": null,
       "hs": null,
       "as": null,
