@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30T01:33:54.866Z",
+  "updated": "2026-06-30T03:55:36.332Z",
   "source": "espn",
   "matches": [
     {
@@ -1056,15 +1056,15 @@
       "stage": "r32",
       "group": null,
       "utcDate": "2026-06-30T01:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "netherlands",
       "away": "morocco",
-      "hs": 0,
-      "as": 0,
-      "duration": "REGULAR",
-      "penHome": null,
-      "penAway": null,
-      "winner": null
+      "hs": 1,
+      "as": 1,
+      "duration": "PENALTY_SHOOTOUT",
+      "penHome": 2,
+      "penAway": 3,
+      "winner": "AWAY_TEAM"
     },
     {
       "stage": "r32",
@@ -1240,7 +1240,7 @@
       "utcDate": "2026-07-04T17:00:00Z",
       "status": "TIMED",
       "home": "canada",
-      "away": null,
+      "away": "morocco",
       "hs": null,
       "as": null,
       "duration": "REGULAR",
