@@ -8,7 +8,8 @@
     "paraguay": 1,
     "belgium": 1,
     "iraq": 1,
-    "uruguay": 1
+    "uruguay": 1,
+    "ecuador": 1
   },
   "yellowCards": {
     "southafrica": 5,
@@ -26,7 +27,7 @@
     "turkey": 2,
     "netherlands": 3,
     "ivorycoast": 4,
-    "ecuador": 5,
+    "ecuador": 8,
     "tunisia": 1,
     "spain": 2,
     "capeverde": 4,
@@ -147,6 +148,7 @@
     "espn-760488",
     "espn-760489",
     "espn-760490",
+    "espn-760491",
     "espn-760492"
   ]
 }
