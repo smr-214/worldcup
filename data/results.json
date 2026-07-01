@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-01T20:28:10.156Z",
+  "updated": "2026-07-01T22:06:04.902Z",
   "source": "espn",
   "matches": [
     {
@@ -1129,8 +1129,8 @@
       "status": "IN_PLAY",
       "home": "belgium",
       "away": "senegal",
-      "hs": 0,
-      "as": 1,
+      "hs": 2,
+      "as": 2,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
