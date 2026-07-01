@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-01T18:32:01.521Z",
+  "updated": "2026-07-01T20:28:10.156Z",
   "source": "espn",
   "matches": [
     {
@@ -1126,11 +1126,11 @@
       "stage": "r32",
       "group": null,
       "utcDate": "2026-07-01T20:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "belgium",
       "away": "senegal",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
