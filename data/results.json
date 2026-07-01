@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-01T16:41:21.380Z",
+  "updated": "2026-07-01T18:32:01.521Z",
   "source": "espn",
   "matches": [
     {
@@ -1112,15 +1112,15 @@
       "stage": "r32",
       "group": null,
       "utcDate": "2026-07-01T16:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "england",
       "away": "drcongo",
-      "hs": 0,
+      "hs": 2,
       "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "r32",
@@ -1282,7 +1282,7 @@
       "utcDate": "2026-07-06T00:00:00Z",
       "status": "TIMED",
       "home": "mexico",
-      "away": null,
+      "away": "england",
       "hs": null,
       "as": null,
       "duration": "REGULAR",
