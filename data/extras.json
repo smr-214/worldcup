@@ -9,13 +9,14 @@
     "belgium": 1,
     "iraq": 1,
     "uruguay": 1,
-    "ecuador": 1
+    "ecuador": 1,
+    "usa": 1
   },
   "yellowCards": {
     "southafrica": 5,
     "mexico": 2,
     "southkorea": 4,
-    "bosnia": 6,
+    "bosnia": 7,
     "canada": 7,
     "paraguay": 9,
     "usa": 5,
@@ -152,6 +153,7 @@
     "espn-760491",
     "espn-760492",
     "espn-760493",
+    "espn-760494",
     "espn-760495"
   ]
 }
