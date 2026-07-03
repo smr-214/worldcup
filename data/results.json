@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-03T19:57:24.821Z",
+  "updated": "2026-07-03T21:19:03.409Z",
   "source": "espn",
   "matches": [
     {
@@ -1196,15 +1196,15 @@
       "stage": "r32",
       "group": null,
       "utcDate": "2026-07-03T18:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "australia",
       "away": "egypt",
       "hs": 1,
       "as": 1,
-      "duration": "REGULAR",
-      "penHome": null,
-      "penAway": null,
-      "winner": null
+      "duration": "PENALTY_SHOOTOUT",
+      "penHome": 2,
+      "penAway": 4,
+      "winner": "AWAY_TEAM"
     },
     {
       "stage": "r32",
@@ -1324,7 +1324,7 @@
       "utcDate": "2026-07-07T16:00:00Z",
       "status": "TIMED",
       "home": null,
-      "away": null,
+      "away": "egypt",
       "hs": null,
       "as": null,
       "duration": "REGULAR",
