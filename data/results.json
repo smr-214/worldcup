@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-03T18:23:00.318Z",
+  "updated": "2026-07-03T19:57:24.821Z",
   "source": "espn",
   "matches": [
     {
@@ -1199,7 +1199,7 @@
       "status": "IN_PLAY",
       "home": "australia",
       "away": "egypt",
-      "hs": 0,
+      "hs": 1,
       "as": 1,
       "duration": "REGULAR",
       "penHome": null,
