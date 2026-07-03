@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-03T22:31:00.047Z",
+  "updated": "2026-07-03T23:39:09.394Z",
   "source": "espn",
   "matches": [
     {
@@ -1214,7 +1214,7 @@
       "home": "argentina",
       "away": "capeverde",
       "hs": 1,
-      "as": 0,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
