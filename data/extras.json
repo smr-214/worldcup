@@ -39,7 +39,7 @@
     "iraq": 4,
     "austria": 5,
     "drcongo": 6,
-    "portugal": 4,
+    "portugal": 5,
     "panama": 5,
     "ghana": 3,
     "colombia": 4,
@@ -52,10 +52,10 @@
     "uruguay": 5,
     "newzealand": 4,
     "argentina": 2,
-    "algeria": 1,
+    "algeria": 3,
     "jordan": 4,
     "england": 3,
-    "croatia": 2,
+    "croatia": 4,
     "germany": 3,
     "japan": 4,
     "norway": 2,
@@ -70,7 +70,8 @@
     "southafrica": 1,
     "drcongo": 1,
     "argentina": 1,
-    "belgium": 1
+    "belgium": 1,
+    "portugal": 1
   },
   "tallied": [
     "espn-760414",
@@ -155,6 +156,8 @@
     "espn-760493",
     "espn-760494",
     "espn-760495",
-    "espn-760497"
+    "espn-760496",
+    "espn-760497",
+    "espn-760498"
   ]
 }
