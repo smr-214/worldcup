@@ -31,7 +31,7 @@
     "ecuador": 8,
     "tunisia": 1,
     "spain": 2,
-    "capeverde": 4,
+    "capeverde": 5,
     "belgium": 4,
     "egypt": 8,
     "saudi": 6,
@@ -41,8 +41,8 @@
     "drcongo": 6,
     "portugal": 5,
     "panama": 5,
-    "ghana": 3,
-    "colombia": 4,
+    "ghana": 6,
+    "colombia": 6,
     "uzbekistan": 4,
     "czechia": 1,
     "australia": 5,
@@ -51,7 +51,7 @@
     "curacao": 7,
     "uruguay": 5,
     "newzealand": 4,
-    "argentina": 2,
+    "argentina": 3,
     "algeria": 3,
     "jordan": 4,
     "england": 3,
@@ -159,6 +159,8 @@
     "espn-760496",
     "espn-760497",
     "espn-760498",
-    "espn-760499"
+    "espn-760499",
+    "espn-760500",
+    "espn-760501"
   ]
 }
