@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-04T17:06:57.310Z",
+  "updated": "2026-07-04T19:42:07.727Z",
   "source": "espn",
   "matches": [
     {
@@ -1238,15 +1238,15 @@
       "stage": "r16",
       "group": null,
       "utcDate": "2026-07-04T17:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "canada",
       "away": "morocco",
       "hs": 0,
-      "as": 0,
+      "as": 3,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "stage": "r16",
@@ -1352,7 +1352,7 @@
       "utcDate": "2026-07-09T20:00:00Z",
       "status": "TIMED",
       "home": null,
-      "away": null,
+      "away": "morocco",
       "hs": null,
       "as": null,
       "duration": "REGULAR",
