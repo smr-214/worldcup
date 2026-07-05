@@ -59,7 +59,7 @@
     "germany": 3,
     "japan": 4,
     "norway": 2,
-    "france": 1,
+    "france": 4,
     "senegal": 3
   },
   "penGoals": {
@@ -71,7 +71,8 @@
     "drcongo": 1,
     "argentina": 1,
     "belgium": 1,
-    "portugal": 1
+    "portugal": 1,
+    "france": 1
   },
   "tallied": [
     "espn-760414",
@@ -162,6 +163,7 @@
     "espn-760499",
     "espn-760500",
     "espn-760501",
-    "espn-760502"
+    "espn-760502",
+    "espn-760503"
   ]
 }
