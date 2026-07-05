@@ -22,7 +22,7 @@
     "usa": 5,
     "switzerland": 3,
     "qatar": 4,
-    "brazil": 7,
+    "brazil": 8,
     "scotland": 5,
     "haiti": 7,
     "turkey": 2,
@@ -72,7 +72,8 @@
     "argentina": 1,
     "belgium": 1,
     "portugal": 1,
-    "france": 1
+    "france": 1,
+    "brazil": 1
   },
   "tallied": [
     "espn-760414",
@@ -164,6 +165,7 @@
     "espn-760500",
     "espn-760501",
     "espn-760502",
-    "espn-760503"
+    "espn-760503",
+    "espn-760504"
   ]
 }
