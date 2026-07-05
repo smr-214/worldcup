@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-05T20:44:23.183Z",
+  "updated": "2026-07-05T21:48:37.429Z",
   "source": "espn",
   "matches": [
     {
@@ -1270,7 +1270,7 @@
       "home": "brazil",
       "away": "norway",
       "hs": 0,
-      "as": 0,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
