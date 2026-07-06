@@ -31,7 +31,7 @@
     "ivorycoast": 4,
     "ecuador": 8,
     "tunisia": 1,
-    "spain": 2,
+    "spain": 3,
     "capeverde": 5,
     "belgium": 4,
     "egypt": 8,
@@ -40,7 +40,7 @@
     "iraq": 4,
     "austria": 5,
     "drcongo": 6,
-    "portugal": 5,
+    "portugal": 7,
     "panama": 5,
     "ghana": 6,
     "colombia": 6,
@@ -169,6 +169,7 @@
     "espn-760502",
     "espn-760503",
     "espn-760504",
-    "espn-760505"
+    "espn-760505",
+    "espn-760506"
   ]
 }
