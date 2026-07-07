@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-07T01:13:30.130Z",
+  "updated": "2026-07-07T03:14:13.733Z",
   "source": "espn",
   "matches": [
     {
@@ -1308,15 +1308,15 @@
       "stage": "r16",
       "group": null,
       "utcDate": "2026-07-07T00:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "usa",
       "away": "belgium",
       "hs": 1,
-      "as": 2,
+      "as": 4,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "stage": "r16",
@@ -1366,7 +1366,7 @@
       "utcDate": "2026-07-10T19:00:00Z",
       "status": "TIMED",
       "home": "spain",
-      "away": null,
+      "away": "belgium",
       "hs": null,
       "as": null,
       "duration": "REGULAR",
