@@ -21,7 +21,7 @@
     "canada": 11,
     "paraguay": 9,
     "usa": 7,
-    "switzerland": 3,
+    "switzerland": 6,
     "qatar": 4,
     "brazil": 8,
     "scotland": 5,
@@ -34,7 +34,7 @@
     "spain": 3,
     "capeverde": 5,
     "belgium": 4,
-    "egypt": 8,
+    "egypt": 12,
     "saudi": 6,
     "iran": 6,
     "iraq": 4,
@@ -43,7 +43,7 @@
     "portugal": 7,
     "panama": 5,
     "ghana": 6,
-    "colombia": 6,
+    "colombia": 8,
     "uzbekistan": 4,
     "czechia": 1,
     "australia": 5,
@@ -171,6 +171,8 @@
     "espn-760504",
     "espn-760505",
     "espn-760506",
-    "espn-760507"
+    "espn-760507",
+    "espn-760508",
+    "espn-760509"
   ]
 }
