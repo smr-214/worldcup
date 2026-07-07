@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-07T03:14:13.733Z",
+  "updated": "2026-07-07T16:32:44.407Z",
   "source": "espn",
   "matches": [
     {
@@ -1322,11 +1322,11 @@
       "stage": "r16",
       "group": null,
       "utcDate": "2026-07-07T16:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "argentina",
       "away": "egypt",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
