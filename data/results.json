@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-07T18:34:36.094Z",
+  "updated": "2026-07-07T20:32:36.285Z",
   "source": "espn",
   "matches": [
     {
@@ -1336,11 +1336,11 @@
       "stage": "r16",
       "group": null,
       "utcDate": "2026-07-07T20:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "switzerland",
       "away": "colombia",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
