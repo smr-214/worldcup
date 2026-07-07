@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-07T16:32:44.407Z",
+  "updated": "2026-07-07T18:34:36.094Z",
   "source": "espn",
   "matches": [
     {
@@ -1322,15 +1322,15 @@
       "stage": "r16",
       "group": null,
       "utcDate": "2026-07-07T16:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "argentina",
       "away": "egypt",
-      "hs": 0,
-      "as": 1,
+      "hs": 3,
+      "as": 2,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "r16",
@@ -1393,7 +1393,7 @@
       "group": null,
       "utcDate": "2026-07-12T01:00:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "argentina",
       "away": null,
       "hs": null,
       "as": null,
