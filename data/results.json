@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-09T21:53:13.778Z",
+  "updated": "2026-07-09T23:22:17.186Z",
   "source": "espn",
   "matches": [
     {
@@ -1350,7 +1350,7 @@
       "stage": "qf",
       "group": null,
       "utcDate": "2026-07-09T20:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "france",
       "away": "morocco",
       "hs": 2,
@@ -1358,7 +1358,7 @@
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "HOME_TEAM"
     },
     {
       "stage": "qf",
@@ -1407,7 +1407,7 @@
       "group": null,
       "utcDate": "2026-07-14T19:00:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "france",
       "away": null,
       "hs": null,
       "as": null,
