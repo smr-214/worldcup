@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-10T19:48:36.582Z",
+  "updated": "2026-07-10T20:58:47.300Z",
   "source": "espn",
   "matches": [
     {
@@ -1367,7 +1367,7 @@
       "status": "IN_PLAY",
       "home": "spain",
       "away": "belgium",
-      "hs": 1,
+      "hs": 2,
       "as": 1,
       "duration": "REGULAR",
       "penHome": null,
