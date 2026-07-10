@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-09T23:22:17.186Z",
+  "updated": "2026-07-10T19:48:36.582Z",
   "source": "espn",
   "matches": [
     {
@@ -1364,11 +1364,11 @@
       "stage": "qf",
       "group": null,
       "utcDate": "2026-07-10T19:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "spain",
       "away": "belgium",
-      "hs": null,
-      "as": null,
+      "hs": 1,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
