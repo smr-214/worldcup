@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-11T21:28:08.987Z",
+  "updated": "2026-07-11T22:27:36.602Z",
   "source": "espn",
   "matches": [
     {
@@ -1381,8 +1381,8 @@
       "status": "IN_PLAY",
       "home": "norway",
       "away": "england",
-      "hs": 0,
-      "as": 0,
+      "hs": 1,
+      "as": 1,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
