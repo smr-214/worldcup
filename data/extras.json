@@ -11,7 +11,8 @@
     "uruguay": 1,
     "ecuador": 1,
     "usa": 1,
-    "england": 1
+    "england": 1,
+    "switzerland": 1
   },
   "yellowCards": {
     "southafrica": 5,
@@ -52,7 +53,7 @@
     "curacao": 7,
     "uruguay": 5,
     "newzealand": 4,
-    "argentina": 3,
+    "argentina": 6,
     "algeria": 3,
     "jordan": 4,
     "england": 7,
@@ -176,6 +177,7 @@
     "espn-760509",
     "espn-760510",
     "espn-760511",
-    "espn-760512"
+    "espn-760512",
+    "espn-760513"
   ]
 }
