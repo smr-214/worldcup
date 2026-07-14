@@ -32,7 +32,7 @@
     "ivorycoast": 4,
     "ecuador": 8,
     "tunisia": 1,
-    "spain": 5,
+    "spain": 6,
     "capeverde": 5,
     "belgium": 6,
     "egypt": 12,
@@ -61,7 +61,7 @@
     "germany": 3,
     "japan": 4,
     "norway": 3,
-    "france": 4,
+    "france": 6,
     "senegal": 3
   },
   "penGoals": {
@@ -76,7 +76,8 @@
     "portugal": 1,
     "france": 1,
     "brazil": 1,
-    "mexico": 1
+    "mexico": 1,
+    "spain": 1
   },
   "tallied": [
     "espn-760414",
@@ -178,6 +179,7 @@
     "espn-760510",
     "espn-760511",
     "espn-760512",
-    "espn-760513"
+    "espn-760513",
+    "espn-760514"
   ]
 }
