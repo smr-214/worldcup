@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-14T19:04:04.582Z",
+  "updated": "2026-07-14T20:32:14.482Z",
   "source": "espn",
   "matches": [
     {
@@ -1410,7 +1410,7 @@
       "home": "france",
       "away": "spain",
       "hs": 0,
-      "as": 0,
+      "as": 2,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
