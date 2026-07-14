@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-14T21:34:12.856Z",
+  "updated": "2026-07-14T22:39:55.957Z",
   "source": "espn",
   "matches": [
     {
@@ -1435,7 +1435,7 @@
       "group": null,
       "utcDate": "2026-07-18T21:00:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "france",
       "away": null,
       "hs": null,
       "as": null,
@@ -1449,7 +1449,7 @@
       "group": null,
       "utcDate": "2026-07-19T19:00:00Z",
       "status": "TIMED",
-      "home": null,
+      "home": "spain",
       "away": null,
       "hs": null,
       "as": null,
