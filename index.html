@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>⚽ WC2026 Office Sweepstake</title>
 <meta property="og:title" content="WC2026 Office Sweepstake 🏆">
-<meta property="og:description" content="74 colleagues · 48 nations · one champion — live auto-updating leaderboard">
+<meta property="og:description" content="73 colleagues · 48 nations · one champion — live auto-updating leaderboard">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0d3320">
 <meta name="robots" content="noindex">
@@ -284,7 +284,7 @@ table.lb { width: 100%; border-collapse: collapse; }
 <div class="header">
   <span class="header-trophy">🏆</span>
   <h1>WC2026 Office Sweepstake</h1>
-  <p class="header-sub">74 Colleagues · 48 Nations · One Champion</p>
+  <p class="header-sub" id="headerSub">48 Nations · One Champion</p>
   <p class="updated-line" id="updatedLine">loading…</p>
 </div>
 <div class="sample-banner" id="sampleBanner" style="display:none">
@@ -385,6 +385,11 @@ const STAGE_LABEL = {
 const STAGE_ORDER = ['group', 'r32', 'r16', 'qf', 'sf', 'third', 'final'];
 
 let DRAW = null, RESULTS = null, EXTRAS = { redCards: {} };
+
+// The organiser runs the sweepstake and doesn't compete for prizes, so they're
+// hidden from the whole site. Their entry stays in data/draw.json (back end) —
+// this only filters the display.
+const ORGANISER_NAME = 'Stefan Rossler';
 let LB_DETAILED = false;
 const LAST = {};
 
@@ -671,11 +676,7 @@ function renderAwards(rows, teamStats) {
   const tournamentOver = !!finalMatch && finalMatch.status === 'FINISHED';
   const suspense = '<div class="award-detail" style="color:var(--gold);font-weight:700">🏆 There is a winner!</div><div class="award-detail">To be announced after the tournament final.</div>';
 
-  // Stefan Rossler organises the sweepstake, so he's excluded from contention
-  // for all three special awards (but still appears on the main leaderboard).
-  const awardRows = rows.filter(p => p.name !== 'Stefan Rossler');
-
-  const playerAgg = fn => awardRows.map(p => ({ p, v: p.teams.reduce((s, t) => s + fn(t, teamStats[t.id]), 0) }));
+  const playerAgg = fn => rows.map(p => ({ p, v: p.teams.reduce((s, t) => s + fn(t, teamStats[t.id]), 0) }));
   // everyone level on the top value is shown — ties share the award
   const best = (agg, min = 1) => {
     const top = Math.max(0, ...agg.map(a => a.v));
@@ -692,7 +693,7 @@ function renderAwards(rows, teamStats) {
   // A second-yellow sending-off is already stored as one red (not red+yellow)
   // by the tally script, so there's no double counting here.
   const reds = EXTRAS.redCards || {}, yellows = EXTRAS.yellowCards || {};
-  const cardAgg = awardRows.map(p => {
+  const cardAgg = rows.map(p => {
     const r = p.teams.reduce((s, t) => s + (reds[t.id] || 0), 0);
     const y = p.teams.reduce((s, t) => s + (yellows[t.id] || 0), 0);
     return { p, v: r * 2 + y, r, y };
@@ -709,7 +710,7 @@ function renderAwards(rows, teamStats) {
   // in the instant it happens — nobody can retroactively be knocked out
   // earlier — so it's "won" as soon as bath is non-empty, not just at the Final.
   let bath = [], bathWhen = null;
-  for (const p of awardRows) {
+  for (const p of rows) {
     if (p.teams.every(t => teamStats[t.id].eliminated)) {
       const when = p.teams.map(t => teamStats[t.id].elimDate || '').sort().pop();
       if (!bathWhen || when < bathWhen) { bathWhen = when; bath = [p]; }
@@ -816,6 +817,9 @@ async function load() {
       loadJSON('data/results.json', { updated: null, matches: [] }),
       loadJSON('data/extras.json', { redCards: {} }),
     ]);
+    // Hide the organiser everywhere on the site (data kept in the back end).
+    DRAW.players = DRAW.players.filter(p => p.name !== ORGANISER_NAME);
+    $('headerSub').textContent = `${DRAW.players.length} Colleagues · 48 Nations · One Champion`;
     renderAll();
   } catch (e) {
     $('pane-leaderboard').innerHTML = `
