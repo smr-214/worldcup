@@ -53,10 +53,10 @@
     "curacao": 7,
     "uruguay": 5,
     "newzealand": 4,
-    "argentina": 6,
+    "argentina": 9,
     "algeria": 3,
     "jordan": 4,
-    "england": 7,
+    "england": 8,
     "croatia": 4,
     "germany": 3,
     "japan": 4,
@@ -180,6 +180,7 @@
     "espn-760511",
     "espn-760512",
     "espn-760513",
-    "espn-760514"
+    "espn-760514",
+    "espn-760515"
   ]
 }
