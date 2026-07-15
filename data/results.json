@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-14T22:39:55.957Z",
+  "updated": "2026-07-15T20:00:27.287Z",
   "source": "espn",
   "matches": [
     {
@@ -1420,11 +1420,11 @@
       "stage": "sf",
       "group": null,
       "utcDate": "2026-07-15T19:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "home": "england",
       "away": "argentina",
-      "hs": null,
-      "as": null,
+      "hs": 0,
+      "as": 0,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
