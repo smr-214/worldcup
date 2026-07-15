@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>⚽ WC2026 Office Sweepstake</title>
 <meta property="og:title" content="WC2026 Office Sweepstake 🏆">
-<meta property="og:description" content="73 colleagues · 48 nations · one champion — live auto-updating leaderboard">
+<meta property="og:description" content="74 colleagues · 48 nations · one champion — live auto-updating leaderboard">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0d3320">
 <meta name="robots" content="noindex">
@@ -284,7 +284,7 @@ table.lb { width: 100%; border-collapse: collapse; }
 <div class="header">
   <span class="header-trophy">🏆</span>
   <h1>WC2026 Office Sweepstake</h1>
-  <p class="header-sub" id="headerSub">48 Nations · One Champion</p>
+  <p class="header-sub">74 Colleagues · 48 Nations · One Champion</p>
   <p class="updated-line" id="updatedLine">loading…</p>
 </div>
 <div class="sample-banner" id="sampleBanner" style="display:none">
@@ -819,7 +819,6 @@ async function load() {
     ]);
     // Hide the organiser everywhere on the site (data kept in the back end).
     DRAW.players = DRAW.players.filter(p => p.name !== ORGANISER_NAME);
-    $('headerSub').textContent = `${DRAW.players.length} Colleagues · 48 Nations · One Champion`;
     renderAll();
   } catch (e) {
     $('pane-leaderboard').innerHTML = `
