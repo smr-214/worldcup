@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-18T22:36:21.564Z",
+  "updated": "2026-07-18T23:36:10.482Z",
   "source": "espn",
   "matches": [
     {
@@ -1434,15 +1434,15 @@
       "stage": "third",
       "group": null,
       "utcDate": "2026-07-18T21:00:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": "france",
       "away": "england",
-      "hs": 3,
-      "as": 4,
+      "hs": 4,
+      "as": 6,
       "duration": "REGULAR",
       "penHome": null,
       "penAway": null,
-      "winner": null
+      "winner": "AWAY_TEAM"
     },
     {
       "stage": "final",
