@@ -670,11 +670,10 @@ function renderBracket() {
 }
 
 function renderAwards(rows, teamStats) {
-  // Once a prize is actually decided, hide the winner's name so it stays a
-  // surprise for the reveal after the Final — show a teaser instead.
+  // While the tournament is live we show the current holders; once the Final
+  // is done these are the final winners and are revealed outright.
   const finalMatch = RESULTS.matches.find(m => m.stage === 'final');
   const tournamentOver = !!finalMatch && finalMatch.status === 'FINISHED';
-  const suspense = '<div class="award-detail" style="color:var(--gold);font-weight:700">🏆 There is a winner!</div><div class="award-detail">To be announced after the tournament final.</div>';
 
   const playerAgg = fn => rows.map(p => ({ p, v: p.teams.reduce((s, t) => s + fn(t, teamStats[t.id]), 0) }));
   // everyone level on the top value is shown — ties share the award
@@ -684,7 +683,7 @@ function renderAwards(rows, teamStats) {
   };
   const holder = (list, unit) => list.length
     ? `${list.map(x => `<div class="award-holder">${pflag(x.p)} ${esc(x.p.name)}</div>`).join('')}
-       <div class="award-detail">${list[0].v} ${list[0].v === 1 ? unit.replace(/s$/, '') : unit}${list.length > 1 ? ' each — currently tied' : ''}</div>`
+       <div class="award-detail">${list[0].v} ${list[0].v === 1 ? unit.replace(/s$/, '') : unit}${list.length > 1 ? (tournamentOver ? ' each — shared award' : ' each — currently tied') : ''}</div>`
     : '<div class="award-detail">No contender yet</div>';
 
   const snooze = best(playerAgg((t, s) => s.zeroDraws));
@@ -703,7 +702,7 @@ function renderAwards(rows, teamStats) {
   const redMist = (topCard > 0 ? cardAgg.filter(x => x.v === topCard) : []).sort((a, b) => a.p.name.localeCompare(b.p.name));
   const redMistBody = redMist.length
     ? redMist.map(x => `<div class="award-holder">${pflag(x.p)} ${esc(x.p.name)} <span style="color:var(--muted);font-weight:600;font-size:0.78rem">${x.y} 🟨 ${x.r} 🟥</span></div>`).join('')
-      + `<div class="award-detail">${redMist[0].v} points${redMist.length > 1 ? ' · currently tied' : ''}</div>`
+      + `<div class="award-detail">${redMist[0].v} points${redMist.length > 1 ? (tournamentOver ? ' · shared award' : ' · currently tied') : ''}</div>`
     : `<div class="award-detail">${anyCards ? 'No card points yet' : 'Tracking starts when card data is in'}</div>`;
 
   // Early Bath: first player(s) to have all 6 teams eliminated. This one locks
@@ -718,17 +717,23 @@ function renderAwards(rows, teamStats) {
     }
   }
   const earlyBathLocked = bath.length > 0;
+  const bathBody = earlyBathLocked
+    ? bath.map(p => `<div class="award-holder">${pflag(p)} ${esc(p.name)}</div>`).join('')
+      + `<div class="award-detail">All six teams out${bath.length > 1 ? ` — ${bath.length}-way tie` : ''} · ${fmtD(bathWhen)}</div>`
+    : '<div class="award-detail">Everyone still alive</div>';
   const card = (emoji, name, desc, body) => `
     <div class="award-card"><div class="award-emoji">${emoji}</div>
     <div class="award-name">${name}</div><div class="award-desc">${desc}</div>${body}</div>`;
 
   return `
-    <div class="section-title" style="margin-bottom:6px">🎖️ Special Awards</div>
-    <p style="color:var(--muted);font-size:0.8rem;margin-bottom:14px">Live holders — final winners decided after the Final. Each award wins a SGD 50 <a href="https://www.natureland.com.sg" target="_blank" rel="noopener" style="color:var(--green)">Natureland</a> voucher. Everyone's in with a shout, football knowledge optional.</p>
+    <div class="section-title" style="margin-bottom:6px">🎖️ Special Awards${tournamentOver ? ' — Winners' : ''}</div>
+    <p style="color:var(--muted);font-size:0.8rem;margin-bottom:14px">${tournamentOver
+      ? '🏆 The final winners! '
+      : 'Live holders — final winners decided after the Final. '}Each award wins a SGD 50 <a href="https://www.natureland.com.sg" target="_blank" rel="noopener" style="color:var(--green)">Natureland</a> voucher. Everyone's in with a shout, football knowledge optional.</p>
     <div class="award-grid" style="margin-bottom:22px">
-      ${card('😴', 'Snoozefest', 'Most 0-0 draws sat through', tournamentOver ? suspense : holder(snooze, '0-0 classics'))}
-      ${card('🛁', 'Early Bath', 'First to have all six teams knocked out', earlyBathLocked ? suspense : '<div class="award-detail">Everyone still alive</div>')}
-      ${card('🟥', 'Red Mist', 'Most card points across your teams<br>red card = 2 points, yellow card = 1 point', tournamentOver ? suspense : redMistBody)}
+      ${card('😴', 'Snoozefest', 'Most 0-0 draws sat through', holder(snooze, '0-0 classics'))}
+      ${card('🛁', 'Early Bath', 'First to have all six teams knocked out', bathBody)}
+      ${card('🟥', 'Red Mist', 'Most card points across your teams<br>red card = 2 points, yellow card = 1 point', redMistBody)}
     </div>`;
 }
 
